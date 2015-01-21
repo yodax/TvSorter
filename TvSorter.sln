@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvSorter", "TvSorter\TvSorter.csproj", "{A3088DAC-12DA-4EED-A1EE-C1E58856C57F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvSorter.Tests", "TvSorter.Tests\TvSorter.Tests.csproj", "{4E2BB06D-0B2F-449D-8EFA-77CD26E250A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A3088DAC-12DA-4EED-A1EE-C1E58856C57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3088DAC-12DA-4EED-A1EE-C1E58856C57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3088DAC-12DA-4EED-A1EE-C1E58856C57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E2BB06D-0B2F-449D-8EFA-77CD26E250A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E2BB06D-0B2F-449D-8EFA-77CD26E250A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E2BB06D-0B2F-449D-8EFA-77CD26E250A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E2BB06D-0B2F-449D-8EFA-77CD26E250A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

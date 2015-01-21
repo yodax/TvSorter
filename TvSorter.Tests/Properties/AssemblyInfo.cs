@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("TvSorter")]
+[assembly: AssemblyTitle("TvSorter.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TvSorter")]
+[assembly: AssemblyProduct("TvSorter.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("24e8019a-026c-4334-8b1a-5b09c43e7124")]
+[assembly: Guid("44c951fd-f7ac-453c-bf83-b9fdeeb36b14")]
 
 // Version information for an assembly consists of the following four values:
 //
