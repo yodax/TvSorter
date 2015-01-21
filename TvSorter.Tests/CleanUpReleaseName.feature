@@ -1,4 +1,4 @@
-﻿Feature: CleanUpReleaseName
+﻿Feature: Cleanup release name to match scene rules
 
 Input release names need to be aligned with scene rules
 
@@ -14,5 +14,6 @@ Scenario Template: Set of example cleanups
 
 Examples:
 | Input scene name                       | Clean scene name                       | Show name | Season | Episode | Group   | Quality        |
-| Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela  | 1      | 11      | KILLERS | 720p.HDTV.x264 | 
+| Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela  | 1      | 11      | KILLERS | 720p.HDTV.x264 |
+| Show.Part.2.720p.HDTV.x264-KILLERS     | Show.S01E02.720p.HDTV.x264-KILLERS     | Show      | 1      | 2       | KILLERS | 720p.HDTV.x264 |
 #| Cristela.S01E11.720p.HDTV.x264-killers | Cristela.S01E11.720p.HDTV.x264-KILLERS |           |
