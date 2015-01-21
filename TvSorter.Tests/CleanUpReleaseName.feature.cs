@@ -124,6 +124,38 @@ this.ScenarioSetup(scenarioInfo);
         {
             this.SetOfExampleCleanups("Show.Part.2.720p.HDTV.x264-KILLERS", "Show.S01E02.720p.HDTV.x264-KILLERS", "Show", "1", "2", "KILLERS", "720p.HDTV.x264", ((string[])(null)));
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Justified S06E01 720p WEB-DL DD5.1 H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Justified S06E01 720p WEB-DL DD5.1 H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Justified")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "6")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "NOGROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.WEB-DL.DD5.1.H.264")]
+        public virtual void SetOfExampleCleanups_JustifiedS06E01720PWEB_DLDD5_1H_264()
+        {
+            this.SetOfExampleCleanups("Justified S06E01 720p WEB-DL DD5.1 H.264", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP", "Justified", "6", "1", "NOGROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Justified")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "6")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.WEB-DL.DD5.1.H.264")]
+        public virtual void SetOfExampleCleanups_JustifiedS06E01720PWEB_DLDD5_1H_264_GROUP()
+        {
+            this.SetOfExampleCleanups("Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP", "Justified", "6", "1", "GROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
     }
 }
 #pragma warning restore

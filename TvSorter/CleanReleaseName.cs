@@ -9,12 +9,22 @@
         {
             var releaseName = inputReleaseName.ToLower();
 
+            releaseName = releaseName.Replace(' ', '.');
+            releaseName = releaseName.Replace("web-dl", "web.dl");
+            releaseName = releaseName.Replace("web-rip", "web.rip");
+
+
             if (!ContainsSeasonEpisodeString(releaseName))
             {
                 if (ContainsPartString(releaseName))
                 {
                     releaseName = ConvertPartStringToSeasonEpisode(releaseName);
                 }
+            }
+
+            if (!ContainsReleasGroup(releaseName))
+            {
+                releaseName = releaseName + "-NOGROUP";
             }
             return new ShowInfo
             {
@@ -24,6 +34,11 @@
                 ReleaseGroup = ExtractReleaseGroup(releaseName),
                 Quality = ExtractQuality(releaseName)
             };
+        }
+
+        private static bool ContainsReleasGroup(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"-\w*");
         }
 
         private static string ConvertPartStringToSeasonEpisode(string releaseName)
@@ -44,14 +59,22 @@
 
         private static string ExtractQuality(string releaseName)
         {
-            var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-");
+            var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-").ToUpper();
 
-            return quality.Replace("hdtv", "HDTV");
+            quality = quality.Replace("720P", "720p");
+            quality = quality.Replace("1080P", "1080p");
+            quality = quality.Replace("X264", "x264");
+            quality = quality.Replace("WEB.DL", "WEB-DL");
+            quality = quality.Replace("WEB.RIP", "WEB-RIP");
+
+            return quality;
         }
 
         private static string ExtractReleaseGroup(string releaseName)
         {
-            return ExtractStringFrom(releaseName, @"-(.*)").ToUpper();
+            var releaseGroup = ExtractStringFrom(releaseName, @"[^b]-(.*)").ToUpper();
+
+            return string.IsNullOrEmpty(releaseGroup) ? "NOGROUP" : releaseGroup;
         }
 
         private static int ExtractEpisode(string releaseName)
@@ -78,7 +101,8 @@
 
         private static string ExtractStringFrom(string inputReleaseName, string regexWithSingleGroup)
         {
-            return Regex.Match(inputReleaseName, regexWithSingleGroup).Groups[1].Captures[0].Value;
+            var match = Regex.Match(inputReleaseName, regexWithSingleGroup);
+            return match.Groups.Count == 1 ? "" : match.Groups[1].Captures[0].Value;
         }
 
         private static string UppercaseWords(string value)

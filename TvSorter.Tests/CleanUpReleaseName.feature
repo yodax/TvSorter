@@ -13,7 +13,8 @@ Scenario Template: Set of example cleanups
 	And the quality should be <Quality>
 
 Examples:
-| Input scene name                       | Clean scene name                       | Show name | Season | Episode | Group   | Quality        |
-| Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela.S01E11.720p.HDTV.x264-KILLERS | Cristela  | 1      | 11      | KILLERS | 720p.HDTV.x264 |
-| Show.Part.2.720p.HDTV.x264-KILLERS     | Show.S01E02.720p.HDTV.x264-KILLERS     | Show      | 1      | 2       | KILLERS | 720p.HDTV.x264 |
-#| Cristela.S01E11.720p.HDTV.x264-killers | Cristela.S01E11.720p.HDTV.x264-KILLERS |           |
+| Input scene name                               | Clean scene name                                 | Show name | Season | Episode | Group   | Quality                 |
+| Cristela.S01E11.720p.HDTV.x264-KILLERS         | Cristela.S01E11.720p.HDTV.x264-KILLERS           | Cristela  | 1      | 11      | KILLERS | 720p.HDTV.x264          |
+| Show.Part.2.720p.HDTV.x264-KILLERS             | Show.S01E02.720p.HDTV.x264-KILLERS               | Show      | 1      | 2       | KILLERS | 720p.HDTV.x264          |
+| Justified S06E01 720p WEB-DL DD5.1 H.264       | Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP | Justified | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264 |
+| Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP | Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP   | Justified | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
