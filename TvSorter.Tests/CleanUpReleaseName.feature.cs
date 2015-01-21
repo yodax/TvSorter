@@ -156,6 +156,22 @@ this.ScenarioSetup(scenarioInfo);
         {
             this.SetOfExampleCleanups("Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP", "Justified", "6", "1", "GROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show With Multiple Names")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.HDTV.x264")]
+        public virtual void SetOfExampleCleanups_Show_With_Multiple_Names_S01E11_720P_HDTV_X264_KILLERS()
+        {
+            this.SetOfExampleCleanups("Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-KILLERS", "Show With Multiple Names", "1", "11", "KILLERS", "720p.HDTV.x264", ((string[])(null)));
+        }
     }
 }
 #pragma warning restore

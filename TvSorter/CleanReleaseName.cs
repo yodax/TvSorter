@@ -96,7 +96,7 @@
         {
             var lowerCaseShowName = ExtractStringFrom(releaseName, @"(.*)\.s\d{1,3}");
 
-            return UppercaseWords(lowerCaseShowName);
+            return UppercaseWords(lowerCaseShowName).Replace('.', ' ');
         }
 
         private static string ExtractStringFrom(string inputReleaseName, string regexWithSingleGroup)
@@ -120,7 +120,7 @@
             // ... Uppercase the lowercase letters following spaces.
             for (var i = 1; i < array.Length; i++)
             {
-                if (array[i - 1] == ' ')
+                if (array[i - 1] == '.')
                 {
                     if (char.IsLower(array[i]))
                     {
