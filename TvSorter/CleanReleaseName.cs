@@ -7,21 +7,44 @@
     {
         public static ShowInfo For(string inputReleaseName)
         {
-            var lowerCaseInput = inputReleaseName.ToLower();
+            var releaseName = inputReleaseName.ToLower();
+
+            if (!ContainsSeasonEpisodeString(releaseName))
+            {
+                if (ContainsPartString(releaseName))
+                {
+                    releaseName = ConvertPartStringToSeasonEpisode(releaseName);
+                }
+            }
             return new ShowInfo
             {
-                ReleaseName = inputReleaseName,
-                Name = ExtractShowName(lowerCaseInput),
-                Season = ExtractSeason(lowerCaseInput),
-                Episode = ExtractEpisode(lowerCaseInput),
-                ReleaseGroup = ExtractReleaseGroup(lowerCaseInput),
-                Quality = ExtractQuality(lowerCaseInput)
+                Name = ExtractShowName(releaseName),
+                Season = ExtractSeason(releaseName),
+                Episode = ExtractEpisode(releaseName),
+                ReleaseGroup = ExtractReleaseGroup(releaseName),
+                Quality = ExtractQuality(releaseName)
             };
+        }
+
+        private static string ConvertPartStringToSeasonEpisode(string releaseName)
+        {
+            var partNumber = Convert.ToInt32(Regex.Match(releaseName, @"\.part\.(\d{1,3})").Groups[1].Captures[0].Value);
+            return Regex.Replace(releaseName, @"\.part\.\d{1,3}", ".s01e" + partNumber.ToString());
+        }
+
+        private static bool ContainsPartString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"\.part\.\d{1,3}");
+        }
+
+        private static bool ContainsSeasonEpisodeString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"\.s\d{1,3}e\d{1,3}\.");
         }
 
         private static string ExtractQuality(string releaseName)
         {
-            var quality = ExtractStringFrom(releaseName, @"e\d\d\.(.*)-");
+            var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-");
 
             return quality.Replace("hdtv", "HDTV");
         }
@@ -33,12 +56,12 @@
 
         private static int ExtractEpisode(string releaseName)
         {
-            return ExtractIntegerFrom(releaseName, @"\.s\d\de(\d\d)");
+            return ExtractIntegerFrom(releaseName, @"\.s\d{1,3}e(\d{1,3})");
         }
 
         private static int ExtractSeason(string releaseName)
         {
-            return ExtractIntegerFrom(releaseName, @"\.s(\d\d)e");
+            return ExtractIntegerFrom(releaseName, @"\.s(\d{1,3})e");
         }
 
         private static int ExtractIntegerFrom(string releaseName, string regexWithSingleGroup)
@@ -48,7 +71,7 @@
 
         private static string ExtractShowName(string releaseName)
         {
-            var lowerCaseShowName = ExtractStringFrom(releaseName, @"(.*)\.s\d\d");
+            var lowerCaseShowName = ExtractStringFrom(releaseName, @"(.*)\.s\d{1,3}");
 
             return UppercaseWords(lowerCaseShowName);
         }
