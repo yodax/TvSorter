@@ -96,81 +96,113 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Cristela.S01E11.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Cristela.S01E11.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Cristela.S01E11.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Cristela")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.S01E11.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.S01E11.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S01E11.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.HDTV.x264")]
-        public virtual void SetOfExampleCleanups_Cristela_S01E11_720P_HDTV_X264_KILLERS()
+        public virtual void SetOfExampleCleanups_Show_S01E11_720P_HDTV_X264_GROUP()
         {
-            this.SetOfExampleCleanups("Cristela.S01E11.720p.HDTV.x264-KILLERS", "Cristela.S01E11.720p.HDTV.x264-KILLERS", "Cristela", "1", "11", "KILLERS", "720p.HDTV.x264", ((string[])(null)));
+            this.SetOfExampleCleanups("Show.S01E11.720p.HDTV.x264-GROUP", "Show.S01E11.720p.HDTV.x264-GROUP", "Show", "1", "11", "GROUP", "720p.HDTV.x264", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.2.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.2.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S01E02.720p.HDTV.x264-KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.S01E11.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.S01E11.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S01E11.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "HDTV.x264")]
+        public virtual void SetOfExampleCleanups_Show_S01E11_HDTV_X264_GROUP()
+        {
+            this.SetOfExampleCleanups("Show.S01E11.HDTV.x264-GROUP", "Show.S01E11.HDTV.x264-GROUP", "Show", "1", "11", "GROUP", "HDTV.x264", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.S01E11.HDTV.XVID-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.S01E11.HDTV.XVID-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S01E11.HDTV.XviD-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "HDTV.XviD")]
+        public virtual void SetOfExampleCleanups_Show_S01E11_HDTV_XVID_GROUP()
+        {
+            this.SetOfExampleCleanups("Show.S01E11.HDTV.XVID-GROUP", "Show.S01E11.HDTV.XviD-GROUP", "Show", "1", "11", "GROUP", "HDTV.XviD", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.2.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.2.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S01E02.720p.HDTV.x264-GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "2")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.HDTV.x264")]
-        public virtual void SetOfExampleCleanups_Show_Part_2_720P_HDTV_X264_KILLERS()
+        public virtual void SetOfExampleCleanups_Show_Part_2_720P_HDTV_X264_GROUP()
         {
-            this.SetOfExampleCleanups("Show.Part.2.720p.HDTV.x264-KILLERS", "Show.S01E02.720p.HDTV.x264-KILLERS", "Show", "1", "2", "KILLERS", "720p.HDTV.x264", ((string[])(null)));
+            this.SetOfExampleCleanups("Show.Part.2.720p.HDTV.x264-GROUP", "Show.S01E02.720p.HDTV.x264-GROUP", "Show", "1", "2", "GROUP", "720p.HDTV.x264", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Justified S06E01 720p WEB-DL DD5.1 H.264")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Justified S06E01 720p WEB-DL DD5.1 H.264")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Justified")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show S06E01 720p WEB-DL DD5.1 H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show S06E01 720p WEB-DL DD5.1 H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "NOGROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.WEB-DL.DD5.1.H.264")]
-        public virtual void SetOfExampleCleanups_JustifiedS06E01720PWEB_DLDD5_1H_264()
+        public virtual void SetOfExampleCleanups_ShowS06E01720PWEB_DLDD5_1H_264()
         {
-            this.SetOfExampleCleanups("Justified S06E01 720p WEB-DL DD5.1 H.264", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP", "Justified", "6", "1", "NOGROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+            this.SetOfExampleCleanups("Show S06E01 720p WEB-DL DD5.1 H.264", "Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP", "Show", "6", "1", "NOGROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Justified")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show S06E01 720p WEB-DL DD5.1 H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.WEB-DL.DD5.1.H.264")]
-        public virtual void SetOfExampleCleanups_JustifiedS06E01720PWEB_DLDD5_1H_264_GROUP()
+        public virtual void SetOfExampleCleanups_ShowS06E01720PWEB_DLDD5_1H_264_GROUP()
         {
-            this.SetOfExampleCleanups("Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP", "Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP", "Justified", "6", "1", "GROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+            this.SetOfExampleCleanups("Show S06E01 720p WEB-DL DD5.1 H.264-GROUP", "Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP", "Show", "6", "1", "GROUP", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show With Multiple Names")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "KILLERS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.HDTV.x264")]
-        public virtual void SetOfExampleCleanups_Show_With_Multiple_Names_S01E11_720P_HDTV_X264_KILLERS()
+        public virtual void SetOfExampleCleanups_Show_With_Multiple_Names_S01E11_720P_HDTV_X264_GROUP()
         {
-            this.SetOfExampleCleanups("Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-KILLERS", "Show With Multiple Names", "1", "11", "KILLERS", "720p.HDTV.x264", ((string[])(null)));
+            this.SetOfExampleCleanups("Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP", "Show With Multiple Names", "1", "11", "GROUP", "720p.HDTV.x264", ((string[])(null)));
         }
     }
 }

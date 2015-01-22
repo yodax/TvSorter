@@ -13,9 +13,11 @@ Scenario Template: Set of example cleanups
 	And the quality should be <Quality>
 
 Examples:
-| Input scene name                                       | Clean scene name                                       | Show name                | Season | Episode | Group   | Quality                 |
-| Cristela.S01E11.720p.HDTV.x264-KILLERS                 | Cristela.S01E11.720p.HDTV.x264-KILLERS                 | Cristela                 | 1      | 11      | KILLERS | 720p.HDTV.x264          |
-| Show.Part.2.720p.HDTV.x264-KILLERS                     | Show.S01E02.720p.HDTV.x264-KILLERS                     | Show                     | 1      | 2       | KILLERS | 720p.HDTV.x264          |
-| Justified S06E01 720p WEB-DL DD5.1 H.264               | Justified.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP       | Justified                | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264 |
-| Justified S06E01 720p WEB-DL DD5.1 H.264-GROUP         | Justified.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP         | Justified                | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
-| Show.with.multiple.names.S01E11.720p.HDTV.x264-KILLERS | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-KILLERS | Show With Multiple Names | 1      | 11      | KILLERS | 720p.HDTV.x264          |
+| Input scene name                                     | Clean scene name                                     | Show name                | Season | Episode | Group   | Quality                 |
+| Show.S01E11.720p.HDTV.x264-GROUP                     | Show.S01E11.720p.HDTV.x264-GROUP                     | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264          |
+| Show.S01E11.HDTV.x264-GROUP                          | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264               |
+| Show.S01E11.HDTV.XVID-GROUP                          | Show.S01E11.HDTV.XviD-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.XviD               |
+| Show.Part.2.720p.HDTV.x264-GROUP                     | Show.S01E02.720p.HDTV.x264-GROUP                     | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264          |
+| Show S06E01 720p WEB-DL DD5.1 H.264                  | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP          | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264 |
+| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP            | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
+| Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264          |

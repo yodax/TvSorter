@@ -66,6 +66,7 @@
             quality = quality.Replace("X264", "x264");
             quality = quality.Replace("WEB.DL", "WEB-DL");
             quality = quality.Replace("WEB.RIP", "WEB-RIP");
+            quality = quality.Replace("XVID", "XviD");
 
             return quality;
         }
