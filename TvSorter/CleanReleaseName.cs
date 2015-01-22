@@ -1,18 +1,36 @@
 ﻿namespace TvSorter
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     public static class CleanReleaseName
     {
+        private static readonly Dictionary<string, string> QualityFormatting = new Dictionary<string, string>
+        {
+            {"720P", "720p"},
+            {"1080P", "1080p"},
+            {"X264", "x264"},
+            {"WEB.DL", "WEB-DL"},
+            {"WEB.RIP", "WEB-RIP"},
+            {"XVID", "XviD"}
+        };
+
+        private static readonly Dictionary<string, string> DefaultReplacementsInReleaseName = new Dictionary
+            <string, string>
+        {
+            {" ", "."},
+            {"web-dl", "web.dl"},
+            {"web-rip", "web.rip"}
+        };
+
         public static ShowInfo For(string inputReleaseName)
         {
             var releaseName = inputReleaseName.ToLower();
 
-            releaseName = releaseName.Replace(' ', '.');
-            releaseName = releaseName.Replace("web-dl", "web.dl");
-            releaseName = releaseName.Replace("web-rip", "web.rip");
-
+            releaseName = DefaultReplacementsInReleaseName.Aggregate(releaseName,
+                (current, stringToReplace) => current.Replace(stringToReplace.Key, stringToReplace.Value));
 
             if (!ContainsSeasonEpisodeString(releaseName))
             {
@@ -44,7 +62,7 @@
         private static string ConvertPartStringToSeasonEpisode(string releaseName)
         {
             var partNumber = Convert.ToInt32(Regex.Match(releaseName, @"\.part\.(\d{1,3})").Groups[1].Captures[0].Value);
-            return Regex.Replace(releaseName, @"\.part\.\d{1,3}", ".s01e" + partNumber.ToString());
+            return Regex.Replace(releaseName, @"\.part\.\d{1,3}", ".s01e" + partNumber);
         }
 
         private static bool ContainsPartString(string releaseName)
@@ -61,14 +79,8 @@
         {
             var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-").ToUpper();
 
-            quality = quality.Replace("720P", "720p");
-            quality = quality.Replace("1080P", "1080p");
-            quality = quality.Replace("X264", "x264");
-            quality = quality.Replace("WEB.DL", "WEB-DL");
-            quality = quality.Replace("WEB.RIP", "WEB-RIP");
-            quality = quality.Replace("XVID", "XviD");
-
-            return quality;
+            return QualityFormatting.Aggregate(quality,
+                (current, qualityToReplace) => current.Replace(qualityToReplace.Key, qualityToReplace.Value));
         }
 
         private static string ExtractReleaseGroup(string releaseName)
@@ -106,30 +118,12 @@
             return match.Groups.Count == 1 ? "" : match.Groups[1].Captures[0].Value;
         }
 
-        private static string UppercaseWords(string value)
+        private static string UppercaseWords(string stringToConvertToUpperCaseWords)
         {
-            var array = value.ToCharArray();
-            // Handle the first letter in the string.
-            if (array.Length >= 1)
-            {
-                if (char.IsLower(array[0]))
-                {
-                    array[0] = char.ToUpper(array[0]);
-                }
-            }
-            // Scan through the letters, checking for spaces.
-            // ... Uppercase the lowercase letters following spaces.
-            for (var i = 1; i < array.Length; i++)
-            {
-                if (array[i - 1] == '.')
-                {
-                    if (char.IsLower(array[i]))
-                    {
-                        array[i] = char.ToUpper(array[i]);
-                    }
-                }
-            }
-            return new string(array);
+            var eachWord = stringToConvertToUpperCaseWords.Split('.');
+            var eachUpperCaseWord = new List<string>();
+            eachWord.ToList().ForEach(word => eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1)));
+            return string.Join(".", eachUpperCaseWord);
         }
     }
 }
