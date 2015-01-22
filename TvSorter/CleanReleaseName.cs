@@ -25,6 +25,24 @@
             {"web-rip", "web.rip"}
         };
 
+        private static readonly Dictionary<string, int> RomanNumerals = new Dictionary
+            <string, int>
+        {
+            {"i", 1},
+            {"ii", 2},
+            {"iii", 3},
+            {"iv", 4},
+            {"v", 5},
+            {"vi", 6},
+            {"vii", 7},
+            {"viii", 8},
+            {"ix", 9},
+            {"x", 10},
+            {"xi", 11},
+            {"xii", 12},
+            {"xiii", 13}
+        };
+
         public static ShowInfo For(string inputReleaseName)
         {
             var releaseName = inputReleaseName.ToLower();
@@ -34,9 +52,13 @@
 
             if (!ContainsSeasonEpisodeString(releaseName))
             {
-                if (ContainsPartString(releaseName))
+                if (ContainsDecimalPartString(releaseName))
                 {
-                    releaseName = ConvertPartStringToSeasonEpisode(releaseName);
+                    releaseName = ConvertDecimalPartStringToSeasonEpisode(releaseName);
+                }
+                if (ContainsRomanNumeralPartString(releaseName))
+                {
+                    releaseName = ConvertRomanNumeralPartStringToSeasonEpisode(releaseName);
                 }
             }
 
@@ -54,18 +76,31 @@
             };
         }
 
+        private static string ConvertRomanNumeralPartStringToSeasonEpisode(string releaseName)
+        {
+            var partNumberRomanNumeral = Regex.Match(releaseName, @"\.part\.([ivx]{1,4})\.").Groups[1].Captures[0].Value;
+
+            return Regex.Replace(releaseName, @"\.part\.[ivx]{1,4}\.",
+                ".s01e" + RomanNumerals[partNumberRomanNumeral] + ".");
+        }
+
+        private static bool ContainsRomanNumeralPartString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"\.part\.[ivx]{1,4}\.");
+        }
+
         private static bool ContainsReleasGroup(string releaseName)
         {
             return Regex.IsMatch(releaseName, @"-\w*");
         }
 
-        private static string ConvertPartStringToSeasonEpisode(string releaseName)
+        private static string ConvertDecimalPartStringToSeasonEpisode(string releaseName)
         {
             var partNumber = Convert.ToInt32(Regex.Match(releaseName, @"\.part\.(\d{1,3})").Groups[1].Captures[0].Value);
             return Regex.Replace(releaseName, @"\.part\.\d{1,3}", ".s01e" + partNumber);
         }
 
-        private static bool ContainsPartString(string releaseName)
+        private static bool ContainsDecimalPartString(string releaseName)
         {
             return Regex.IsMatch(releaseName, @"\.part\.\d{1,3}");
         }

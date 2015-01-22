@@ -204,6 +204,179 @@ this.ScenarioSetup(scenarioInfo);
         {
             this.SetOfExampleCleanups("Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP", "Show With Multiple Names", "1", "11", "GROUP", "720p.HDTV.x264", ((string[])(null)));
         }
+        
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
+#line 25
+this.ScenarioSetup(scenarioInfo);
+#line 26
+ testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 27
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 28
+ testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
+ testRunner.And(string.Format("the episode should be {0}", episode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.I.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.I.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "1")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_I_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.I.720p.HDTV.x264-GROUP", "1", "1", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.II.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.II.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "2")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_II_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.II.720p.HDTV.x264-GROUP", "1", "2", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.III.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.III.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "3")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_III_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.III.720p.HDTV.x264-GROUP", "1", "3", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.IV.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.IV.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "4")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_IV_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.IV.720p.HDTV.x264-GROUP", "1", "4", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.V.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.V.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "5")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_V_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.V.720p.HDTV.x264-GROUP", "1", "5", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.VI.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.VI.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "6")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_VI_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.VI.720p.HDTV.x264-GROUP", "1", "6", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.VII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.VII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "7")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_VII_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.VII.720p.HDTV.x264-GROUP", "1", "7", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.VIII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.VIII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "8")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_VIII_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.VIII.720p.HDTV.x264-GROUP", "1", "8", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.IX.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.IX.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "9")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_IX_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.IX.720p.HDTV.x264-GROUP", "1", "9", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.X.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.X.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "10")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_X_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.X.720p.HDTV.x264-GROUP", "1", "10", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.XI.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.XI.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_XI_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.XI.720p.HDTV.x264-GROUP", "1", "11", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.XII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.XII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "12")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_XII_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.XII.720p.HDTV.x264-GROUP", "1", "12", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Roman numerals should be converted to decimal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.Part.XIII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.Part.XIII.720p.HDTV.x264-GROUP")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "13")]
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal_Show_Part_XIII_720P_HDTV_X264_GROUP()
+        {
+            this.RomanNumeralsShouldBeConvertedToDecimal("Show.Part.XIII.720p.HDTV.x264-GROUP", "1", "13", ((string[])(null)));
+        }
     }
 }
 #pragma warning restore
