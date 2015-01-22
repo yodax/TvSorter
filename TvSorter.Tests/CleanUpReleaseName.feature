@@ -22,6 +22,19 @@ Examples:
 | Show S06E01 720p WEB-DL DD5.1 H.264-GROUP            | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
 | Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264          |
 
+
+Scenario Template: Quality strings should be cleaned up
+	Given an input of <Input scene name>
+	When clean up the release name
+	Then the quality should be <Quality>
+
+Examples:
+| Input scene name                 | Quality        |
+| Show.S01E01.HDTV.XVID-GROUP      | HDTV.XviD      |
+| Show.S01E01.720p.HDTV.x264-GROUP | 720p.HDTV.x264 |
+| Show.S01E01.DVDRIP-GROUP         | DVDRip         |
+| Show.S01E01.BLURAY-GROUP         | BluRay         |
+
 Scenario Template: Roman numerals should be converted to decimal
 	Given an input of <Input scene name>
 	When clean up the release name
