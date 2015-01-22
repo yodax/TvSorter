@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TvSorter.Tests
+﻿namespace TvSorter.Tests
 {
+    using System;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    class WhenExecutingTheProgram
+    public class WhenExecutingTheProgram
     {
         [TestMethod]
         public void WithoutArgumentsItShouldExitNormally()
