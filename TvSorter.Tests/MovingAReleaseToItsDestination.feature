@@ -54,6 +54,9 @@ Scenario: A avi file should be moved
 	And the directory c:\incoming should be empty
 
 Scenario: No files are detected
+
+	If no files are detected a message should be shown and the original directory should be preserved
+
 	Given a release in c:\incoming\ReleaseDir
 	And a directory structure
 	| Item                   | Type      |

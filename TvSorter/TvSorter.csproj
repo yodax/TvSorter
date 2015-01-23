@@ -49,11 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CleanReleaseName.cs" />
+    <Compile Include="ConfigurationFromCommandLineParameters.cs" />
     <Compile Include="FormattingExtensions.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IMoveRelease.cs" />
     <Compile Include="IOutput.cs" />
+    <Compile Include="IResolve.cs" />
     <Compile Include="MoveRelease.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

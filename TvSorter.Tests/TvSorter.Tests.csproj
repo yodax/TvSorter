@@ -84,8 +84,16 @@
     </Compile>
     <Compile Include="MovingAReleaseToItsDestinationSteps.cs" />
     <Compile Include="OutputDouble.cs" />
+    <Compile Include="ResolveDouble.cs" />
+    <Compile Include="WhenCheckingCommandLineArguments.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WhenCheckingCommandLineArguments.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WhenCheckingCommandLineArgumentsSteps.cs" />
     <Compile Include="WhenExecutingTheProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenResolvingAType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -97,6 +105,10 @@
     <None Include="MovingAReleaseToItsDestination.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MovingAReleaseToItsDestination.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WhenCheckingCommandLineArguments.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WhenCheckingCommandLineArguments.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

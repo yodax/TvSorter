@@ -11,7 +11,7 @@
         [TestInitialize]
         public void Setup()
         {
-            resolve = new ResolveDouble(new ConfigurationDouble(""));
+            resolve = new ResolveDouble(new ConfigurationDouble("", ""));
         }
 
         [TestMethod]
