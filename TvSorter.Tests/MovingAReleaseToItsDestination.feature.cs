@@ -247,7 +247,7 @@ this.FeatureBackground();
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 57
+#line 60
  testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -259,9 +259,9 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir",
                         "Directory"});
-#line 58
+#line 61
  testRunner.And("a directory structure", ((string)(null)), table9, "And ");
-#line 62
+#line 65
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -270,14 +270,14 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir",
                         "Directory"});
-#line 63
+#line 66
  testRunner.Then("the directory structure should contain", ((string)(null)), table10, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Line"});
             table11.AddRow(new string[] {
                         "No media files detected in c:\\incoming\\ReleaseDir"});
-#line 66
+#line 69
  testRunner.And("the output should be", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
