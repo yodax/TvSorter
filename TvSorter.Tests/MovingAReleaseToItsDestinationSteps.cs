@@ -1,7 +1,9 @@
 ﻿namespace TvSorter.Tests
 {
+    using System.Collections;
     using System.IO.Abstractions;
     using System.IO.Abstractions.TestingHelpers;
+    using System.Linq;
     using Autofac;
     using FluentAssertions;
     using TechTalk.SpecFlow;
@@ -9,23 +11,18 @@
     [Binding]
     public class MovingAReleaseToItsDestinationSteps
     {
-        private readonly ILifetimeScope lifetimeScope;
+        private ILifetimeScope lifetimeScope;
 
-        public MovingAReleaseToItsDestinationSteps()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
-            builder.RegisterType<Configuration>().InstancePerLifetimeScope();
-            builder.RegisterType<MoveRelease>().As<IMoveRelease>().InstancePerLifetimeScope();
-            var container = builder.Build();
-            lifetimeScope = container.BeginLifetimeScope();
-
-        }
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
-            var configuration = lifetimeScope.Resolve<Configuration>();
-            configuration.Destination = destination;
+            var builder = new ContainerBuilder();
+            builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
+            builder.RegisterInstance(new ConfigurationDouble(destination)).As<IConfiguration>();
+            builder.RegisterType<MoveRelease>().As<IMoveRelease>().InstancePerLifetimeScope();
+            builder.RegisterInstance(new OutputDouble()).As<IOutput>();
+            var container = builder.Build();
+            lifetimeScope = container.BeginLifetimeScope();
         }
 
         [Given(@"a release in (.*)")]
@@ -66,7 +63,10 @@
 
             foreach (var tableRow in table.Rows)
             {
-                fileSystem.File.Exists(tableRow["Item"]).Should().BeTrue();
+                if ((tableRow.ContainsKey("Type") && tableRow["Type"].Equals("File")) || (!tableRow.ContainsKey("Type")))
+                    fileSystem.File.Exists(tableRow["Item"]).Should().BeTrue();
+                if (tableRow.ContainsKey("Type") && tableRow["Type"].Equals("Directory"))
+                    fileSystem.Directory.Exists(tableRow["Item"]).Should().BeTrue();
             }
         }
 
@@ -78,5 +78,14 @@
             fileSystem.Directory.GetFiles(directory).Should().BeEmpty();
             fileSystem.Directory.GetDirectories(directory).Should().BeEmpty();
         }
+
+        [Then(@"the output should be")]
+        public void ThenTheOutputShouldBe(Table table)
+        {
+            var output = lifetimeScope.Resolve<IOutput>();
+
+            table.Rows.Select(r => r["Line"]).ShouldAllBeEquivalentTo(output.Lines);
+        }
+
     }
 }

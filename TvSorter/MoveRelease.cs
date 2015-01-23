@@ -6,18 +6,26 @@ namespace TvSorter
 
     public class MoveRelease : IMoveRelease
     {
-        private readonly Configuration configuration;
+        private readonly IConfiguration configuration;
         private readonly IFileSystem fileSystem;
+        private readonly IOutput output;
 
-        public MoveRelease(IFileSystem fileSystem, Configuration configuration)
+        public MoveRelease(IFileSystem fileSystem, IConfiguration configuration, IOutput output)
         {
             this.configuration = configuration;
+            this.output = output;
             this.fileSystem = fileSystem;
         }
 
         public void From(string releaseDirectory)
         {
             var videoFile = GetFirstMediaFile(releaseDirectory);
+
+            if (string.IsNullOrEmpty(videoFile))
+            {
+                output.AddLine("No media files detected in " + releaseDirectory);
+                return;
+            }
 
             var showInfo = CleanReleaseName.For(Path.GetFileNameWithoutExtension(videoFile));
             var destination = configuration.Destination;

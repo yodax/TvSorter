@@ -76,12 +76,14 @@
       <DependentUpon>CleanUpReleaseName.feature</DependentUpon>
     </Compile>
     <Compile Include="CleanUpReleaseNameSteps.cs" />
+    <Compile Include="ConfigurationDouble.cs" />
     <Compile Include="MovingAReleaseToItsDestination.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MovingAReleaseToItsDestination.feature</DependentUpon>
     </Compile>
     <Compile Include="MovingAReleaseToItsDestinationSteps.cs" />
+    <Compile Include="OutputDouble.cs" />
     <Compile Include="WhenExecutingTheProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
