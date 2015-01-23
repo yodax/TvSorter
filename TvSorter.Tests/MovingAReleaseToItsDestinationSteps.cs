@@ -13,7 +13,7 @@
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
-            resolve = new ResolveDouble(new ConfigurationDouble(destination, ""));
+            resolve = new ResolveDouble(new ConfigurationDouble(destination, ScenarioContext.Current["releaseDirectory"].ToString()));
         }
 
         [Given(@"a release in (.*)")]

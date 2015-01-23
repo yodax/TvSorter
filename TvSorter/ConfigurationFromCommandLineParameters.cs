@@ -3,28 +3,15 @@
     using System;
     using System.Collections.Generic;
 
-    public class ConfigurationFromCommandLineParameters : IConfiguration
+    public class ConfigurationFromCommandLineParameters : SuppliedConfiguration
     {
-        private readonly string destination;
-        private readonly string release;
-
         public ConfigurationFromCommandLineParameters(string[] arguments)
         {
-            destination = FindConfigurationInCommandLineArguments(new[] {"-d", "--destination"}, arguments);
-            release = FindConfigurationInCommandLineArguments(new[] {"-r", "--release"}, arguments);
+            Destination = FindConfigurationInCommandLineArguments(new[] {"-d", "--destination"}, arguments);
+            Release = FindConfigurationInCommandLineArguments(new[] {"-r", "--release"}, arguments);
         }
 
-        public string Destination
-        {
-            get { return destination; }
-        }
-
-        public string Release
-        {
-            get { return release; }
-        }
-
-        private string FindConfigurationInCommandLineArguments(IEnumerable<string> parameterName, string[] arguments)
+        private static string FindConfigurationInCommandLineArguments(IEnumerable<string> parameterName, string[] arguments)
         {
             foreach (var parameter in parameterName)
             {

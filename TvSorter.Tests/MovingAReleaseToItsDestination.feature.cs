@@ -72,7 +72,9 @@ namespace TvSorter.Tests
         {
 #line 3
 #line 4
- testRunner.Given("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 5
+ testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -82,12 +84,10 @@ namespace TvSorter.Tests
         public virtual void JustOneFileToBeMoved()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Just one file to be moved", ((string[])(null)));
-#line 6
+#line 7
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 7
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
@@ -99,7 +99,7 @@ this.FeatureBackground();
                         "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mkv",
                         "File"});
 #line 8
- testRunner.And("a directory structure", ((string)(null)), table1, "And ");
+ testRunner.Given("a directory structure", ((string)(null)), table1, "Given ");
 #line 12
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -125,8 +125,6 @@ this.FeatureBackground();
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 19
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
@@ -140,9 +138,9 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir\\info.nfo",
                         "File"});
-#line 20
- testRunner.And("a directory structure", ((string)(null)), table3, "And ");
-#line 25
+#line 19
+ testRunner.Given("a directory structure", ((string)(null)), table3, "Given ");
+#line 24
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -151,9 +149,9 @@ this.FeatureBackground();
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
             table4.AddRow(new string[] {
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.nfo"});
-#line 26
+#line 25
  testRunner.Then("the directory structure should contain", ((string)(null)), table4, "Then ");
-#line 30
+#line 29
  testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -165,12 +163,10 @@ this.FeatureBackground();
         public virtual void AMp4FileShouldBeMoved()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A mp4 file should be moved", ((string[])(null)));
-#line 32
+#line 31
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 33
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
@@ -181,18 +177,18 @@ this.FeatureBackground();
             table5.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mp4",
                         "File"});
-#line 34
- testRunner.And("a directory structure", ((string)(null)), table5, "And ");
-#line 38
+#line 32
+ testRunner.Given("a directory structure", ((string)(null)), table5, "Given ");
+#line 36
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
             table6.AddRow(new string[] {
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mp4"});
-#line 39
+#line 37
  testRunner.Then("the directory structure should contain", ((string)(null)), table6, "Then ");
-#line 42
+#line 40
  testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -204,12 +200,10 @@ this.FeatureBackground();
         public virtual void AAviFileShouldBeMoved()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A avi file should be moved", ((string[])(null)));
-#line 44
+#line 42
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 45
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
@@ -220,18 +214,18 @@ this.FeatureBackground();
             table7.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.avi",
                         "File"});
-#line 46
- testRunner.And("a directory structure", ((string)(null)), table7, "And ");
-#line 50
+#line 43
+ testRunner.Given("a directory structure", ((string)(null)), table7, "Given ");
+#line 47
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
             table8.AddRow(new string[] {
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.avi"});
-#line 51
+#line 48
  testRunner.Then("the directory structure should contain", ((string)(null)), table8, "Then ");
-#line 54
+#line 51
  testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -243,12 +237,10 @@ this.FeatureBackground();
         public virtual void NoFilesAreDetected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No files are detected", ((string[])(null)));
-#line 56
+#line 53
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 60
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
@@ -259,9 +251,9 @@ this.FeatureBackground();
             table9.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir",
                         "Directory"});
+#line 57
+ testRunner.Given("a directory structure", ((string)(null)), table9, "Given ");
 #line 61
- testRunner.And("a directory structure", ((string)(null)), table9, "And ");
-#line 65
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -270,14 +262,14 @@ this.FeatureBackground();
             table10.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir",
                         "Directory"});
-#line 66
+#line 62
  testRunner.Then("the directory structure should contain", ((string)(null)), table10, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Line"});
             table11.AddRow(new string[] {
                         "No media files detected in c:\\incoming\\ReleaseDir"});
-#line 69
+#line 65
  testRunner.And("the output should be", ((string)(null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();

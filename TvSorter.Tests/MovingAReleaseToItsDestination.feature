@@ -1,11 +1,11 @@
 ﻿Feature: Moving a release to its destination
 
 Background: 
-	Given a tv destination of c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}
-
-Scenario: Just one file to be moved
 	Given a release in c:\incoming\ReleaseDir
-	And a directory structure
+	And a tv destination of c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}
+    	
+Scenario: Just one file to be moved
+	Given a directory structure
 	| Item                                                | Type      |
 	| c:\tv                                               | Directory |
 	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mkv | File      |
@@ -16,8 +16,7 @@ Scenario: Just one file to be moved
 	And the directory c:\incoming should be empty
 
 Scenario: A seperate nfo file with a different name should be renamed
-	Given a release in c:\incoming\ReleaseDir
-	And a directory structure
+	Given a directory structure
 	| Item                                                | Type      |
 	| c:\tv                                               | Directory |
 	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mkv | File      |
@@ -30,8 +29,7 @@ Scenario: A seperate nfo file with a different name should be renamed
 	And the directory c:\incoming should be empty
 
 Scenario: A mp4 file should be moved
-	Given a release in c:\incoming\ReleaseDir
-	And a directory structure
+	Given a directory structure
 	| Item                                                | Type      |
 	| c:\tv                                               | Directory |
 	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mp4 | File      |
@@ -42,8 +40,7 @@ Scenario: A mp4 file should be moved
 	And the directory c:\incoming should be empty
 
 Scenario: A avi file should be moved
-	Given a release in c:\incoming\ReleaseDir
-	And a directory structure
+	Given a directory structure
 	| Item                                                | Type      |
 	| c:\tv                                               | Directory |
 	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.avi | File      |
@@ -57,8 +54,7 @@ Scenario: No files are detected
 
 	If no files are detected a message should be shown and the original directory should be preserved
 
-	Given a release in c:\incoming\ReleaseDir
-	And a directory structure
+	Given a directory structure
 	| Item                   | Type      |
 	| c:\tv                  | Directory |
 	| c:\incoming\ReleaseDir | Directory |
