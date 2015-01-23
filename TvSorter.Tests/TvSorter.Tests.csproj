@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions">
       <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
@@ -42,6 +45,12 @@
       <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>..\packages\System.IO.Abstractions.1.4.0.92\lib\net35\System.IO.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Abstractions.TestingHelpers">
+      <HintPath>..\packages\System.IO.Abstractions.TestingHelpers.1.4.0.92\lib\net35\System.IO.Abstractions.TestingHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TechTalk.SpecFlow">
@@ -67,6 +76,12 @@
       <DependentUpon>CleanUpReleaseName.feature</DependentUpon>
     </Compile>
     <Compile Include="CleanUpReleaseNameSteps.cs" />
+    <Compile Include="MovingAReleaseToItsDestination.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovingAReleaseToItsDestination.feature</DependentUpon>
+    </Compile>
+    <Compile Include="MovingAReleaseToItsDestinationSteps.cs" />
     <Compile Include="WhenExecutingTheProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +92,10 @@
       <LastGenOutput>CleanUpReleaseName.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="MovingAReleaseToItsDestination.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MovingAReleaseToItsDestination.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TvSorter\TvSorter.csproj">
