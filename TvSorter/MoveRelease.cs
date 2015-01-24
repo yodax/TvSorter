@@ -63,9 +63,8 @@ namespace TvSorter
                 }
 
                 fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
-                fileSystem.File.Move(file, finalDestination);
                 
-                AddFileMoveToOutput(file, finalDestination);
+                MoveFileToDestination(file, finalDestination);
             }
             FinalizeFileToMoveOutput();
 
@@ -74,6 +73,20 @@ namespace TvSorter
             AddNfoToOutput(nfoFileContents);
 
             fileSystem.Directory.Delete(releaseDirectory, true);
+        }
+
+        private void MoveFileToDestination(string file, string destination)
+        {
+            var incrementForFileIdentifier = 1;
+            var finalDestination = destination;
+            while (fileSystem.File.Exists(finalDestination))
+            {
+                finalDestination = Path.Combine(Path.GetDirectoryName(destination), Path.GetFileNameWithoutExtension(destination) + "." + incrementForFileIdentifier + Path.GetExtension(destination));
+                incrementForFileIdentifier++;
+            }
+            fileSystem.File.Move(file, finalDestination);
+
+            AddFileMoveToOutput(file, finalDestination);
         }
 
         private void AddNfoToOutput(string nfoFileContents)

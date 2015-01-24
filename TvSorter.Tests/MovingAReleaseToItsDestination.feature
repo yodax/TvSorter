@@ -18,6 +18,37 @@ Scenario: Just one file to be moved
 	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
 	And the directory c:\incoming should be empty
 
+Scenario: An existing file is present
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	And a directory structure
+	| Item                                           | Type |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv | File |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                             |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv   |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.1.mkv |
+	And the directory c:\incoming should be empty
+
+Scenario: Two existing files are present
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	And a directory structure
+	| Item                                             | Type |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv   | File |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.1.mkv | File |
+
+	When we request a move
+	Then the directory structure should contain
+	| Item                                             |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv   |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.1.mkv |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.2.mkv |
+	And the directory c:\incoming should be empty
+
 Scenario: A seperate nfo file with a different name should be renamed
 	Given the files in the release directory
 	| Item                         |
