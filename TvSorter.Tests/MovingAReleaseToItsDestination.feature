@@ -117,7 +117,6 @@ Scenario: A succesfull move with output
 """
 Hello world!
 This is a multiline info file :)
-
 """
 	When we request a move
 	Then the directory structure should contain
@@ -131,22 +130,49 @@ This is a multiline info file :)
 Using filename: Show.S01E01.HDTV-NOGROUP
 
 Moving files from: c:\incoming\ReleaseDir
-to: c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.{Extension}
+        directory: c:\tv\Show\S01E01
 
 Moving:
 
-$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
-$ subtitle.srt => Show.S01E01.HDTV-NOGROUP.srt
-$ info.nfo => Show.S01E01.HDTV-NOGROUP.nfo
+	$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
+	$ subtitle.srt                 => Show.S01E01.HDTV-NOGROUP.srt
+	$ info.nfo                     => Show.S01E01.HDTV-NOGROUP.nfo
 
 Not moving:
 
-$ url.txt
+	$ url.txt
 
 NFO file:
 
-Hello world!
-This is a multiline info file :)
-"""                     
+	$ Hello world!
+	$ This is a multiline info file :)
+"""       
+
+Scenario: A succesfull move without an nfo file should not have the nfo section in its output
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| subtitle.srt                 |
+	| url.txt                      |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                           |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.srt |
+	And the directory c:\incoming should be empty    
+	And the output should not contain NFO file:  
+
+Scenario: A succesfull move without an extra file should not have the not moved section in its output
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| subtitle.srt                 |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                           |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.srt |
+	And the directory c:\incoming should be empty    
+	And the output should not contain Not moving:         
 	                                                               
 

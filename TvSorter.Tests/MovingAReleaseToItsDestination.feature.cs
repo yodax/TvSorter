@@ -452,8 +452,8 @@ this.FeatureBackground();
  testRunner.Given("the files in the release directory", ((string)(null)), table14, "Given ");
 #line hidden
 #line 116
- testRunner.And("an info file in the release directory", "Hello world!\nThis is a multiline info file :)\n", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 122
+ testRunner.And("an info file in the release directory", "Hello world!\nThis is a multiline info file :)", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 121
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -464,31 +464,113 @@ this.FeatureBackground();
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.srt"});
             table15.AddRow(new string[] {
                         "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.nfo"});
-#line 123
+#line 122
  testRunner.Then("the directory structure should contain", ((string)(null)), table15, "Then ");
-#line 128
+#line 127
  testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 129
+#line 128
  testRunner.And("the output should be", @"Using filename: Show.S01E01.HDTV-NOGROUP
 
 Moving files from: c:\incoming\ReleaseDir
-to: c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.{Extension}
+        directory: c:\tv\Show\S01E01
 
 Moving:
 
-$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
-$ subtitle.srt => Show.S01E01.HDTV-NOGROUP.srt
-$ info.nfo => Show.S01E01.HDTV-NOGROUP.nfo
+	$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
+	$ subtitle.srt                 => Show.S01E01.HDTV-NOGROUP.srt
+	$ info.nfo                     => Show.S01E01.HDTV-NOGROUP.nfo
 
 Not moving:
 
-$ url.txt
+	$ url.txt
 
 NFO file:
 
-Hello world!
-This is a multiline info file :)", ((TechTalk.SpecFlow.Table)(null)), "And ");
+	$ Hello world!
+	$ This is a multiline info file :)", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A succesfull move without an nfo file should not have the nfo section in its outp" +
+            "ut")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        public virtual void ASuccesfullMoveWithoutAnNfoFileShouldNotHaveTheNfoSectionInItsOutput()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A succesfull move without an nfo file should not have the nfo section in its outp" +
+                    "ut", ((string[])(null)));
+#line 151
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table16.AddRow(new string[] {
+                        "Show.S01E01.HDTV-NOGROUP.mkv"});
+            table16.AddRow(new string[] {
+                        "subtitle.srt"});
+            table16.AddRow(new string[] {
+                        "url.txt"});
+#line 152
+ testRunner.Given("the files in the release directory", ((string)(null)), table16, "Given ");
+#line 157
+ testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table17.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
+            table17.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.srt"});
+#line 158
+ testRunner.Then("the directory structure should contain", ((string)(null)), table17, "Then ");
+#line 162
+ testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 163
+ testRunner.And("the output should not contain NFO file:", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A succesfull move without an extra file should not have the not moved section in " +
+            "its output")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        public virtual void ASuccesfullMoveWithoutAnExtraFileShouldNotHaveTheNotMovedSectionInItsOutput()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A succesfull move without an extra file should not have the not moved section in " +
+                    "its output", ((string[])(null)));
+#line 165
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table18.AddRow(new string[] {
+                        "Show.S01E01.HDTV-NOGROUP.mkv"});
+            table18.AddRow(new string[] {
+                        "subtitle.srt"});
+#line 166
+ testRunner.Given("the files in the release directory", ((string)(null)), table18, "Given ");
+#line 170
+ testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table19.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
+            table19.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.srt"});
+#line 171
+ testRunner.Then("the directory structure should contain", ((string)(null)), table19, "Then ");
+#line 175
+ testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 176
+ testRunner.And("the output should not contain Not moving:", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

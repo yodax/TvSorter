@@ -174,5 +174,14 @@
             textWriter.Write(multilineText);
             textWriter.Close();
         }
+
+        [Then(@"the output should not contain (.*)")]
+        public void ThenTheOutputShouldNotContainNFOFile(string stringToSearchFor)
+        {
+            var output = resolve.For<IOutput>();
+
+            output.Lines.Should().NotContainEquivalentOf(stringToSearchFor);
+        }
+
     }
 }
