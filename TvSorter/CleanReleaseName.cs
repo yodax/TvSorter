@@ -24,8 +24,15 @@
         {
             {" ", "."},
             {"web-dl", "web.dl"},
-            {"web-rip", "web.rip"}
+            {"web-rip", "web.rip"},
+            {"&", "and"}
         };
+
+        private static readonly List<string> WordsToKeepInLowerCase = new List<string>
+        {
+            "and",
+            "the"
+        }; 
 
         private static readonly Dictionary<string, int> RomanNumerals = new Dictionary
             <string, int>
@@ -176,7 +183,13 @@
         {
             var eachWord = stringToConvertToUpperCaseWords.Split('.');
             var eachUpperCaseWord = new List<string>();
-            eachWord.ToList().ForEach(word => eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1)));
+            eachWord.ToList().ForEach(word =>
+                {
+                    if (WordsToKeepInLowerCase.Contains(word))
+                        eachUpperCaseWord.Add(word);
+                    else
+                        eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1));
+                });
             return string.Join(".", eachUpperCaseWord);
         }
     }

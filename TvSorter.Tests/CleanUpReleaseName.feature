@@ -22,6 +22,7 @@ Examples:
 | Show S06E01 720p WEB-DL DD5.1 H.264                  | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP          | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264 |
 | Show S06E01 720p WEB-DL DD5.1 H.264-GROUP            | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
 | Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264          |
+| Show.&.The.Showing.S01E11.HDTV.x264-GROUP            | Show.and.the.Showing.S01E11.HDTV.x264-GROUP          | Show and the Showing     | 1      | 11      | GROUP   | HDTV.x264               |
 
 
 Scenario Template: Quality strings should be cleaned up
