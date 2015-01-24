@@ -70,12 +70,6 @@ Examples:
 | H.264                         | H.264                         |
 | REAL.1080p.WEB-DL.DD5.1.H.264 | REAL.1080p.WEB-DL.DD5.1.H.264 |
 
-
-# (convert)|(native)|(proper)|(real)|(repack)|(dirfix)|(nfofix)|(read\.nfo)|(internal)|(subbed)|(\.))*)[\w\.]*?
-#(?P<Quality>(1080p.*)|(720p.*)|(480p.*)|(hdtv.*)|(dsr.*)|(dvd.*)|(ws.*)|(bdrip.*)|(pdtv.*)
-
-
-
 Scenario Template: Roman numerals should be converted to decimal
 	Given an input of <Input scene name>
 	When clean up the release name
