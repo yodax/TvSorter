@@ -23,6 +23,12 @@ namespace TvSorter
 
         public void From(string releaseDirectory)
         {
+            if (!OnlyOneMediaFilePresentIn(releaseDirectory))
+            {
+                output.AddLine("More than one media file detected in " + releaseDirectory);
+                return; 
+            }
+
             var videoFile = GetMediaFile(releaseDirectory);
 
             if (string.IsNullOrEmpty(videoFile))
@@ -47,6 +53,12 @@ namespace TvSorter
             }
 
             fileSystem.Directory.Delete(releaseDirectory, true);
+        }
+
+        private bool OnlyOneMediaFilePresentIn(string releaseDirectory)
+        {
+            var mediaCount = mediaTypes.Sum(mediaType => fileSystem.Directory.GetFiles(releaseDirectory, "*." + mediaType).Count());
+            return mediaCount <= 1;
         }
 
         private static string DetermineFileFileNameUsingShowInformation(ShowInfo showInfo,

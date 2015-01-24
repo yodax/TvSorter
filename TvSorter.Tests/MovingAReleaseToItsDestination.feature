@@ -3,12 +3,16 @@
 Background: 
 	Given a release in c:\incoming\ReleaseDir
 	And a tv destination of c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}
+	And a directory structure
+	| Item        | Type      |
+	| c:\tv       | Directory |
+	| c:\incoming | Directory |
+
     	
 Scenario: Just one file to be moved
-	Given a directory structure
-	| Item                                                | Type      |
-	| c:\tv                                               | Directory |
-	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mkv | File      |
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
 	When we request a move
 	Then the directory structure should contain
 	| Item                                           |
@@ -16,11 +20,10 @@ Scenario: Just one file to be moved
 	And the directory c:\incoming should be empty
 
 Scenario: A seperate nfo file with a different name should be renamed
-	Given a directory structure
-	| Item                                                | Type      |
-	| c:\tv                                               | Directory |
-	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mkv | File      |
-	| c:\incoming\ReleaseDir\info.nfo                     | File      |
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| info.nfo                     |
 	When we request a move
 	Then the directory structure should contain
 	| Item                                           |
@@ -29,10 +32,9 @@ Scenario: A seperate nfo file with a different name should be renamed
 	And the directory c:\incoming should be empty
 
 Scenario: A mp4 file should be moved
-	Given a directory structure
-	| Item                                                | Type      |
-	| c:\tv                                               | Directory |
-	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.mp4 | File      |
+	Given the files in the release directory
+	| Item                         | 
+	| Show.S01E01.HDTV-NOGROUP.mp4 | 
 	When we request a move
 	Then the directory structure should contain
 	| Item                                           |
@@ -40,15 +42,25 @@ Scenario: A mp4 file should be moved
 	And the directory c:\incoming should be empty
 
 Scenario: A avi file should be moved
-	Given a directory structure
-	| Item                                                | Type      |
-	| c:\tv                                               | Directory |
-	| c:\incoming\ReleaseDir\Show.S01E01.HDTV-NOGROUP.avi | File      |
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.avi |
 	When we request a move
 	Then the directory structure should contain
 	| Item                                           |
 	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.avi |
 	And the directory c:\incoming should be empty
+
+Scenario: More than one media file detected
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| Show.S01E02.HDTV-NOGROUP.mkv |
+	When we request a move
+	Then the release should not have been removed
+	And the output should be
+	| Line                                                        |
+	| More than one media file detected in c:\incoming\ReleaseDir |
 
 Scenario: No files are detected
 
@@ -59,9 +71,7 @@ Scenario: No files are detected
 	| c:\tv                  | Directory |
 	| c:\incoming\ReleaseDir | Directory |
 	When we request a move
-	Then the directory structure should contain
-	| Item                   | Type      |
-	| c:\incoming\ReleaseDir | Directory |
+	Then the release should not have been removed
 	And the output should be
 	| Line                                              |
 	| No media files detected in c:\incoming\ReleaseDir |

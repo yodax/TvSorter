@@ -85,7 +85,9 @@
         public void GivenAFileWithExtenstion(string extension)
         {
             CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + extension);
-            CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + "mkv");
+            // We need at least one media file present for this to work
+            if (extension == "nfo")
+                CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + "mkv");
         }
 
         private void CreateAnEmptyFile(string fileName)
@@ -123,6 +125,36 @@
                 .File.Exists(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension)
                 .Should()
                 .BeTrue();
+        }
+
+        [Then(@"the release should not have been removed")]
+        public void ThenTheReleaseShouldNotHaveBeenRemoved()
+        {
+            resolve.For<IFileSystem>()
+                .Directory.Exists(ScenarioContext.Current["releaseDirectory"].ToString())
+                .Should()
+                .BeTrue();
+        }
+
+        [Given(@"the files in the release directory")]
+        public void GivenTheFilesInTheReleaseDirectory(Table table)
+        {
+            var fileSystem = resolve.For<IFileSystem>();
+            foreach (var tableRow in table.Rows)
+            {
+                if (tableRow.ContainsKey("Type") && tableRow["Type"].Equals("Directory"))
+                {
+
+                    fileSystem.Directory.CreateDirectory(
+                        Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), tableRow["Item"]));
+                }
+                else
+                {
+                    fileSystem.File.CreateText(
+                        Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), tableRow["Item"]))
+                        .Close();
+                }
+            }
         }
     }
 }
