@@ -58,7 +58,12 @@ namespace TvSorter
                 if (extension.Equals("nfo", StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (!string.IsNullOrEmpty(nfoFileContents))
+                    {
                         nfoFileContents += Environment.NewLine;
+                        nfoFileContents += Environment.NewLine + "=====================";
+                        nfoFileContents += Environment.NewLine;
+                        nfoFileContents += Environment.NewLine;
+                    }
                     nfoFileContents += fileSystem.File.ReadAllText(file);
                 }
 

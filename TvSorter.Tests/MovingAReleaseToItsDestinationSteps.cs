@@ -164,12 +164,12 @@
             }
         }
 
-        [Given(@"an info file in the release directory")]
-        public void GivenAnInfoFileInTheReleaseDirectory(string multilineText)
+        [Given(@"an info file in the release directory with name (.*)")]
+        public void GivenAnInfoFileInTheReleaseDirectory(string fileName, string multilineText)
         {
             var textWriter =
                 resolve.For<IFileSystem>()
-                    .File.CreateText(Path.Combine(ReleaseDirectory, "info.nfo"));
+                    .File.CreateText(Path.Combine(ReleaseDirectory, fileName));
 
             textWriter.Write(multilineText);
             textWriter.Close();

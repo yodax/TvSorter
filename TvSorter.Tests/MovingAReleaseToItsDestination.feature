@@ -144,10 +144,14 @@ Scenario: A succesfull move with output
 	| Show.S01E01.HDTV-NOGROUP.mkv |
 	| subtitle.srt                 |
 	| url.txt                      |
-	And an info file in the release directory
+	And an info file in the release directory with name info1.nfo
 """
 Hello world!
 This is a multiline info file :)
+"""
+	And an info file in the release directory with name info2.nfo
+"""
+This is a second nfo file
 """
 	When we request a move
 	Then the directory structure should contain
@@ -167,7 +171,8 @@ Moving:
 
 	$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
 	$ subtitle.srt                 => Show.S01E01.HDTV-NOGROUP.srt
-	$ info.nfo                     => Show.S01E01.HDTV-NOGROUP.nfo
+	$ info1.nfo                    => Show.S01E01.HDTV-NOGROUP.nfo
+	$ info2.nfo                    => Show.S01E01.HDTV-NOGROUP.1.nfo
 
 Not moving:
 
@@ -177,6 +182,10 @@ NFO file:
 
 	$ Hello world!
 	$ This is a multiline info file :)
+	$ 
+	$ =====================
+	$ 
+	$ This is a second nfo file
 """       
 
 Scenario: A succesfull move without an nfo file should not have the nfo section in its output
