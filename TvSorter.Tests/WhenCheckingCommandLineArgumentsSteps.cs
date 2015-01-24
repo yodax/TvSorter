@@ -1,5 +1,6 @@
 ﻿namespace TvSorter.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.IO.Abstractions;
     using FluentAssertions;
@@ -63,7 +64,7 @@
                 @" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        "
             };
 
-            output.Lines.ShouldBeEquivalentTo(expectedOutput);
+            output.Lines.ShouldBeEquivalentTo(string.Join(Environment.NewLine, expectedOutput));
         }
 
         [Given(@"the configuration file")]

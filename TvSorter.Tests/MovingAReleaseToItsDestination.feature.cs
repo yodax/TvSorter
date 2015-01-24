@@ -174,7 +174,7 @@ this.FeatureBackground();
             table6.AddRow(new string[] {
                         "Show.S01E01.HDTV-NOGROUP.mkv"});
             table6.AddRow(new string[] {
-                        "info.srt"});
+                        "subtitle.srt"});
 #line 34
  testRunner.Given("the files in the release directory", ((string)(null)), table6, "Given ");
 #line 38
@@ -282,12 +282,8 @@ this.FeatureBackground();
 #line 71
  testRunner.Then("the release should not have been removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Line"});
-            table13.AddRow(new string[] {
-                        "More than one media file detected in c:\\incoming\\ReleaseDir"});
 #line 72
- testRunner.And("the output should be", ((string)(null)), table13, "And ");
+ testRunner.And("the output should be", "More than one media file detected in c:\\incoming\\ReleaseDir", ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -298,33 +294,26 @@ this.FeatureBackground();
         public virtual void NoFilesAreDetected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No files are detected", ((string[])(null)));
-#line 76
+#line 77
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
                         "Type"});
-            table14.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table14.AddRow(new string[] {
+            table13.AddRow(new string[] {
                         "c:\\incoming\\ReleaseDir",
                         "Directory"});
-#line 80
- testRunner.Given("a directory structure", ((string)(null)), table14, "Given ");
+#line 81
+ testRunner.Given("a directory structure", ((string)(null)), table13, "Given ");
 #line 84
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 85
  testRunner.Then("the release should not have been removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Line"});
-            table15.AddRow(new string[] {
-                        "No media files detected in c:\\incoming\\ReleaseDir"});
 #line 86
- testRunner.And("the output should be", ((string)(null)), table15, "And ");
+ testRunner.And("the output should be", "No media files detected in c:\\incoming\\ReleaseDir", ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -332,21 +321,21 @@ this.FeatureBackground();
         public virtual void NotAllFileTypesShouldBeMoved(string allowedExtension, string notAllowedExtension, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Not all file types should be moved", exampleTags);
-#line 90
+#line 91
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 91
- testRunner.Given(string.Format("a file with extenstion {0}", allowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 92
- testRunner.And(string.Format("a file with a non allowed extension {0}", notAllowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("a file with extenstion {0}", allowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 93
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("a file with a non allowed extension {0}", notAllowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 94
- testRunner.Then(string.Format("the directory structure should not contain a file with {0}", notAllowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 95
- testRunner.And(string.Format("the directory structure should contain a file {0}", allowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then(string.Format("the directory structure should not contain a file with {0}", notAllowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 96
+ testRunner.And(string.Format("the directory structure should contain a file {0}", allowedExtension), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 97
  testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -438,6 +427,70 @@ this.FeatureBackground();
         public virtual void NotAllFileTypesShouldBeMoved_Variant7()
         {
             this.NotAllFileTypesShouldBeMoved("mkv", "url", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A succesfull move with output")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        public virtual void ASuccesfullMoveWithOutput()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A succesfull move with output", ((string[])(null)));
+#line 110
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table14.AddRow(new string[] {
+                        "Show.S01E01.HDTV-NOGROUP.mkv"});
+            table14.AddRow(new string[] {
+                        "subtitle.srt"});
+            table14.AddRow(new string[] {
+                        "url.txt"});
+#line 111
+ testRunner.Given("the files in the release directory", ((string)(null)), table14, "Given ");
+#line hidden
+#line 116
+ testRunner.And("an info file in the release directory", "Hello world!\nThis is a multiline info file :)\n", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 122
+ testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table15.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
+            table15.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.srt"});
+            table15.AddRow(new string[] {
+                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.nfo"});
+#line 123
+ testRunner.Then("the directory structure should contain", ((string)(null)), table15, "Then ");
+#line 128
+ testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 129
+ testRunner.And("the output should be", @"Using filename: Show.S01E01.HDTV-NOGROUP
+
+Moving files from: c:\incoming\ReleaseDir
+to: c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.{Extension}
+
+Moving:
+
+$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
+$ subtitle.srt => Show.S01E01.HDTV-NOGROUP.srt
+$ info.nfo => Show.S01E01.HDTV-NOGROUP.nfo
+
+Not moving:
+
+$ url.txt
+
+NFO file:
+
+Hello world!
+This is a multiline info file :)", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
         }
     }
 }

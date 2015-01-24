@@ -4,7 +4,7 @@ namespace TvSorter
 
     public interface IOutput
     {
-        IEnumerable<string> Lines { get; }
+        string Lines { get; }
         void AddLine(string line);
     }
 }

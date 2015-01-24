@@ -1,24 +1,17 @@
 ﻿namespace TvSorter.Tests
 {
-    using System.Collections.Generic;
+    using System;
 
     internal class OutputDouble : IOutput
     {
-        private readonly List<string> lines;
-
-        public OutputDouble()
-        {
-            lines = new List<string>();
-        }
-
-        public IEnumerable<string> Lines
-        {
-            get { return lines; }
-        }
+        public string Lines { get; private set; }
 
         public void AddLine(string line)
         {
-            lines.Add(line);
+            if (!string.IsNullOrEmpty(Lines))
+                Lines += Environment.NewLine;
+
+            Lines += line;
         }
     }
 }

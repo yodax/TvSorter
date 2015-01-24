@@ -1,5 +1,6 @@
 ﻿namespace TvSorter.Tests
 {
+    using System;
     using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
@@ -11,18 +12,23 @@
     {
         private ResolveDouble resolve;
 
+        private static string ReleaseDirectory
+        {
+            get { return ScenarioContext.Current["releaseDirectory"].ToString(); }
+        }
+
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
             resolve =
                 new ResolveDouble(new ConfigurationDouble(destination,
-                    ScenarioContext.Current["releaseDirectory"].ToString()));
+                    ReleaseDirectory));
         }
 
         [Given(@"a release in (.*)")]
-        public void GivenAReleaseInIn(string releaseDirectory)
+        public void GivenAReleaseInIn(string releaseDirectoryFromSpecFlow)
         {
-            ScenarioContext.Current.Add("releaseDirectory", releaseDirectory);
+            ScenarioContext.Current.Add("releaseDirectory", releaseDirectoryFromSpecFlow);
         }
 
         [Given(@"a directory structure")]
@@ -47,7 +53,7 @@
         {
             var moveRelease = resolve.For<IMoveRelease>();
 
-            moveRelease.From(ScenarioContext.Current["releaseDirectory"].ToString());
+            moveRelease.From(ReleaseDirectory);
         }
 
         [Then(@"the directory structure should contain")]
@@ -74,20 +80,20 @@
         }
 
         [Then(@"the output should be")]
-        public void ThenTheOutputShouldBe(Table table)
+        public void ThenTheOutputShouldBe(string multiLineText)
         {
             var output = resolve.For<IOutput>();
 
-            table.Rows.Select(r => r["Line"]).ShouldAllBeEquivalentTo(output.Lines);
+            output.Lines.Replace(Environment.NewLine, "").Replace("\n", "").Should().BeEquivalentTo(multiLineText.Replace(Environment.NewLine, "").Replace("\n", ""));
         }
 
         [Given(@"a file with extenstion (.*)")]
         public void GivenAFileWithExtenstion(string extension)
         {
             CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + extension);
-            
+
             // We need at least one media file present for this to work
-            var nonMediaExtensions = new [] {"nfo", "srt", "sub", "idx"};
+            var nonMediaExtensions = new[] {"nfo", "srt", "sub", "idx"};
             if (nonMediaExtensions.Any(ext => ext.Equals(extension)))
                 CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + "mkv");
         }
@@ -100,9 +106,9 @@
                 .Close();
         }
 
-        private static string CombineFileNameWithReleaseDirectory(string fileName)
+        private string CombineFileNameWithReleaseDirectory(string fileName)
         {
-            return Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), fileName);
+            return Path.Combine(ReleaseDirectory, fileName);
         }
 
         [Given(@"a file with a non allowed extension (.*)")]
@@ -133,7 +139,7 @@
         public void ThenTheReleaseShouldNotHaveBeenRemoved()
         {
             resolve.For<IFileSystem>()
-                .Directory.Exists(ScenarioContext.Current["releaseDirectory"].ToString())
+                .Directory.Exists(ReleaseDirectory)
                 .Should()
                 .BeTrue();
         }
@@ -146,17 +152,27 @@
             {
                 if (tableRow.ContainsKey("Type") && tableRow["Type"].Equals("Directory"))
                 {
-
                     fileSystem.Directory.CreateDirectory(
-                        Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), tableRow["Item"]));
+                        Path.Combine(ReleaseDirectory, tableRow["Item"]));
                 }
                 else
                 {
                     fileSystem.File.CreateText(
-                        Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), tableRow["Item"]))
+                        Path.Combine(ReleaseDirectory, tableRow["Item"]))
                         .Close();
                 }
             }
+        }
+
+        [Given(@"an info file in the release directory")]
+        public void GivenAnInfoFileInTheReleaseDirectory(string multilineText)
+        {
+            var textWriter =
+                resolve.For<IFileSystem>()
+                    .File.CreateText(Path.Combine(ReleaseDirectory, "info.nfo"));
+
+            textWriter.Write(multilineText);
+            textWriter.Close();
         }
     }
 }

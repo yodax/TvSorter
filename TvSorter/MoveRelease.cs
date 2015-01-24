@@ -40,6 +40,16 @@ namespace TvSorter
             var showInfo = CleanReleaseName.For(Path.GetFileNameWithoutExtension(videoFile));
             var destination = DetermineFileFileNameUsingShowInformation(showInfo, configuration.Destination);
 
+            output.AddLine("Using filename: " + showInfo.ReleaseName);
+            output.AddLine("");
+            output.AddLine("Moving files from: " + releaseDirectory);
+            output.AddLine("To: " + destination);
+            output.AddLine("");
+            output.AddLine("Moving:");
+            output.AddLine("");
+
+            var nfoFileContents = "";
+
             foreach (
                 var file in
                     fileSystem.Directory.GetFiles(releaseDirectory)
@@ -48,9 +58,33 @@ namespace TvSorter
             {
                 var extension = ExtensionOfFileName(file);
                 var finalDestination = destination.Replace("{Extension}", extension);
+
+                if (extension.Equals("nfo", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    nfoFileContents += fileSystem.File.ReadAllText(file) + "\n";
+                }
+
                 fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
                 fileSystem.File.Move(file, finalDestination);
+                
+                output.AddLine(string.Format("$ {0} => {1}", Path.GetFileName(file), Path.GetFileName(finalDestination)));
             }
+
+            output.AddLine("");
+            output.AddLine("Not moving:");
+            output.AddLine("");
+
+            foreach (
+                var file in
+                    fileSystem.Directory.GetFiles(releaseDirectory))
+            {
+                output.AddLine(string.Format("$ {0}", Path.GetFileName(file)));
+            }
+
+            output.AddLine("");
+            output.AddLine("NFO file:");
+            output.AddLine("");
+            output.AddLine(nfoFileContents);
 
             fileSystem.Directory.Delete(releaseDirectory, true);
         }

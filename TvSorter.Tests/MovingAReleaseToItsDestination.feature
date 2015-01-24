@@ -34,7 +34,7 @@ Scenario: A seperate subtitle file with a different name should be renamed
 	Given the files in the release directory
 	| Item                         |
 	| Show.S01E01.HDTV-NOGROUP.mkv |
-	| info.srt                     |
+	| subtitle.srt                     |
 	When we request a move
 	Then the directory structure should contain
 	| Item                                           |
@@ -70,8 +70,9 @@ Scenario: More than one media file detected
 	When we request a move
 	Then the release should not have been removed
 	And the output should be
-	| Line                                                        |
-	| More than one media file detected in c:\incoming\ReleaseDir |
+	"""
+	More than one media file detected in c:\incoming\ReleaseDir
+	"""
 
 Scenario: No files are detected
 
@@ -79,13 +80,13 @@ Scenario: No files are detected
 
 	Given a directory structure
 	| Item                   | Type      |
-	| c:\tv                  | Directory |
 	| c:\incoming\ReleaseDir | Directory |
 	When we request a move
 	Then the release should not have been removed
 	And the output should be
-	| Line                                              |
-	| No media files detected in c:\incoming\ReleaseDir |
+	"""
+	No media files detected in c:\incoming\ReleaseDir
+	"""
 
 Scenario Template: Not all file types should be moved
 	Given a file with extenstion <AllowedExtension>
@@ -105,3 +106,47 @@ Scenario Template: Not all file types should be moved
 	| sub              | xyz                 |
 	| avi              | txt                 |
 	| mkv              | url                 |
+
+Scenario: A succesfull move with output
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| subtitle.srt                 |
+	| url.txt                      |
+	And an info file in the release directory
+"""
+Hello world!
+This is a multiline info file :)
+
+"""
+	When we request a move
+	Then the directory structure should contain
+	| Item                                           |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.srt |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.nfo |
+	And the directory c:\incoming should be empty
+	And the output should be
+"""
+Using filename: Show.S01E01.HDTV-NOGROUP
+
+Moving files from: c:\incoming\ReleaseDir
+to: c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.{Extension}
+
+Moving:
+
+$ Show.S01E01.HDTV-NOGROUP.mkv => Show.S01E01.HDTV-NOGROUP.mkv
+$ subtitle.srt => Show.S01E01.HDTV-NOGROUP.srt
+$ info.nfo => Show.S01E01.HDTV-NOGROUP.nfo
+
+Not moving:
+
+$ url.txt
+
+NFO file:
+
+Hello world!
+This is a multiline info file :)
+"""                     
+	                                                               
+
