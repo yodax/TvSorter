@@ -65,3 +65,19 @@ Scenario: No files are detected
 	And the output should be
 	| Line                                              |
 	| No media files detected in c:\incoming\ReleaseDir |
+
+Scenario Template: Not all file types should be moved
+	Given a file with extenstion <AllowedExtension>
+	And a file with a non allowed extension <NotAllowedExtension>
+	When we request a move
+	Then the directory structure should not contain a file with <NotAllowedExtension>
+	And the directory structure should contain a file <AllowedExtension>
+	And the directory c:\incoming should be empty
+
+	Examples: 
+	| AllowedExtension | NotAllowedExtension |
+	| mkv              | rar                 |
+	| mp4              | srr                 |
+	| nfo              | xyz                 |
+	| avi              | txt                 |
+	| mkv              | url                 |

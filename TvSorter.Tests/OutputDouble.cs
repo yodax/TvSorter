@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    class OutputDouble : IOutput
+    internal class OutputDouble : IOutput
     {
         private readonly List<string> lines;
 

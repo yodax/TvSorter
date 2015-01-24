@@ -16,7 +16,7 @@
             {"WEB.RIP", "WEB-RIP"},
             {"XVID", "XviD"},
             {"DVDRIP", "DVDRip"},
-            {"BLURAY", "BluRay"},
+            {"BLURAY", "BluRay"}
         };
 
         private static readonly Dictionary<string, string> DefaultReplacementsInReleaseName = new Dictionary

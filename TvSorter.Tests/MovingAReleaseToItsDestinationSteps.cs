@@ -1,5 +1,6 @@
 ﻿namespace TvSorter.Tests
 {
+    using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
     using FluentAssertions;
@@ -13,7 +14,9 @@
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
-            resolve = new ResolveDouble(new ConfigurationDouble(destination, ScenarioContext.Current["releaseDirectory"].ToString()));
+            resolve =
+                new ResolveDouble(new ConfigurationDouble(destination,
+                    ScenarioContext.Current["releaseDirectory"].ToString()));
         }
 
         [Given(@"a release in (.*)")]
@@ -76,6 +79,50 @@
             var output = resolve.For<IOutput>();
 
             table.Rows.Select(r => r["Line"]).ShouldAllBeEquivalentTo(output.Lines);
+        }
+
+        [Given(@"a file with extenstion (.*)")]
+        public void GivenAFileWithExtenstion(string extension)
+        {
+            CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + extension);
+            CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + "mkv");
+        }
+
+        private void CreateAnEmptyFile(string fileName)
+        {
+            var fileSystem = resolve.For<IFileSystem>();
+
+            fileSystem.File.Create(CombineFileNameWithReleaseDirectory(fileName))
+                .Close();
+        }
+
+        private static string CombineFileNameWithReleaseDirectory(string fileName)
+        {
+            return Path.Combine(ScenarioContext.Current["releaseDirectory"].ToString(), fileName);
+        }
+
+        [Given(@"a file with a non allowed extension (.*)")]
+        public void GivenAFileWithANonAllowedExtensionRar(string extension)
+        {
+            CreateAnEmptyFile("fileName." + extension);
+        }
+
+        [Then(@"the directory structure should not contain a file with (.*)")]
+        public void ThenTheDirectoryStructureShouldNotContainAFileWithRar(string extension)
+        {
+            resolve.For<IFileSystem>()
+                .File.Exists(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension)
+                .Should()
+                .BeFalse();
+        }
+
+        [Then(@"the directory structure should contain a file (.*)")]
+        public void ThenTheDirectoryStructureShouldContainAFileMkv(string extension)
+        {
+            resolve.For<IFileSystem>()
+                .File.Exists(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension)
+                .Should()
+                .BeTrue();
         }
     }
 }

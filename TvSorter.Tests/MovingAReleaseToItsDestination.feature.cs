@@ -9,272 +9,437 @@
 //      the code is regenerated.
 //  </auto-generated>
 // ------------------------------------------------------------------------------
+
 #region Designer generated code
+
+
 #pragma warning disable
+
 namespace TvSorter.Tests
 {
     using TechTalk.SpecFlow;
-    
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class MovingAReleaseToItsDestinationFeature
     {
-        
         private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-#line 1 "MovingAReleaseToItsDestination.feature"
-#line hidden
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Moving a release to its destination", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            var featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"),
+                "Moving a release to its destination", "", ProgrammingLanguage.CSharp, ((string[]) (null)));
             testRunner.OnFeatureStart(featureInfo);
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
-            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Moving a release to its destination")))
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null)
+                 &&
+                 (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Moving a release to its destination")))
             {
-                TvSorter.Tests.MovingAReleaseToItsDestinationFeature.FeatureSetup(null);
+                FeatureSetup(null);
             }
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
         }
-        
+
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioStart(scenarioInfo);
         }
-        
+
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
-        
+
         public virtual void FeatureBackground()
         {
 #line 3
 #line 4
- testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            testRunner.Given("a release in c:\\incoming\\ReleaseDir", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "Given ");
 #line 5
- testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Just one file to be moved")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
         public virtual void JustOneFileToBeMoved()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Just one file to be moved", ((string[])(null)));
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Just one file to be moved", ((string[]) (null)));
 #line 7
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line 3
-this.FeatureBackground();
+            this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table1.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table1.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mkv",
-                        "File"});
+            var table1 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table1.AddRow(new string[]
+            {
+                "c:\\tv",
+                "Directory"
+            });
+            table1.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mkv",
+                "File"
+            });
 #line 8
- testRunner.Given("a directory structure", ((string)(null)), table1, "Given ");
+            testRunner.Given("a directory structure", ((string) (null)), table1, "Given ");
 #line 12
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item"});
-            table2.AddRow(new string[] {
-                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
+            var table2 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item"
+            });
+            table2.AddRow(new string[]
+            {
+                "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"
+            });
 #line 13
- testRunner.Then("the directory structure should contain", ((string)(null)), table2, "Then ");
+            testRunner.Then("the directory structure should contain", ((string) (null)), table2, "Then ");
 #line 16
- testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("the directory c:\\incoming should be empty", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A seperate nfo file with a different name should be renamed")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(
+            "A seperate nfo file with a different name should be renamed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
         public virtual void ASeperateNfoFileWithADifferentNameShouldBeRenamed()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A seperate nfo file with a different name should be renamed", ((string[])(null)));
+            var scenarioInfo =
+                new TechTalk.SpecFlow.ScenarioInfo("A seperate nfo file with a different name should be renamed",
+                    ((string[]) (null)));
 #line 18
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line 3
-this.FeatureBackground();
+            this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table3.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table3.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mkv",
-                        "File"});
-            table3.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir\\info.nfo",
-                        "File"});
+            var table3 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\tv",
+                "Directory"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mkv",
+                "File"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir\\info.nfo",
+                "File"
+            });
 #line 19
- testRunner.Given("a directory structure", ((string)(null)), table3, "Given ");
+            testRunner.Given("a directory structure", ((string) (null)), table3, "Given ");
 #line 24
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item"});
-            table4.AddRow(new string[] {
-                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"});
-            table4.AddRow(new string[] {
-                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.nfo"});
+            var table4 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.nfo"
+            });
 #line 25
- testRunner.Then("the directory structure should contain", ((string)(null)), table4, "Then ");
+            testRunner.Then("the directory structure should contain", ((string) (null)), table4, "Then ");
 #line 29
- testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("the directory c:\\incoming should be empty", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A mp4 file should be moved")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
         public virtual void AMp4FileShouldBeMoved()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A mp4 file should be moved", ((string[])(null)));
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A mp4 file should be moved", ((string[]) (null)));
 #line 31
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line 3
-this.FeatureBackground();
+            this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table5.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table5.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mp4",
-                        "File"});
+            var table5 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table5.AddRow(new string[]
+            {
+                "c:\\tv",
+                "Directory"
+            });
+            table5.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.mp4",
+                "File"
+            });
 #line 32
- testRunner.Given("a directory structure", ((string)(null)), table5, "Given ");
+            testRunner.Given("a directory structure", ((string) (null)), table5, "Given ");
 #line 36
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item"});
-            table6.AddRow(new string[] {
-                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mp4"});
+            var table6 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item"
+            });
+            table6.AddRow(new string[]
+            {
+                "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.mp4"
+            });
 #line 37
- testRunner.Then("the directory structure should contain", ((string)(null)), table6, "Then ");
+            testRunner.Then("the directory structure should contain", ((string) (null)), table6, "Then ");
 #line 40
- testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("the directory c:\\incoming should be empty", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("A avi file should be moved")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
         public virtual void AAviFileShouldBeMoved()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A avi file should be moved", ((string[])(null)));
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("A avi file should be moved", ((string[]) (null)));
 #line 42
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line 3
-this.FeatureBackground();
+            this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table7.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table7.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.avi",
-                        "File"});
+            var table7 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table7.AddRow(new string[]
+            {
+                "c:\\tv",
+                "Directory"
+            });
+            table7.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir\\Show.S01E01.HDTV-NOGROUP.avi",
+                "File"
+            });
 #line 43
- testRunner.Given("a directory structure", ((string)(null)), table7, "Given ");
+            testRunner.Given("a directory structure", ((string) (null)), table7, "Given ");
 #line 47
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item"});
-            table8.AddRow(new string[] {
-                        "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.avi"});
+            var table8 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item"
+            });
+            table8.AddRow(new string[]
+            {
+                "c:\\tv\\Show\\S01E01\\Show.S01E01.HDTV-NOGROUP.avi"
+            });
 #line 48
- testRunner.Then("the directory structure should contain", ((string)(null)), table8, "Then ");
+            testRunner.Then("the directory structure should contain", ((string) (null)), table8, "Then ");
 #line 51
- testRunner.And("the directory c:\\incoming should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("the directory c:\\incoming should be empty", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("No files are detected")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
         public virtual void NoFilesAreDetected()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No files are detected", ((string[])(null)));
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No files are detected", ((string[]) (null)));
 #line 53
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line 3
-this.FeatureBackground();
+            this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table9.AddRow(new string[] {
-                        "c:\\tv",
-                        "Directory"});
-            table9.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir",
-                        "Directory"});
+            var table9 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table9.AddRow(new string[]
+            {
+                "c:\\tv",
+                "Directory"
+            });
+            table9.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir",
+                "Directory"
+            });
 #line 57
- testRunner.Given("a directory structure", ((string)(null)), table9, "Given ");
+            testRunner.Given("a directory structure", ((string) (null)), table9, "Given ");
 #line 61
- testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
-            table10.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir",
-                        "Directory"});
+            var table10 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Item",
+                "Type"
+            });
+            table10.AddRow(new string[]
+            {
+                "c:\\incoming\\ReleaseDir",
+                "Directory"
+            });
 #line 62
- testRunner.Then("the directory structure should contain", ((string)(null)), table10, "Then ");
+            testRunner.Then("the directory structure should contain", ((string) (null)), table10, "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Line"});
-            table11.AddRow(new string[] {
-                        "No media files detected in c:\\incoming\\ReleaseDir"});
+            var table11 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Line"
+            });
+            table11.AddRow(new string[]
+            {
+                "No media files detected in c:\\incoming\\ReleaseDir"
+            });
 #line 65
- testRunner.And("the output should be", ((string)(null)), table11, "And ");
+            testRunner.And("the output should be", ((string) (null)), table11, "And ");
 #line hidden
             this.ScenarioCleanup();
+        }
+
+        public virtual void NotAllFileTypesShouldBeMoved(string allowedExtension, string notAllowedExtension,
+            string[] exampleTags)
+        {
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Not all file types should be moved", exampleTags);
+#line 69
+            this.ScenarioSetup(scenarioInfo);
+#line 3
+            this.FeatureBackground();
+#line 70
+            testRunner.Given(string.Format("a file with extenstion {0}", allowedExtension), ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "Given ");
+#line 71
+            testRunner.And(string.Format("a file with a non allowed extension {0}", notAllowedExtension),
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 72
+            testRunner.When("we request a move", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "When ");
+#line 73
+            testRunner.Then(
+                string.Format("the directory structure should not contain a file with {0}", notAllowedExtension),
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "Then ");
+#line 74
+            testRunner.And(string.Format("the directory structure should contain a file {0}", allowedExtension),
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 75
+            testRunner.And("the directory c:\\incoming should be empty", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Not all file types should be moved")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:AllowedExtension", "mkv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NotAllowedExtension", "rar")]
+        public virtual void NotAllFileTypesShouldBeMoved_Variant0()
+        {
+            this.NotAllFileTypesShouldBeMoved("mkv", "rar", ((string[]) (null)));
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Not all file types should be moved")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:AllowedExtension", "mp4")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NotAllowedExtension", "srr")]
+        public virtual void NotAllFileTypesShouldBeMoved_Variant1()
+        {
+            this.NotAllFileTypesShouldBeMoved("mp4", "srr", ((string[]) (null)));
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Not all file types should be moved")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:AllowedExtension", "nfo")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NotAllowedExtension", "xyz")]
+        public virtual void NotAllFileTypesShouldBeMoved_Variant2()
+        {
+            this.NotAllFileTypesShouldBeMoved("nfo", "xyz", ((string[]) (null)));
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Not all file types should be moved")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:AllowedExtension", "avi")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NotAllowedExtension", "txt")]
+        public virtual void NotAllFileTypesShouldBeMoved_Variant3()
+        {
+            this.NotAllFileTypesShouldBeMoved("avi", "txt", ((string[]) (null)));
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Not all file types should be moved")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle",
+            "Moving a release to its destination")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 4")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:AllowedExtension", "mkv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NotAllowedExtension", "url")]
+        public virtual void NotAllFileTypesShouldBeMoved_Variant4()
+        {
+            this.NotAllFileTypesShouldBeMoved("mkv", "url", ((string[]) (null)));
         }
     }
 }
+
 #pragma warning restore
+
 #endregion

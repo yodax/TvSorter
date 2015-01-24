@@ -11,7 +11,8 @@
             Release = FindConfigurationInCommandLineArguments(new[] {"-r", "--release"}, arguments);
         }
 
-        private static string FindConfigurationInCommandLineArguments(IEnumerable<string> parameterName, string[] arguments)
+        private static string FindConfigurationInCommandLineArguments(IEnumerable<string> parameterName,
+            string[] arguments)
         {
             foreach (var parameter in parameterName)
             {

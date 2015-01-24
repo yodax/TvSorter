@@ -4,10 +4,10 @@
 
     public class FinalConfiguration : IConfiguration
     {
-        private readonly IOutput output;
-        private readonly IFileSystem fileSystem;
-        private readonly SuppliedConfiguration suppliedConfiguration;
         private const string ConfigurationFileName = "tvsorter.ini";
+        private readonly IFileSystem fileSystem;
+        private readonly IOutput output;
+        private readonly SuppliedConfiguration suppliedConfiguration;
 
         public FinalConfiguration(SuppliedConfiguration suppliedConfiguration, IFileSystem fileSystem, IOutput output)
         {
@@ -51,7 +51,6 @@
         }
 
         public string Destination { get; private set; }
-
         public string Release { get; private set; }
     }
 }

@@ -1,13 +1,17 @@
 namespace TvSorter
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.IO.Abstractions;
+    using System.Linq;
 
     public class MoveRelease : IMoveRelease
     {
+        private readonly IEnumerable<string> allowedExtension = new List<string> {"mkv", "avi", "mp4", "nfo"};
         private readonly IConfiguration configuration;
         private readonly IFileSystem fileSystem;
+        private readonly IEnumerable<string> mediaTypes = new List<string> {"mkv", "avi", "mp4"};
         private readonly IOutput output;
 
         public MoveRelease(IFileSystem fileSystem, IConfiguration configuration, IOutput output)
@@ -19,7 +23,7 @@ namespace TvSorter
 
         public void From(string releaseDirectory)
         {
-            var videoFile = GetFirstMediaFile(releaseDirectory);
+            var videoFile = GetMediaFile(releaseDirectory);
 
             if (string.IsNullOrEmpty(videoFile))
             {
@@ -28,42 +32,62 @@ namespace TvSorter
             }
 
             var showInfo = CleanReleaseName.For(Path.GetFileNameWithoutExtension(videoFile));
-            var destination = configuration.Destination;
+            var destination = DetermineFileFileNameUsingShowInformation(showInfo, configuration.Destination);
 
-            destination = destination.Replace("{ShowName}", showInfo.Name);
-            destination = destination.Replace("{SeasonEpisode}",
-                "S" + showInfo.Season.Pad(2) + "E" + showInfo.Episode.Pad(2));
-            destination = destination.Replace("{ReleaseName}", showInfo.ReleaseName);
-
-            foreach (var file in fileSystem.Directory.GetFiles(releaseDirectory))
+            foreach (
+                var file in
+                    fileSystem.Directory.GetFiles(releaseDirectory)
+                        .Where(
+                            IsOfAllowedExtension))
             {
-                var extension = Path.GetExtension(file).Substring(1);
+                var extension = ExtensionOfFileName(file);
                 var finalDestination = destination.Replace("{Extension}", extension);
                 fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
                 fileSystem.File.Move(file, finalDestination);
             }
 
-            fileSystem.Directory.Delete(releaseDirectory);
+            fileSystem.Directory.Delete(releaseDirectory, true);
         }
 
-        private string GetFirstMediaFile(string releaseDirectory)
+        private static string DetermineFileFileNameUsingShowInformation(ShowInfo showInfo,
+            string destinationFromConfiguration)
         {
-            var firstMkvFile = GetFirstMediaFileWithExtension(releaseDirectory, "*.mkv");
-            if (!string.IsNullOrEmpty(firstMkvFile))
-                return firstMkvFile;
+            var destination = destinationFromConfiguration;
 
-            var firstMp4File = GetFirstMediaFileWithExtension(releaseDirectory, "*.mp4");
-            if (!string.IsNullOrEmpty(firstMp4File))
-                return firstMp4File;
+            destination = destination.Replace("{ShowName}", showInfo.Name);
+            destination = destination.Replace("{SeasonEpisode}", showInfo.SeasonEpisode);
+            destination = destination.Replace("{ReleaseName}", showInfo.ReleaseName);
 
-            var firstAviFile = GetFirstMediaFileWithExtension(releaseDirectory, "*.avi");
-            if (!string.IsNullOrEmpty(firstAviFile))
-                return firstAviFile;
+            return destination;
+        }
+
+        private bool IsOfAllowedExtension(string file)
+        {
+            return allowedExtension.Any(
+                extension =>
+                    extension.Equals(ExtensionOfFileName(file),
+                        StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private static string ExtensionOfFileName(string file)
+        {
+            var extension = Path.GetExtension(file);
+            return string.IsNullOrEmpty(extension) ? string.Empty : extension.Substring(1);
+        }
+
+        private string GetMediaFile(string releaseDirectory)
+        {
+            foreach (var mediaType in mediaTypes)
+            {
+                var mediaFile = GetMediaFileWithExtension(releaseDirectory, "*." +mediaType);
+                if (!string.IsNullOrEmpty(mediaFile))
+                    return mediaFile;
+            }
 
             return string.Empty;
         }
 
-        private string GetFirstMediaFileWithExtension(string releaseDirectory, string searchPattern)
+        private string GetMediaFileWithExtension(string releaseDirectory, string searchPattern)
         {
             var files = fileSystem.Directory.GetFiles(releaseDirectory, searchPattern);
             if (files.Length == 0)

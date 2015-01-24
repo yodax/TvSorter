@@ -39,7 +39,7 @@
         {
             resolve = new ResolveDouble(new ConfigurationFromCommandLineParameters(new string[0]));
         }
-        
+
         [Then(@"the output should be a statment defining the usage of the program")]
         public void ThenTheOutputShouldBeAStatmentDefiningTheUsageOfTheProgram()
         {
@@ -60,7 +60,7 @@
                 @" -d OR --destination <Path to destination>                         ",
                 @"                                                                   ",
                 @" <Path to destination> can be formatted like:                      ",
-                @" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        ",
+                @" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        "
             };
 
             output.Lines.ShouldBeEquivalentTo(expectedOutput);
@@ -75,6 +75,5 @@
             text.Write(multilineText);
             text.Close();
         }
-
     }
 }
