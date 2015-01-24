@@ -13,17 +13,17 @@ Scenario Template: Set of example cleanups
 	And the quality should be <Quality>
 
 Examples:
-| Input scene name                                     | Clean scene name                                     | Show name                | Season | Episode | Group   | Quality                 |
-| Show.S01E11.720p.HDTV.x264-GROUP                     | Show.S01E11.720p.HDTV.x264-GROUP                     | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264          |
-| Show.1x11.HDTV.x264-GROUP                            | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264               |
-| Show.S01E11.HDTV.x264-GROUP                          | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264               |
-| Show.S01E11.HDTV.XVID-GROUP                          | Show.S01E11.HDTV.XviD-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.XviD               |
-| Show.Part.2.720p.HDTV.x264-GROUP                     | Show.S01E02.720p.HDTV.x264-GROUP                     | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264          |
-| Show S06E01 720p WEB-DL DD5.1 H.264                  | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP          | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264 |
-| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP            | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264 |
-| Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264          |
-| Show.&.The.Showing.S01E11.HDTV.x264-GROUP            | Show.and.the.Showing.S01E11.HDTV.x264-GROUP          | Show and the Showing     | 1      | 11      | GROUP   | HDTV.x264               |
-
+| Input scene name                                                                | Clean scene name                                     | Show name                | Season | Episode | Group   | Quality                  |
+| Show.S01E11.720p.HDTV.x264-GROUP                                                | Show.S01E11.720p.HDTV.x264-GROUP                     | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264           |
+| Show.1x11.HDTV.x264-GROUP                                                       | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264                |
+| Show.S01E11.HDTV.x264-GROUP                                                     | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264                |
+| Show.S01E11.HDTV.XVID-GROUP                                                     | Show.S01E11.HDTV.XviD-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.XviD                |
+| Show.Part.2.720p.HDTV.x264-GROUP                                                | Show.S01E02.720p.HDTV.x264-GROUP                     | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264           |
+| Show S06E01 720p WEB-DL DD5.1 H.264                                             | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP          | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264  |
+| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP                                       | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264  |
+| Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP                            | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264           |
+| Show.&.The.Showing.S01E11.HDTV.x264-GROUP                                       | Show.and.the.Showing.S01E11.HDTV.x264-GROUP          | Show and the Showing     | 1      | 11      | GROUP   | HDTV.x264                |
+| Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI | Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI      | Constantine              | 1      | 9       | ECI     | 1080p.WEB-DL.DD5.1.H.264 |
 
 Scenario Template: Quality strings should be cleaned up
 	Given an input of <Input scene name>
@@ -36,6 +36,45 @@ Examples:
 | Show.S01E01.720p.HDTV.x264-GROUP | 720p.HDTV.x264 |
 | Show.S01E01.DVDRIP-GROUP         | DVDRip         |
 | Show.S01E01.BLURAY-GROUP         | BluRay         |
+
+Scenario Template: Quality strings should only start with allowed words
+	Given an input of Show.S01E01.<Input quality>-GROUP
+	When clean up the release name
+	Then the quality should be <Quality>
+
+Examples:
+| Input quality                 | Quality                       |
+|                               |                               |
+| convert                       | CONVERT                       |
+| native                        | NATIVE                        |
+| proper                        | PROPER                        |
+| real                          | REAL                          |
+| repack                        | REPACK                        |
+| dirfix                        | DIRFIX                        |
+| nfofix                        | NFOFIX                        |
+| read.nfo                      | READ.NFO                      |
+| internal                      | INTERNAL                      |
+| subbed                        | SUBBED                        |
+| dubbed                        | DUBBED                        |
+| 1080p                         | 1080p                         |
+| 720p                          | 720p                          |
+| 480p                          | 480p                          |
+| hdtv                          | HDTV                          |
+| dsr                           | DSR                           |
+| ws                            | WS                            |
+| bdrip                         | BDRIP                         |
+| bluray                        | BluRay                        |
+| dvdrip                        | DVDRip                        |
+| pdtv                          | PDTV                          |
+| x264                          | x264                          |
+| H.264                         | H.264                         |
+| REAL.1080p.WEB-DL.DD5.1.H.264 | REAL.1080p.WEB-DL.DD5.1.H.264 |
+
+
+# (convert)|(native)|(proper)|(real)|(repack)|(dirfix)|(nfofix)|(read\.nfo)|(internal)|(subbed)|(\.))*)[\w\.]*?
+#(?P<Quality>(1080p.*)|(720p.*)|(480p.*)|(hdtv.*)|(dsr.*)|(dvd.*)|(ws.*)|(bdrip.*)|(pdtv.*)
+
+
 
 Scenario Template: Roman numerals should be converted to decimal
 	Given an input of <Input scene name>

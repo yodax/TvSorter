@@ -237,6 +237,22 @@ this.ScenarioSetup(scenarioInfo);
             this.SetOfExampleCleanups("Show.&.The.Showing.S01E11.HDTV.x264-GROUP", "Show.and.the.Showing.S01E11.HDTV.x264-GROUP", "Show and the Showing", "1", "11", "GROUP", "HDTV.x264", ((string[])(null)));
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Constantine")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "9")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "1080p.WEB-DL.DD5.1.H.264")]
+        public virtual void SetOfExampleCleanups_Constantine_S01E09_The_Saint_Of_Last_Resort_Part_2_1080P_WEB_DL_DD5_1_H_264_ECI()
+        {
+            this.SetOfExampleCleanups("Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI", "Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI", "Constantine", "1", "9", "ECI", "1080p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
+        
         public virtual void QualityStringsShouldBeCleanedUp(string inputSceneName, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should be cleaned up", exampleTags);
@@ -296,18 +312,307 @@ this.ScenarioSetup(scenarioInfo);
             this.QualityStringsShouldBeCleanedUp("Show.S01E01.BLURAY-GROUP", "BluRay", ((string[])(null)));
         }
         
-        public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords(string inputQuality, string quality, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should only start with allowed words", exampleTags);
 #line 40
 this.ScenarioSetup(scenarioInfo);
 #line 41
- testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("an input of Show.S01E01.{0}-GROUP", inputQuality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 42
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 43
+ testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("", "", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "convert")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "convert")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "CONVERT")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Convert()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("convert", "CONVERT", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "native")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "native")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "NATIVE")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Native()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("native", "NATIVE", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "proper")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "proper")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "PROPER")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Proper()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("proper", "PROPER", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "real")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "real")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "REAL")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Real()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("real", "REAL", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "repack")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "repack")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "REPACK")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Repack()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("repack", "REPACK", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "dirfix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "dirfix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "DIRFIX")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Dirfix()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("dirfix", "DIRFIX", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "nfofix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "nfofix")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "NFOFIX")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Nfofix()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("nfofix", "NFOFIX", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "read.nfo")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "read.nfo")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "READ.NFO")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Read_Nfo()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("read.nfo", "READ.NFO", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "internal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "internal")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "INTERNAL")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Internal()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("internal", "INTERNAL", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "subbed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "subbed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "SUBBED")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Subbed()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("subbed", "SUBBED", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "dubbed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "dubbed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "DUBBED")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Dubbed()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("dubbed", "DUBBED", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "1080p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "1080p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "1080p")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_1080P()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("1080p", "1080p", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "720p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "720p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_720P()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("720p", "720p", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "480p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "480p")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "480p")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_480P()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("480p", "480p", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "hdtv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "hdtv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "HDTV")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Hdtv()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("hdtv", "HDTV", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "dsr")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "dsr")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "DSR")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Dsr()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("dsr", "DSR", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "ws")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "ws")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "WS")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Ws()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("ws", "WS", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "bdrip")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "bdrip")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "BDRIP")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Bdrip()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("bdrip", "BDRIP", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "bluray")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "bluray")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "BluRay")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Bluray()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("bluray", "BluRay", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "dvdrip")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "dvdrip")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "DVDRip")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Dvdrip()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("dvdrip", "DVDRip", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "pdtv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "pdtv")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "PDTV")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_Pdtv()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("pdtv", "PDTV", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "x264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "x264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "x264")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_X264()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("x264", "x264", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "H.264")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_H_264()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("H.264", "H.264", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Quality strings should only start with allowed words")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "REAL.1080p.WEB-DL.DD5.1.H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input quality", "REAL.1080p.WEB-DL.DD5.1.H.264")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "REAL.1080p.WEB-DL.DD5.1.H.264")]
+        public virtual void QualityStringsShouldOnlyStartWithAllowedWords_REAL_1080P_WEB_DL_DD5_1_H_264()
+        {
+            this.QualityStringsShouldOnlyStartWithAllowedWords("REAL.1080p.WEB-DL.DD5.1.H.264", "REAL.1080p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
+        
+        public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
+#line 79
+this.ScenarioSetup(scenarioInfo);
+#line 80
+ testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 81
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
  testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 44
+#line 83
  testRunner.And(string.Format("the episode should be {0}", episode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

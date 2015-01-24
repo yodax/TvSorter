@@ -9,6 +9,7 @@
     {
         private static readonly Dictionary<string, string> QualityFormatting = new Dictionary<string, string>
         {
+            {"480P", "480p"},
             {"720P", "720p"},
             {"1080P", "1080p"},
             {"X264", "x264"},
@@ -17,6 +18,33 @@
             {"XVID", "XviD"},
             {"DVDRIP", "DVDRip"},
             {"BLURAY", "BluRay"}
+        };
+
+        private static readonly List<String> StartingQualityIndicators = new List<string>
+        {
+            "convert",
+            "native",
+            "proper",
+            "real",
+            "repack",
+            "dirfix",
+            "nfofix",
+            "read.nfo",
+            "internal",
+            "subbed",
+            "dubbed",
+            "1080p",
+            "720p",
+            "480p",
+            "hdtv",
+            "dsr",
+            "ws",
+            "bdrip",
+            "bluray",
+            "dvdrip",
+            "pdtv",
+            "x264",
+            "H.264"
         };
 
         private static readonly Dictionary<string, string> DefaultReplacementsInReleaseName = new Dictionary
@@ -32,7 +60,7 @@
         {
             "and",
             "the"
-        }; 
+        };
 
         private static readonly Dictionary<string, int> RomanNumerals = new Dictionary
             <string, int>
@@ -140,6 +168,19 @@
         {
             var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-").ToUpper();
 
+            var matchedQualities = StartingQualityIndicators.Select(qualityIndicator => quality.IndexOf(qualityIndicator, StringComparison.InvariantCultureIgnoreCase))
+                .Where(index => index >= 0)
+                .ToList();
+
+            if (matchedQualities.Any())
+            {
+                var qualityStartsFrom =
+                    matchedQualities
+                        .Min();
+
+                quality = quality.Substring(qualityStartsFrom);
+            }
+
             return QualityFormatting.Aggregate(quality,
                 (current, qualityToReplace) => current.Replace(qualityToReplace.Key, qualityToReplace.Value));
         }
@@ -184,12 +225,12 @@
             var eachWord = stringToConvertToUpperCaseWords.Split('.');
             var eachUpperCaseWord = new List<string>();
             eachWord.ToList().ForEach(word =>
-                {
-                    if (WordsToKeepInLowerCase.Contains(word))
-                        eachUpperCaseWord.Add(word);
-                    else
-                        eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1));
-                });
+            {
+                if (WordsToKeepInLowerCase.Contains(word))
+                    eachUpperCaseWord.Add(word);
+                else
+                    eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1));
+            });
             return string.Join(".", eachUpperCaseWord);
         }
     }
