@@ -85,8 +85,10 @@
         public void GivenAFileWithExtenstion(string extension)
         {
             CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + extension);
+            
             // We need at least one media file present for this to work
-            if (extension == "nfo")
+            var nonMediaExtensions = new [] {"nfo", "srt", "sub", "idx"};
+            if (nonMediaExtensions.Any(ext => ext.Equals(extension)))
                 CreateAnEmptyFile("Show.S01E01.HDTV-NOGROUP." + "mkv");
         }
 

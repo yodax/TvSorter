@@ -8,7 +8,7 @@ namespace TvSorter
 
     public class MoveRelease : IMoveRelease
     {
-        private readonly IEnumerable<string> allowedExtension = new List<string> {"mkv", "avi", "mp4", "nfo"};
+        private readonly IEnumerable<string> allowedExtension = new List<string> {"mkv", "avi", "mp4", "nfo", "srt", "sub", "idx"};
         private readonly IConfiguration configuration;
         private readonly IFileSystem fileSystem;
         private readonly IEnumerable<string> mediaTypes = new List<string> {"mkv", "avi", "mp4"};

@@ -7,7 +7,6 @@ Background:
 	| Item        | Type      |
 	| c:\tv       | Directory |
 	| c:\incoming | Directory |
-
     	
 Scenario: Just one file to be moved
 	Given the files in the release directory
@@ -29,6 +28,18 @@ Scenario: A seperate nfo file with a different name should be renamed
 	| Item                                           |
 	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
 	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.nfo |
+	And the directory c:\incoming should be empty
+
+Scenario: A seperate subtitle file with a different name should be renamed
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.mkv |
+	| info.srt                     |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                           |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.mkv |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.srt |
 	And the directory c:\incoming should be empty
 
 Scenario: A mp4 file should be moved
@@ -89,5 +100,8 @@ Scenario Template: Not all file types should be moved
 	| mkv              | rar                 |
 	| mp4              | srr                 |
 	| nfo              | xyz                 |
+	| srt              | xyz                 |
+	| idx              | xyz                 |
+	| sub              | xyz                 |
 	| avi              | txt                 |
 	| mkv              | url                 |
