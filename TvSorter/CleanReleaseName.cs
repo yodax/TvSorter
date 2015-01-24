@@ -62,6 +62,10 @@
                 {
                     releaseName = ConvertRomanNumeralPartStringToSeasonEpisode(releaseName);
                 }
+                if (ContainsXSeasonEpisodeString(releaseName))
+                {
+                    releaseName = ConvertXSeasonToSeasonEpidose(releaseName);
+                }
             }
 
             if (!ContainsReleasGroup(releaseName))
@@ -76,6 +80,19 @@
                 ReleaseGroup = ExtractReleaseGroup(releaseName),
                 Quality = ExtractQuality(releaseName)
             };
+        }
+
+        private static string ConvertXSeasonToSeasonEpidose(string releaseName)
+        {
+            var match = Regex.Match(releaseName, @"\.(\d{1,2})x(\d{1,2})\.");
+            var season = match.Groups[1].Captures[0];
+            var episode = match.Groups[2].Captures[0];
+            return Regex.Replace(releaseName, @"\.\d{1,2}x\d{1,2}\.", ".s" + season + "e" + episode + ".");
+        }
+
+        private static bool ContainsXSeasonEpisodeString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"\.\d{1,2}x\d{1,2}\.");
         }
 
         private static string ConvertRomanNumeralPartStringToSeasonEpisode(string releaseName)

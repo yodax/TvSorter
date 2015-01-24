@@ -15,6 +15,7 @@ Scenario Template: Set of example cleanups
 Examples:
 | Input scene name                                     | Clean scene name                                     | Show name                | Season | Episode | Group   | Quality                 |
 | Show.S01E11.720p.HDTV.x264-GROUP                     | Show.S01E11.720p.HDTV.x264-GROUP                     | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264          |
+| Show.1x11.HDTV.x264-GROUP                            | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264               |
 | Show.S01E11.HDTV.x264-GROUP                          | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264               |
 | Show.S01E11.HDTV.XVID-GROUP                          | Show.S01E11.HDTV.XviD-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.XviD               |
 | Show.Part.2.720p.HDTV.x264-GROUP                     | Show.S01E02.720p.HDTV.x264-GROUP                     | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264          |
