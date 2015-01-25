@@ -83,6 +83,11 @@
       <DependentUpon>MovingAReleaseToItsDestination.feature</DependentUpon>
     </Compile>
     <Compile Include="MovingAReleaseToItsDestinationSteps.cs" />
+    <Compile Include="NonParseableMediaFiles.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NonParseableMediaFiles.feature</DependentUpon>
+    </Compile>
     <Compile Include="OutputDouble.cs" />
     <Compile Include="ResolveDouble.cs" />
     <Compile Include="WhenCheckingCommandLineArguments.feature.cs">
@@ -106,6 +111,10 @@
     <None Include="CleanUpReleaseName.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CleanUpReleaseName.feature.cs</LastGenOutput>
+    </None>
+    <None Include="NonParseableMediaFiles.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>NonParseableMediaFiles.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="MovingAReleaseToItsDestination.feature">

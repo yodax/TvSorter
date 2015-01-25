@@ -41,6 +41,13 @@ namespace TvSorter
             if (!releaseInformationOnFileSystem.IsReleaseValid(releaseDirectory))
                 return;
             var showInfo = releaseInformationOnFileSystem.GetShowInfo(releaseDirectory);
+
+            if (!showInfo.Parseable)
+            {
+                moveReleaseOutput.NotParseable();
+                return;
+            }
+
             var destination = DetermineFileFileNameUsingShowInformation(showInfo, configuration.Destination);
 
             moveReleaseOutput.AddHeaderToOutput(releaseDirectory, showInfo, destination);

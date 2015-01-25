@@ -1,5 +1,6 @@
 ﻿namespace TvSorter.Tests
 {
+    using System;
     using FluentAssertions;
     using ReleaseInformation;
     using TechTalk.SpecFlow;
@@ -57,5 +58,12 @@
         {
             showInfo.Quality.Should().Be(quality);
         }
+
+        [Then(@"the release should be (.*)")]
+        public void ThenTheReleaseShouldNotBeParsed(string parseable)
+        {
+            showInfo.Parseable.Should().Be(parseable.Equals("parseable", StringComparison.InvariantCultureIgnoreCase));
+        }
+
     }
 }

@@ -23,5 +23,7 @@ namespace TvSorter.ReleaseInformation
         {
             get { return "S" + Season.Pad(2) + "E" + Episode.Pad(2); }
         }
+
+        public bool Parseable { get; set; }
     }
 }

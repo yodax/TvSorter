@@ -51,6 +51,8 @@
             <string, string>
         {
             {" ", "."},
+            {".-.", "."},
+            {"..", "."},
             {"(", ""},
             {")", ""},
             {"web-dl", "web.dl"},
@@ -84,39 +86,67 @@
 
         public static ShowInfo For(string inputReleaseName)
         {
-            var releaseName = inputReleaseName.ToLower();
-
-            releaseName = DefaultReplacementsInReleaseName.Aggregate(releaseName,
-                (current, stringToReplace) => current.Replace(stringToReplace.Key, stringToReplace.Value));
-
-            if (!ContainsSeasonEpisodeString(releaseName))
+            try
             {
-                if (ContainsDecimalPartString(releaseName))
+                var releaseName = inputReleaseName.ToLower();
+
+                releaseName = DefaultReplacementsInReleaseName.Aggregate(releaseName,
+                    (current, stringToReplace) => current.Replace(stringToReplace.Key, stringToReplace.Value));
+
+                releaseName = RemoveEverythingBetweenBracketsExceptQuality(releaseName);
+
+                if (!ContainsSeasonEpisodeString(releaseName))
                 {
-                    releaseName = ConvertDecimalPartStringToSeasonEpisode(releaseName);
+                    if (ContainsDecimalPartString(releaseName))
+                    {
+                        releaseName = ConvertDecimalPartStringToSeasonEpisode(releaseName);
+                    }
+                    if (ContainsRomanNumeralPartString(releaseName))
+                    {
+                        releaseName = ConvertRomanNumeralPartStringToSeasonEpisode(releaseName);
+                    }
+                    if (ContainsXSeasonEpisodeString(releaseName))
+                    {
+                        releaseName = ConvertXSeasonToSeasonEpidose(releaseName);
+                    }
                 }
-                if (ContainsRomanNumeralPartString(releaseName))
+
+                if (!ContainsReleasGroup(releaseName))
                 {
-                    releaseName = ConvertRomanNumeralPartStringToSeasonEpisode(releaseName);
+                    releaseName = releaseName + "-NOGROUP";
                 }
-                if (ContainsXSeasonEpisodeString(releaseName))
+
+                return new ShowInfo
                 {
-                    releaseName = ConvertXSeasonToSeasonEpidose(releaseName);
-                }
+                    Name = ExtractShowName(releaseName),
+                    Season = ExtractSeason(releaseName),
+                    Episode = ExtractEpisode(releaseName),
+                    ReleaseGroup = ExtractReleaseGroup(releaseName),
+                    Quality = ExtractQuality(releaseName),
+                    Parseable = true
+                };
+            }
+            catch 
+            {
+                return new ShowInfo
+                {
+                    Parseable = false
+                };
+            }
+        }
+
+        private static string RemoveEverythingBetweenBracketsExceptQuality(string releaseName)
+        {
+            var newReleaseName = releaseName;
+
+            foreach (var qualityIndicator in StartingQualityIndicators)
+            {
+                newReleaseName = Regex.Replace(newReleaseName, @"\[" + qualityIndicator + @"\]", qualityIndicator);
             }
 
-            if (!ContainsReleasGroup(releaseName))
-            {
-                releaseName = releaseName + "-NOGROUP";
-            }
-            return new ShowInfo
-            {
-                Name = ExtractShowName(releaseName),
-                Season = ExtractSeason(releaseName),
-                Episode = ExtractEpisode(releaseName),
-                ReleaseGroup = ExtractReleaseGroup(releaseName),
-                Quality = ExtractQuality(releaseName)
-            };
+            newReleaseName = Regex.Replace(newReleaseName, @"\.{0,1}\[.*?\]", "");
+
+            return newReleaseName;
         }
 
         private static string ConvertXSeasonToSeasonEpidose(string releaseName)
@@ -224,6 +254,9 @@
 
         private static string UppercaseWords(string stringToConvertToUpperCaseWords)
         {
+            if (string.IsNullOrEmpty(stringToConvertToUpperCaseWords))
+                return "";
+
             var eachWord = stringToConvertToUpperCaseWords.Split('.');
             var eachUpperCaseWord = new List<string>();
             eachWord.ToList().ForEach(word =>

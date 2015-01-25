@@ -19,8 +19,16 @@
                 return;
 
             var showInfo = showInfoFromReleaseInformationOnFileSystem.GetShowInfo(releaseDirectory);
-            
-            output.AddLine(string.Format("{0} {1} {2}", showInfo.Name, showInfo.SeasonEpisode, showInfo.Quality.Replace(".", " ")));
+
+            if (showInfo.Parseable)
+            {
+                output.AddLine(string.Format("{0} {1} {2}", showInfo.Name, showInfo.SeasonEpisode,
+                    showInfo.Quality.Replace(".", " ")));
+            }
+            else
+            {
+                output.AddLine("Can't parse release name!");
+            }
         }
     }
 }
