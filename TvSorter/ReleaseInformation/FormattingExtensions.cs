@@ -1,4 +1,4 @@
-﻿namespace TvSorter
+﻿namespace TvSorter.ReleaseInformation
 {
     internal static class FormattingExtensions
     {

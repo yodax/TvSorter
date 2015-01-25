@@ -1,6 +1,7 @@
 ﻿namespace TvSorter.Tests
 {
     using System;
+    using Output;
 
     internal class OutputDouble : IOutput
     {

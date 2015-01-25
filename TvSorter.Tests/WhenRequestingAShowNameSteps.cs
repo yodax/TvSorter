@@ -1,6 +1,7 @@
 ﻿namespace TvSorter.Tests
 {
     using FluentAssertions;
+    using Output;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -12,7 +13,7 @@
         public void WhenWeRequestAShowNameFromTheReleaseDirectory()
         {
             resolve = (IResolve)ScenarioContext.Current["resolve"];
-            resolve.For<IShowNameFinder>().Find(ScenarioContext.Current["releaseDirectory"].ToString());
+            resolve.For<ShowNameFinder>().Find(ScenarioContext.Current["releaseDirectory"].ToString());
         }
 
         [Then(@"the requested show name should be (.*)")]

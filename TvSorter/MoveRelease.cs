@@ -5,8 +5,11 @@ namespace TvSorter
     using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
+    using Configuration;
+    using Output;
+    using ReleaseInformation;
 
-    public class MoveRelease : IMoveRelease
+    public class MoveRelease
     {
         private readonly IEnumerable<string> allowedExtension = new List<string>
         {
@@ -22,12 +25,12 @@ namespace TvSorter
         private readonly IConfiguration configuration;
         private readonly IFileSystem fileSystem;
         private readonly MoveReleaseOutput moveReleaseOutput;
-        private readonly ExtractShowInfoFromRelease extractShowInfoFromRelease;
+        private readonly ReleaseInformationOnFileSystem releaseInformationOnFileSystem;
 
         public MoveRelease(IFileSystem fileSystem, IConfiguration configuration,
-            MoveReleaseOutput moveReleaseOutput, ExtractShowInfoFromRelease showInfoFromRelease)
+            MoveReleaseOutput moveReleaseOutput, ReleaseInformationOnFileSystem showInfoFromReleaseInformationOnFileSystem)
         {
-            extractShowInfoFromRelease = showInfoFromRelease;
+            releaseInformationOnFileSystem = showInfoFromReleaseInformationOnFileSystem;
             this.configuration = configuration;
             this.fileSystem = fileSystem;
             this.moveReleaseOutput = moveReleaseOutput;
@@ -35,9 +38,9 @@ namespace TvSorter
 
         public void From(string releaseDirectory)
         {
-            if (!extractShowInfoFromRelease.IsReleaseValid(releaseDirectory))
+            if (!releaseInformationOnFileSystem.IsReleaseValid(releaseDirectory))
                 return;
-            var showInfo = extractShowInfoFromRelease.GetShowInfoForRelease(releaseDirectory);
+            var showInfo = releaseInformationOnFileSystem.GetShowInfo(releaseDirectory);
             var destination = DetermineFileFileNameUsingShowInformation(showInfo, configuration.Destination);
 
             moveReleaseOutput.AddHeaderToOutput(releaseDirectory, showInfo, destination);

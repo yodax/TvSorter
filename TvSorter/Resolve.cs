@@ -1,23 +1,22 @@
-﻿namespace TvSorter.Tests
+namespace TvSorter
 {
     using System.IO.Abstractions;
-    using System.IO.Abstractions.TestingHelpers;
     using Autofac;
     using Configuration;
     using Output;
 
-    public class ResolveDouble : IResolve
+    public class Resolve : IResolve
     {
         private readonly ILifetimeScope scope;
 
-        public ResolveDouble(SuppliedConfiguration configurationDouble)
+        public Resolve(SuppliedConfiguration configurationFromCommandLine)
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
-            builder.RegisterInstance(configurationDouble).As<SuppliedConfiguration>();
+            builder.RegisterType<FileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
+            builder.RegisterInstance(configurationFromCommandLine).As<SuppliedConfiguration>();
             builder.RegisterType<ConfigurationFinal>().As<IConfiguration>().InstancePerLifetimeScope();
-            builder.RegisterInstance(new OutputDouble()).As<IOutput>();
+            builder.RegisterInstance(new OutputConsolse()).As<IOutput>();
             builder.RegisterType<MoveRelease>();
             builder.RegisterType<ShowNameFinder>();
             builder.RegisterType<MoveReleaseOutput>();

@@ -1,12 +1,12 @@
-﻿namespace TvSorter
+﻿namespace TvSorter.Configuration
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ConfigurationFromCommandLineParameters : SuppliedConfiguration
+    public class ConfigurationSupplied : SuppliedConfiguration
     {
-        public ConfigurationFromCommandLineParameters(string[] arguments)
+        public ConfigurationSupplied(string[] arguments)
         {
             Destination = FindConfigurationInCommandLineArguments(new[] {"-d", "--destination"}, arguments);
             Release = FindConfigurationInCommandLineArguments(new[] {"-r", "--release"}, arguments);

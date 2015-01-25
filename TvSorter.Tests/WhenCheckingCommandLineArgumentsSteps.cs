@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.IO.Abstractions;
+    using Configuration;
     using FluentAssertions;
+    using Output;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -14,7 +16,7 @@
         [Given(@"the commandline parameters (.*)")]
         public void GivenTheCommandlineParameters(string commandLineParameters)
         {
-            resolve = new ResolveDouble(new ConfigurationFromCommandLineParameters(commandLineParameters.Split(' ')));
+            resolve = new ResolveDouble(new ConfigurationSupplied(commandLineParameters.Split(' ')));
         }
 
         [Then(@"the configuration setting destination is (.*)")]
@@ -39,7 +41,7 @@
         [Given(@"No command line parameters")]
         public void GivenNoCommandLineParameters()
         {
-            resolve = new ResolveDouble(new ConfigurationFromCommandLineParameters(new string[0]));
+            resolve = new ResolveDouble(new ConfigurationSupplied(new string[0]));
         }
 
         [Then(@"the output should be a statment defining the usage of the program")]

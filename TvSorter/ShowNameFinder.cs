@@ -1,22 +1,24 @@
 ﻿namespace TvSorter
 {
-    public class ShowNameFinder : IShowNameFinder
+    using Output;
+
+    public class ShowNameFinder
     {
-        private readonly ExtractShowInfoFromRelease showInfoFromRelease;
+        private readonly ReleaseInformationOnFileSystem showInfoFromReleaseInformationOnFileSystem;
         private readonly IOutput output;
 
-        public ShowNameFinder(ExtractShowInfoFromRelease extractShowInfoFromRelease, IOutput output)
+        public ShowNameFinder(ReleaseInformationOnFileSystem releaseInformationOnFileSystem, IOutput output)
         {
             this.output = output;
-            showInfoFromRelease = extractShowInfoFromRelease;
+            showInfoFromReleaseInformationOnFileSystem = releaseInformationOnFileSystem;
         }
 
         public void Find(string releaseDirectory)
         {
-            if (!showInfoFromRelease.IsReleaseValid(releaseDirectory))
+            if (!showInfoFromReleaseInformationOnFileSystem.IsReleaseValid(releaseDirectory))
                 return;
 
-            var showInfo = showInfoFromRelease.GetShowInfoForRelease(releaseDirectory);
+            var showInfo = showInfoFromReleaseInformationOnFileSystem.GetShowInfo(releaseDirectory);
             
             output.AddLine(string.Format("{0} {1} {2}", showInfo.Name, showInfo.SeasonEpisode, showInfo.Quality.Replace(".", " ")));
         }

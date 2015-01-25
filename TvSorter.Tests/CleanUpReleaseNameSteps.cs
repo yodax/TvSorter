@@ -1,6 +1,7 @@
 ﻿namespace TvSorter.Tests
 {
     using FluentAssertions;
+    using ReleaseInformation;
     using TechTalk.SpecFlow;
 
     [Binding]

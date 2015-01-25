@@ -48,28 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CleanReleaseName.cs" />
-    <Compile Include="ConfigurationFromCommandLineParameters.cs" />
-    <Compile Include="ExtractShowInfoFromRelease.cs" />
-    <Compile Include="FinalConfiguration.cs" />
-    <Compile Include="FormattingExtensions.cs" />
-    <Compile Include="IConfiguration.cs" />
-    <Compile Include="IMoveRelease.cs" />
-    <Compile Include="IOutput.cs" />
+    <Compile Include="Configuration\ConfigurationFinal.cs" />
+    <Compile Include="Configuration\ConfigurationSupplied.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Configuration\SuppliedConfiguration.cs" />
+    <Compile Include="Output\IOutput.cs" />
+    <Compile Include="Output\MoveReleaseOutput.cs" />
+    <Compile Include="Output\OutputConsolse.cs" />
+    <Compile Include="ProgramExecution.cs" />
+    <Compile Include="ReleaseInformationOnFileSystem.cs" />
     <Compile Include="IResolve.cs" />
-    <Compile Include="IShowNameFinder.cs" />
     <Compile Include="MoveRelease.cs" />
-    <Compile Include="MoveReleaseOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowInfo.cs" />
+    <Compile Include="ReleaseInformation\CleanReleaseName.cs" />
+    <Compile Include="ReleaseInformation\FormattingExtensions.cs" />
+    <Compile Include="ReleaseInformation\ShowInfo.cs" />
+    <Compile Include="Resolve.cs" />
     <Compile Include="ShowNameFinder.cs" />
-    <Compile Include="SuppliedConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

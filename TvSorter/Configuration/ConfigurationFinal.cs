@@ -1,12 +1,13 @@
-﻿namespace TvSorter
+﻿namespace TvSorter.Configuration
 {
     using System.IO.Abstractions;
+    using Output;
 
-    public class FinalConfiguration : IConfiguration
+    public class ConfigurationFinal : IConfiguration
     {
         private const string ConfigurationFileName = "tvsorter.ini";
 
-        public FinalConfiguration(SuppliedConfiguration suppliedConfiguration, IFileSystem fileSystem, IOutput output)
+        public ConfigurationFinal(SuppliedConfiguration suppliedConfiguration, IFileSystem fileSystem, IOutput output)
         {
             if (!string.IsNullOrEmpty(suppliedConfiguration.Destination))
             {

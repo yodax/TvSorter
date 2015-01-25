@@ -1,4 +1,4 @@
-﻿namespace TvSorter
+﻿namespace TvSorter.ReleaseInformation
 {
     using System;
     using System.Collections.Generic;
@@ -20,7 +20,7 @@
             {"BLURAY", "BluRay"}
         };
 
-        private static readonly List<String> StartingQualityIndicators = new List<string>
+        private static readonly List<string> StartingQualityIndicators = new List<string>
         {
             "convert",
             "native",

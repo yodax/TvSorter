@@ -5,15 +5,17 @@
     using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
+    using Output;
+    using ReleaseInformation;
 
-    public class ExtractShowInfoFromRelease
+    public class ReleaseInformationOnFileSystem
     {
         private readonly IFileSystem fileSystem;
         private readonly IOutput output;
         private readonly IEnumerable<string> mediaTypes = new List<string> { "mkv", "avi", "mp4" };
 
 
-        public ExtractShowInfoFromRelease(IFileSystem fileSystem, IOutput output)
+        public ReleaseInformationOnFileSystem(IFileSystem fileSystem, IOutput output)
         {
             this.output = output;
             this.fileSystem = fileSystem;
@@ -44,7 +46,7 @@
             return true;
         }
 
-        public ShowInfo GetShowInfoForRelease(string releaseDirectory)
+        public ShowInfo GetShowInfo(string releaseDirectory)
         {
             var videoFile = GetMediaFile(releaseDirectory);
 

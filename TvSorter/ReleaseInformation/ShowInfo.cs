@@ -1,4 +1,4 @@
-namespace TvSorter
+namespace TvSorter.ReleaseInformation
 {
     using System;
 

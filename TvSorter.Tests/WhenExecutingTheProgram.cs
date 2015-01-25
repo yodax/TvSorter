@@ -3,16 +3,35 @@
     using System;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Output;
 
     [TestClass]
     public class WhenExecutingTheProgram
     {
         [TestMethod]
-        public void WithoutArgumentsItShouldExitNormally()
+        public void GivenAMoveRequestNoFilesOnTheFileSystemAMessageShouldBePrinted()
         {
-            Action program = () => Program.Main(new string[0]);
+            var resolve = new ResolveDouble(new ConfigurationDouble(@"c:\destination", @"c:\release"));
 
-            program.ShouldNotThrow<Exception>();
+            var programExecution = new ProgramExecution(resolve);
+
+            programExecution.Execute();
+            var output = resolve.For<IOutput>();
+
+            output.Lines.Should().Be(@"Release directory doesn't exist c:\release");
+        }
+
+        [TestMethod]
+        public void GivenAShowInfoRequestNoFilesOnTheFileSystemAMessageShouldBePrinted()
+        {
+            var resolve = new ResolveDouble(new ConfigurationDouble(@"c:\destination", @"c:\release", true));
+
+            var programExecution = new ProgramExecution(resolve);
+
+            programExecution.Execute();
+            var output = resolve.For<IOutput>();
+
+            output.Lines.Should().Be(@"Release directory doesn't exist c:\release");
         }
     }
 }

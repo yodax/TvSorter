@@ -1,4 +1,4 @@
-namespace TvSorter
+namespace TvSorter.Configuration
 {
     public abstract class SuppliedConfiguration : IConfiguration
     {

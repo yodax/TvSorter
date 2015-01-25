@@ -1,23 +1,40 @@
 ﻿namespace TvSorter.Tests
 {
+    using System.IO.Abstractions;
+    using Configuration;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Output;
 
     [TestClass]
     public class WhenResolvingAType
     {
-        private IResolve resolve;
+        private IResolve resolveDouble;
+        private IResolve actualResolve;
 
         [TestInitialize]
         public void Setup()
         {
-            resolve = new ResolveDouble(new ConfigurationDouble("", ""));
+            resolveDouble = new ResolveDouble(new ConfigurationDouble("", ""));
+            actualResolve = new Resolve(new ConfigurationDouble("", ""));
         }
 
         [TestMethod]
-        public void ConfigurationShouldBeResolveable()
+        public void AllTypesShouldBeAssignable()
         {
-            resolve.For<IConfiguration>().Should().BeAssignableTo<IConfiguration>();
+            CheckForResolve<IFileSystem>();
+            CheckForResolve<IConfiguration>();
+            CheckForResolve<IOutput>();
+            CheckForResolve<MoveRelease>();
+            CheckForResolve<ShowNameFinder>();
+            CheckForResolve<MoveReleaseOutput>();
+            CheckForResolve<ReleaseInformationOnFileSystem>();
+        }
+
+        private void CheckForResolve<T>()
+        {
+            resolveDouble.For<T>().Should().BeAssignableTo<T>();
+            actualResolve.For<T>().Should().BeAssignableTo<T>();
         }
     }
 }

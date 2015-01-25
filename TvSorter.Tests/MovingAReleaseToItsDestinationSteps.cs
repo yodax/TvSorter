@@ -5,6 +5,7 @@
     using System.IO.Abstractions;
     using System.Linq;
     using FluentAssertions;
+    using Output;
     using TechTalk.SpecFlow;
 
     [Binding]
@@ -52,7 +53,7 @@
         [When(@"we request a move")]
         public void WhenWeRequestAMove()
         {
-            var moveRelease = resolve.For<IMoveRelease>();
+            var moveRelease = resolve.For<MoveRelease>();
 
             moveRelease.From(ReleaseDirectory);
         }
