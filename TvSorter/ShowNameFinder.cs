@@ -18,7 +18,7 @@
 
             var showInfo = showInfoFromRelease.GetShowInfoForRelease(releaseDirectory);
             
-            output.AddLine(string.Format("{0} {1} {2}", showInfo.Name, showInfo.SeasonEpisode, showInfo.Quality));
+            output.AddLine(string.Format("{0} {1} {2}", showInfo.Name, showInfo.SeasonEpisode, showInfo.Quality.Replace(".", " ")));
         }
     }
 }

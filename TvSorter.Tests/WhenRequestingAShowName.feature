@@ -15,6 +15,13 @@ Scenario: Just one file in the release
 	When we request a show name from the release directory
 	Then the requested show name should be Show S01E01 HDTV
 
+Scenario: More complex filename in the release
+	Given the files in the release directory
+	| Item                         |
+	| Show.and.Show.S01E01.720p.HDTV-NOGROUP.mkv |
+	When we request a show name from the release directory
+	Then the requested show name should be Show and Show S01E01 720p HDTV
+
 Scenario: No valid files in the release
 	Given a directory structure
 	| Item                   | Type      |

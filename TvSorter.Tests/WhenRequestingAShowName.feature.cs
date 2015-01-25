@@ -116,28 +116,53 @@ this.FeatureBackground();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("No valid files in the release")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("More complex filename in the release")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When requesting a show name")]
-        public virtual void NoValidFilesInTheRelease()
+        public virtual void MoreComplexFilenameInTheRelease()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No valid files in the release", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("More complex filename in the release", ((string[])(null)));
 #line 18
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Item",
-                        "Type"});
+                        "Item"});
             table3.AddRow(new string[] {
-                        "c:\\incoming\\ReleaseDir",
-                        "Directory"});
+                        "Show.and.Show.S01E01.720p.HDTV-NOGROUP.mkv"});
 #line 19
- testRunner.Given("a directory structure", ((string)(null)), table3, "Given ");
+ testRunner.Given("the files in the release directory", ((string)(null)), table3, "Given ");
 #line 22
  testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 23
+ testRunner.Then("the requested show name should be Show and Show S01E01 720p HDTV", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("No valid files in the release")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When requesting a show name")]
+        public virtual void NoValidFilesInTheRelease()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No valid files in the release", ((string[])(null)));
+#line 25
+this.ScenarioSetup(scenarioInfo);
+#line 3
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item",
+                        "Type"});
+            table4.AddRow(new string[] {
+                        "c:\\incoming\\ReleaseDir",
+                        "Directory"});
+#line 26
+ testRunner.Given("a directory structure", ((string)(null)), table4, "Given ");
+#line 29
+ testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
  testRunner.Then("the output should be", "No media files detected in c:\\incoming\\ReleaseDir", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -149,23 +174,23 @@ this.FeatureBackground();
         public virtual void MoreThanOneMediaFileDetected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("More than one media file detected", ((string[])(null)));
-#line 28
+#line 35
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
-            table4.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "Show.S01E01.HDTV-NOGROUP.mkv"});
-            table4.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "Show.S01E02.HDTV-NOGROUP.mkv"});
-#line 29
- testRunner.Given("the files in the release directory", ((string)(null)), table4, "Given ");
-#line 33
+#line 36
+ testRunner.Given("the files in the release directory", ((string)(null)), table5, "Given ");
+#line 40
  testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 41
  testRunner.Then("the output should be", "More than one media file detected in c:\\incoming\\ReleaseDir", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -177,14 +202,14 @@ this.FeatureBackground();
         public virtual void NoReleaseDirectory()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No release directory", ((string[])(null)));
-#line 39
+#line 46
 this.ScenarioSetup(scenarioInfo);
 #line 3
 this.FeatureBackground();
-#line 40
+#line 47
  testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 41
+#line 48
  testRunner.Then("the output should be", "Release directory doesn\'t exist c:\\incoming\\ReleaseDir", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
