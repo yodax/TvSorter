@@ -5,16 +5,9 @@
     public class FinalConfiguration : IConfiguration
     {
         private const string ConfigurationFileName = "tvsorter.ini";
-        private readonly IFileSystem fileSystem;
-        private readonly IOutput output;
-        private readonly SuppliedConfiguration suppliedConfiguration;
 
         public FinalConfiguration(SuppliedConfiguration suppliedConfiguration, IFileSystem fileSystem, IOutput output)
         {
-            this.suppliedConfiguration = suppliedConfiguration;
-            this.fileSystem = fileSystem;
-            this.output = output;
-
             if (!string.IsNullOrEmpty(suppliedConfiguration.Destination))
             {
                 Destination = suppliedConfiguration.Destination;
@@ -23,6 +16,8 @@
             {
                 Release = suppliedConfiguration.Release;
             }
+
+            CheckForShowName = suppliedConfiguration.CheckForShowName;
 
             if (string.IsNullOrEmpty(Destination) && fileSystem.File.Exists(ConfigurationFileName))
             {
@@ -52,5 +47,6 @@
 
         public string Destination { get; private set; }
         public string Release { get; private set; }
+        public bool CheckForShowName { get; private set; }
     }
 }

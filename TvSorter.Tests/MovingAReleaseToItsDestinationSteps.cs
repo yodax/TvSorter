@@ -23,6 +23,7 @@
             resolve =
                 new ResolveDouble(new ConfigurationDouble(destination,
                     ReleaseDirectory));
+            ScenarioContext.Current.Add("resolve", resolve);
         }
 
         [Given(@"a release in (.*)")]
@@ -176,7 +177,7 @@
         }
 
         [Then(@"the output should not contain (.*)")]
-        public void ThenTheOutputShouldNotContainNFOFile(string stringToSearchFor)
+        public void ThenTheOutputShouldNotContainNfoFile(string stringToSearchFor)
         {
             var output = resolve.For<IOutput>();
 

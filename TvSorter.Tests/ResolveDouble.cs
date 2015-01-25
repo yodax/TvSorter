@@ -17,6 +17,9 @@
             builder.RegisterInstance(configurationDouble).As<SuppliedConfiguration>();
             builder.RegisterType<FinalConfiguration>().As<IConfiguration>().InstancePerLifetimeScope();
             builder.RegisterType<MoveRelease>().As<IMoveRelease>().InstancePerLifetimeScope();
+            builder.RegisterType<ShowNameFinder>().As<IShowNameFinder>().InstancePerLifetimeScope();
+            builder.RegisterType<MoveReleaseOutput>();
+            builder.RegisterType<ExtractShowInfoFromRelease>();
 
             scope = builder.Build().BeginLifetimeScope();
         }

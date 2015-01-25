@@ -105,6 +105,13 @@ Scenario: More than one media file detected
 	More than one media file detected in c:\incoming\ReleaseDir
 	"""
 
+Scenario: No release directory
+	When we request a move
+	Then the output should be
+	"""
+	Release directory doesn't exist c:\incoming\ReleaseDir
+	"""
+
 Scenario: No files are detected
 
 	If no files are detected a message should be shown and the original directory should be preserved

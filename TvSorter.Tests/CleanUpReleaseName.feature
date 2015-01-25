@@ -13,17 +13,19 @@ Scenario Template: Set of example cleanups
 	And the quality should be <Quality>
 
 Examples:
-| Input scene name                                                                | Clean scene name                                     | Show name                | Season | Episode | Group   | Quality                  |
-| Show.S01E11.720p.HDTV.x264-GROUP                                                | Show.S01E11.720p.HDTV.x264-GROUP                     | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264           |
-| Show.1x11.HDTV.x264-GROUP                                                       | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264                |
-| Show.S01E11.HDTV.x264-GROUP                                                     | Show.S01E11.HDTV.x264-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.x264                |
-| Show.S01E11.HDTV.XVID-GROUP                                                     | Show.S01E11.HDTV.XviD-GROUP                          | Show                     | 1      | 11      | GROUP   | HDTV.XviD                |
-| Show.Part.2.720p.HDTV.x264-GROUP                                                | Show.S01E02.720p.HDTV.x264-GROUP                     | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264           |
-| Show S06E01 720p WEB-DL DD5.1 H.264                                             | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP          | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264  |
-| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP                                       | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP            | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264  |
-| Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP                            | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264           |
-| Show.&.The.Showing.S01E11.HDTV.x264-GROUP                                       | Show.and.the.Showing.S01E11.HDTV.x264-GROUP          | Show and the Showing     | 1      | 11      | GROUP   | HDTV.x264                |
-| Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI | Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI      | Constantine              | 1      | 9       | ECI     | 1080p.WEB-DL.DD5.1.H.264 |
+| Input scene name                                                                | Clean scene name                                            | Show name                | Season | Episode | Group   | Quality                    |
+| Show.S01E11.720p.HDTV.x264-GROUP                                                | Show.S01E11.720p.HDTV.x264-GROUP                            | Show                     | 1      | 11      | GROUP   | 720p.HDTV.x264             |
+| Show.1x11.HDTV.x264-GROUP                                                       | Show.S01E11.HDTV.x264-GROUP                                 | Show                     | 1      | 11      | GROUP   | HDTV.x264                  |
+| Show.S01E11.HDTV.x264-GROUP                                                     | Show.S01E11.HDTV.x264-GROUP                                 | Show                     | 1      | 11      | GROUP   | HDTV.x264                  |
+| Show.S01E11.HDTV.XVID-GROUP                                                     | Show.S01E11.HDTV.XviD-GROUP                                 | Show                     | 1      | 11      | GROUP   | HDTV.XviD                  |
+| Show.Part.2.720p.HDTV.x264-GROUP                                                | Show.S01E02.720p.HDTV.x264-GROUP                            | Show                     | 1      | 2       | GROUP   | 720p.HDTV.x264             |
+| Show S06E01 720p WEB-DL DD5.1 H.264                                             | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP                 | Show                     | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264    |
+| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP                                       | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP                   | Show                     | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264    |
+| Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP                            | Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP        | Show With Multiple Names | 1      | 11      | GROUP   | 720p.HDTV.x264             |
+| Show.&.The.Showing.S01E11.HDTV.x264-GROUP                                       | Show.and.the.Showing.S01E11.HDTV.x264-GROUP                 | Show and the Showing     | 1      | 11      | GROUP   | HDTV.x264                  |
+| Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI | Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI             | Constantine              | 1      | 9       | ECI     | 1080p.WEB-DL.DD5.1.H.264   |
+| Melissa.&.Joey.S04E04.The.Day.After.1080p.WEB-DL.DD5.1.H.264-SA89               | Melissa.and.Joey.S04E04.1080p.WEB-DL.DD5.1.H.264-SA89       | Melissa and Joey         | 4      | 4       | SA89    | 1080p.WEB-DL.DD5.1.H.264   |
+| Dokter Tinus (2014) S03E12 720p HDTV NL Audio SAM TBS                           | Dokter.Tinus.2014.S03E12.720p.HDTV.NL.AUDIO.SAM.TBS-NOGROUP | Dokter Tinus 2014        | 3      | 12      | NOGROUP | 720p.HDTV.NL.AUDIO.SAM.TBS |
 
 Scenario Template: Quality strings should be cleaned up
 	Given an input of <Input scene name>

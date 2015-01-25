@@ -93,6 +93,12 @@
     <Compile Include="WhenCheckingCommandLineArgumentsSteps.cs" />
     <Compile Include="WhenExecutingTheProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenRequestingAShowName.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WhenRequestingAShowName.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WhenRequestingAShowNameSteps.cs" />
     <Compile Include="WhenResolvingAType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,10 @@
     <None Include="WhenCheckingCommandLineArguments.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WhenCheckingCommandLineArguments.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WhenRequestingAShowName.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WhenRequestingAShowName.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

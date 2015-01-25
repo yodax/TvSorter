@@ -21,12 +21,14 @@ Scenario Template: Destination and source ar both provided
 	Given the commandline parameters <Arguments>
 	Then the configuration setting destination is <Destination>
 	And the configuration setting release is <Release>
+	And the configuration setting to check for a show name is <Check for show name>
 
 Examples:
-| Arguments                                       | Destination | Release |
-| -d "destination" -r "release"                   | destination | release |
-| -r "release" -d "destination"                   | destination | release |
-| --release "release" --destination "destination" | destination | release |
+| Arguments                                       | Destination | Release | Check for show name |
+| -d "destination" -r "release"                   | destination | release | not set             |
+| -r "release" -d "destination"                   | destination | release | not set             |
+| --release "release" --destination "destination" | destination | release | not set             |
+| --showName --release "release"                  |             | release | set                 |
 
 Scenario: When release is supplied as an argument but no configuration file is present
 Given the commandline parameters --release c:\release

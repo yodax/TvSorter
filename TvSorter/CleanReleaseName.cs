@@ -51,6 +51,8 @@
             <string, string>
         {
             {" ", "."},
+            {"(", ""},
+            {")", ""},
             {"web-dl", "web.dl"},
             {"web-rip", "web.rip"},
             {"&", "and"}

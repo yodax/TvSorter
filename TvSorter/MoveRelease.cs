@@ -8,41 +8,39 @@ namespace TvSorter
 
     public class MoveRelease : IMoveRelease
     {
-        private readonly IEnumerable<string> allowedExtension = new List<string> {"mkv", "avi", "mp4", "nfo", "srt", "sub", "idx"};
+        private readonly IEnumerable<string> allowedExtension = new List<string>
+        {
+            "mkv",
+            "avi",
+            "mp4",
+            "nfo",
+            "srt",
+            "sub",
+            "idx"
+        };
+
         private readonly IConfiguration configuration;
         private readonly IFileSystem fileSystem;
-        private readonly IEnumerable<string> mediaTypes = new List<string> {"mkv", "avi", "mp4"};
-        private readonly IOutput output;
-        private readonly List<FileMovePair> filesThatWhereMoved;  
+        private readonly MoveReleaseOutput moveReleaseOutput;
+        private readonly ExtractShowInfoFromRelease extractShowInfoFromRelease;
 
-        public MoveRelease(IFileSystem fileSystem, IConfiguration configuration, IOutput output)
+        public MoveRelease(IFileSystem fileSystem, IConfiguration configuration,
+            MoveReleaseOutput moveReleaseOutput, ExtractShowInfoFromRelease showInfoFromRelease)
         {
+            extractShowInfoFromRelease = showInfoFromRelease;
             this.configuration = configuration;
-            this.output = output;
             this.fileSystem = fileSystem;
-            filesThatWhereMoved = new List<FileMovePair>();
+            this.moveReleaseOutput = moveReleaseOutput;
         }
 
         public void From(string releaseDirectory)
         {
-            if (!OnlyOneMediaFilePresentIn(releaseDirectory))
-            {
-                output.AddLine("More than one media file detected in " + releaseDirectory);
-                return; 
-            }
-
-            var videoFile = GetMediaFile(releaseDirectory);
-
-            if (string.IsNullOrEmpty(videoFile))
-            {
-                output.AddLine("No media files detected in " + releaseDirectory);
+            if (!extractShowInfoFromRelease.IsReleaseValid(releaseDirectory))
                 return;
-            }
-
-            var showInfo = CleanReleaseName.For(Path.GetFileNameWithoutExtension(videoFile));
+            var showInfo = extractShowInfoFromRelease.GetShowInfoForRelease(releaseDirectory);
             var destination = DetermineFileFileNameUsingShowInformation(showInfo, configuration.Destination);
 
-            AddHeaderToOutput(releaseDirectory, showInfo, destination);
+            moveReleaseOutput.AddHeaderToOutput(releaseDirectory, showInfo, destination);
 
             var nfoFileContents = "";
 
@@ -55,29 +53,51 @@ namespace TvSorter
                 var extension = ExtensionOfFileName(file);
                 var finalDestination = destination.Replace("{Extension}", extension);
 
-                if (extension.Equals("nfo", StringComparison.InvariantCultureIgnoreCase))
+                if (IsCurrentFileAnInfoFile(extension))
                 {
-                    if (!string.IsNullOrEmpty(nfoFileContents))
+                    if (WasThereAPreviousInfoFileLoaded(nfoFileContents))
                     {
-                        nfoFileContents += Environment.NewLine;
-                        nfoFileContents += Environment.NewLine + "=====================";
-                        nfoFileContents += Environment.NewLine;
-                        nfoFileContents += Environment.NewLine;
+                        nfoFileContents += AddInfoFileSeperator();
                     }
-                    nfoFileContents += fileSystem.File.ReadAllText(file);
+                    nfoFileContents += ReadInfoFileContents(file);
                 }
 
-                fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
-                
+                CreateDestinationDirectory(finalDestination);
+
                 MoveFileToDestination(file, finalDestination);
             }
-            FinalizeFileToMoveOutput();
 
-            AddFilesNotMovedToOutput(releaseDirectory);
-
-            AddNfoToOutput(nfoFileContents);
+            moveReleaseOutput.FinalizeFileToMoveOutput();
+            moveReleaseOutput.AddFilesNotMovedToOutput(releaseDirectory);
+            moveReleaseOutput.AddNfoToOutput(nfoFileContents);
 
             fileSystem.Directory.Delete(releaseDirectory, true);
+        }
+
+        private void CreateDestinationDirectory(string finalDestination)
+        {
+            fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
+        }
+
+        private string ReadInfoFileContents(string file)
+        {
+            return fileSystem.File.ReadAllText(file);
+        }
+
+        private static string AddInfoFileSeperator()
+        {
+            return Environment.NewLine + Environment.NewLine + "=====================" + Environment.NewLine +
+                   Environment.NewLine;
+        }
+
+        private static bool WasThereAPreviousInfoFileLoaded(string nfoFileContents)
+        {
+            return !string.IsNullOrEmpty(nfoFileContents);
+        }
+
+        private static bool IsCurrentFileAnInfoFile(string extension)
+        {
+            return extension.Equals("nfo", StringComparison.InvariantCultureIgnoreCase);
         }
 
         private void MoveFileToDestination(string file, string destination)
@@ -86,76 +106,16 @@ namespace TvSorter
             var finalDestination = destination;
             while (fileSystem.File.Exists(finalDestination))
             {
-                finalDestination = Path.Combine(Path.GetDirectoryName(destination), Path.GetFileNameWithoutExtension(destination) + "." + incrementForFileIdentifier + Path.GetExtension(destination));
+                var destinationDirectory = Path.GetDirectoryName(destination) ?? "";
+
+                finalDestination = Path.Combine(destinationDirectory,
+                    Path.GetFileNameWithoutExtension(destination) + "." + incrementForFileIdentifier +
+                    Path.GetExtension(destination));
                 incrementForFileIdentifier++;
             }
             fileSystem.File.Move(file, finalDestination);
 
-            AddFileMoveToOutput(file, finalDestination);
-        }
-
-        private void AddNfoToOutput(string nfoFileContents)
-        {
-            if (string.IsNullOrEmpty(nfoFileContents)) return;
-
-            output.AddLine("");
-            output.AddLine("NFO file:");
-            output.AddLine("");
-            foreach (var lineInNfoFile in nfoFileContents.Split(new []{Environment.NewLine, "\n"}, StringSplitOptions.None))
-            {
-                output.AddLine("\t$ " + lineInNfoFile);
-            }
-        }
-
-        private void AddFilesNotMovedToOutput(string releaseDirectory)
-        {
-            var filesNotMoved = fileSystem.Directory.GetFiles(releaseDirectory);
-
-            if (!filesNotMoved.Any())
-                return;
-
-            output.AddLine("");
-            output.AddLine("Not moving:");
-            output.AddLine("");
-
-            foreach (
-                var file in
-                    filesNotMoved)
-            {
-                output.AddLine(string.Format("\t$ {0}", Path.GetFileName(file)));
-            }
-        }
-
-        private void AddFileMoveToOutput(string file, string finalDestination)
-        {
-            filesThatWhereMoved.Add(new FileMovePair{Destination = Path.GetFileName(finalDestination), Source = Path.GetFileName(file)});
-        }
-
-        private void FinalizeFileToMoveOutput()
-        {
-            var maximumLength = filesThatWhereMoved.Max(f => f.Source.Length);
-
-            foreach (var fileThatWasMoved in filesThatWhereMoved)
-            {
-                output.AddLine(string.Format("\t$ {0} => {1}", fileThatWasMoved.Source.PadRight(maximumLength), fileThatWasMoved.Destination));
-            }
-        }
-
-        private void AddHeaderToOutput(string releaseDirectory, ShowInfo showInfo, string destination)
-        {
-            output.AddLine("Using filename: " + showInfo.ReleaseName);
-            output.AddLine("");
-            output.AddLine("Moving files from: " + releaseDirectory);
-            output.AddLine("        directory: " + Path.GetDirectoryName(destination));
-            output.AddLine("");
-            output.AddLine("Moving:");
-            output.AddLine("");
-        }
-
-        private bool OnlyOneMediaFilePresentIn(string releaseDirectory)
-        {
-            var mediaCount = mediaTypes.Sum(mediaType => fileSystem.Directory.GetFiles(releaseDirectory, "*." + mediaType).Count());
-            return mediaCount <= 1;
+            moveReleaseOutput.AddFileMoveToOutput(file, finalDestination);
         }
 
         private static string DetermineFileFileNameUsingShowInformation(ShowInfo showInfo,
@@ -182,27 +142,6 @@ namespace TvSorter
         {
             var extension = Path.GetExtension(file);
             return string.IsNullOrEmpty(extension) ? string.Empty : extension.Substring(1);
-        }
-
-        private string GetMediaFile(string releaseDirectory)
-        {
-            foreach (var mediaType in mediaTypes)
-            {
-                var mediaFile = GetMediaFileWithExtension(releaseDirectory, "*." +mediaType);
-                if (!string.IsNullOrEmpty(mediaFile))
-                    return mediaFile;
-            }
-
-            return string.Empty;
-        }
-
-        private string GetMediaFileWithExtension(string releaseDirectory, string searchPattern)
-        {
-            var files = fileSystem.Directory.GetFiles(releaseDirectory, searchPattern);
-            if (files.Length == 0)
-                return String.Empty;
-
-            return files[0];
         }
     }
 

@@ -9,7 +9,7 @@
     [Binding]
     public class WhenCheckingCommandLineArgumentsSteps
     {
-        private ResolveDouble resolve;
+        private IResolve resolve;
 
         [Given(@"the commandline parameters (.*)")]
         public void GivenTheCommandlineParameters(string commandLineParameters)
@@ -20,7 +20,8 @@
         [Then(@"the configuration setting destination is (.*)")]
         public void ThenTheConfigurationSettingDestinationIsDestination(string configurationValue)
         {
-            resolve.For<IConfiguration>().Destination.Should().Be(configurationValue);
+            if (!string.IsNullOrEmpty(configurationValue))
+                resolve.For<IConfiguration>().Destination.Should().Be(configurationValue);
         }
 
         [Then(@"the configuration setting release is (.*)")]
@@ -44,6 +45,9 @@
         [Then(@"the output should be a statment defining the usage of the program")]
         public void ThenTheOutputShouldBeAStatmentDefiningTheUsageOfTheProgram()
         {
+            if (resolve == null)
+                resolve = (IResolve) ScenarioContext.Current["resolve"];
+
             var output = resolve.For<IOutput>();
 
             var expectedOutput = new List<string>
@@ -76,5 +80,13 @@
             text.Write(multilineText);
             text.Close();
         }
+
+        [Then(@"the configuration setting to check for a show name is (.*)")]
+        public void ThenTheConfigurationSettingToCheckForAShowNameIsNotSet(string set)
+        {
+            resolve.For<IConfiguration>()
+                .CheckForShowName.Should().Be(set.Equals("set", StringComparison.InvariantCultureIgnoreCase));
+        }
+
     }
 }
