@@ -5,5 +5,6 @@ namespace TvSorter.Configuration
         string Destination { get; }
         string Release { get; }
         bool CheckForShowName { get; }
+        bool IsValid { get; }
     }
 }

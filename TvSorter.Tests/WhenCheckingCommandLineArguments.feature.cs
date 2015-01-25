@@ -84,7 +84,7 @@ namespace TvSorter.Tests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void DestinationAndSourceArBothProvided(string arguments, string destination, string release, string checkForShowName, string[] exampleTags)
+        public virtual void DestinationAndSourceArBothProvided(string arguments, string destination, string release, string checkForShowName, string valid, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Destination and source ar both provided", exampleTags);
 #line 20
@@ -97,6 +97,8 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And(string.Format("the configuration setting release is {0}", release), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 24
  testRunner.And(string.Format("the configuration setting to check for a show name is {0}", checkForShowName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+ testRunner.And(string.Format("the configuration should be marked as {0}", valid), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -109,9 +111,10 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Destination", "destination")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Release", "release")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Check for show name", "not set")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Valid", "valid")]
         public virtual void DestinationAndSourceArBothProvided_DDestination_RRelease()
         {
-            this.DestinationAndSourceArBothProvided("-d \"destination\" -r \"release\"", "destination", "release", "not set", ((string[])(null)));
+            this.DestinationAndSourceArBothProvided("-d \"destination\" -r \"release\"", "destination", "release", "not set", "valid", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -122,9 +125,10 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Destination", "destination")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Release", "release")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Check for show name", "not set")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Valid", "valid")]
         public virtual void DestinationAndSourceArBothProvided_RRelease_DDestination()
         {
-            this.DestinationAndSourceArBothProvided("-r \"release\" -d \"destination\"", "destination", "release", "not set", ((string[])(null)));
+            this.DestinationAndSourceArBothProvided("-r \"release\" -d \"destination\"", "destination", "release", "not set", "valid", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -135,9 +139,10 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Destination", "destination")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Release", "release")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Check for show name", "not set")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Valid", "valid")]
         public virtual void DestinationAndSourceArBothProvided_ReleaseRelease_DestinationDestination()
         {
-            this.DestinationAndSourceArBothProvided("--release \"release\" --destination \"destination\"", "destination", "release", "not set", ((string[])(null)));
+            this.DestinationAndSourceArBothProvided("--release \"release\" --destination \"destination\"", "destination", "release", "not set", "valid", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -148,9 +153,24 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Destination", "")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Release", "release")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Check for show name", "set")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Valid", "valid")]
         public virtual void DestinationAndSourceArBothProvided_ShowName_ReleaseRelease()
         {
-            this.DestinationAndSourceArBothProvided("--showName --release \"release\"", "", "release", "set", ((string[])(null)));
+            this.DestinationAndSourceArBothProvided("--showName --release \"release\"", "", "release", "set", "valid", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Destination and source ar both provided")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "--showName")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Arguments", "--showName")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Destination", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Release", "")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Check for show name", "set")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Valid", "invalid")]
+        public virtual void DestinationAndSourceArBothProvided_ShowName()
+        {
+            this.DestinationAndSourceArBothProvided("--showName", "", "", "set", "invalid", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -159,14 +179,16 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void WhenReleaseIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When release is supplied as an argument but no configuration file is present", ((string[])(null)));
-#line 33
-this.ScenarioSetup(scenarioInfo);
-#line 34
-testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 35
-testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 36
+testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
+testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 38
 testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 39
+testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -177,14 +199,16 @@ testRunner.Then("the output should be a statment defining the usage of the progr
         public virtual void WhenDestinationIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When destination is supplied as an argument but no configuration file is present", ((string[])(null)));
-#line 38
-this.ScenarioSetup(scenarioInfo);
-#line 39
-testRunner.Given("the commandline parameters --destination c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
-testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 41
+this.ScenarioSetup(scenarioInfo);
+#line 42
+testRunner.Given("the commandline parameters --destination c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 43
+testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 44
 testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 45
+testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -195,14 +219,16 @@ testRunner.Then("the output should be a statment defining the usage of the progr
         public virtual void WhenNoCommandLineArgumentsAreSuppliedAndNoConfigurationFileIsPresent()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no command line arguments are supplied and no configuration file is present", ((string[])(null)));
-#line 43
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 44
+#line 48
 testRunner.Given("No command line parameters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 45
+#line 49
 testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 46
+#line 50
 testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 51
+testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -213,15 +239,17 @@ testRunner.Then("the output should be a statment defining the usage of the progr
         public virtual void WhenNoDestinationIsGivenButItIsPresentInTheConfigurationFile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no destination is given but it is present in the configuration file", ((string[])(null)));
-#line 48
+#line 53
 this.ScenarioSetup(scenarioInfo);
-#line 49
+#line 54
 testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 50
+#line 55
 testRunner.And("the configuration file", "destination=c:\\destination", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 54
+#line 59
 testRunner.Then("the configuration setting destination is c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 60
+testRunner.And("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -232,16 +260,56 @@ testRunner.Then("the configuration setting destination is c:\\destination", ((st
         public virtual void WhenDestinationIsSuppliedFromTheCommandlineAndFromTheConfigfile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When destination is supplied from the commandline and from the configfile", ((string[])(null)));
-#line 56
+#line 62
 this.ScenarioSetup(scenarioInfo);
-#line 57
+#line 63
 testRunner.Given("the commandline parameters --destination c:\\destinationFromCommandLine --release " +
                     "c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 58
+#line 64
 testRunner.And("the configuration file", "destination=c:\\destinationFromConfig", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 62
+#line 68
 testRunner.Then("the configuration setting destination is c:\\destinationFromCommandLine", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 69
+testRunner.And("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When an incorrect config is supplied")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
+        public virtual void WhenAnIncorrectConfigIsSupplied()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When an incorrect config is supplied", ((string[])(null)));
+#line 71
+this.ScenarioSetup(scenarioInfo);
+#line 72
+testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 73
+testRunner.And("the configuration file", "notvalid", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 77
+testRunner.Then("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When an incorrect config name is supplied")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
+        public virtual void WhenAnIncorrectConfigNameIsSupplied()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When an incorrect config name is supplied", ((string[])(null)));
+#line 79
+this.ScenarioSetup(scenarioInfo);
+#line 80
+testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 81
+testRunner.And("the configuration file", "notvalid=c:\\", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 85
+testRunner.Then("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

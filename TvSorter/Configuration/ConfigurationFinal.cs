@@ -1,5 +1,6 @@
 ﻿namespace TvSorter.Configuration
 {
+    using System;
     using System.IO.Abstractions;
     using Output;
 
@@ -20,14 +21,20 @@
 
             CheckForShowName = suppliedConfiguration.CheckForShowName;
 
-            if (string.IsNullOrEmpty(Destination) && fileSystem.File.Exists(ConfigurationFileName))
+            if (WeHaveNoSuppliedDestinationButAConfigFileExistsOnDisk(fileSystem))
             {
                 var textFile = fileSystem.File.ReadAllText(ConfigurationFileName);
-                Destination = textFile.Split('=')[1];
+                var strings = textFile.Split('=');
+
+                if (strings.Length == 2 && strings[0].Equals("destination", StringComparison.InvariantCultureIgnoreCase))
+                    Destination = strings[1];
             }
 
-            if ((string.IsNullOrEmpty(Destination) || string.IsNullOrEmpty(Release)) &&
-                !fileSystem.File.Exists(ConfigurationFileName))
+            if (
+                    WeAreCheckingForShowNameButWeDontHaveARelease()
+                    ||
+                    WeAreMovingAReleaseButDontHaveAReleaseOrADestination()
+                )
             {
                 output.AddLine(@" Please add a configuration file called <TvSorter.ini> containing: ");
                 output.AddLine(@"                                                                   ");
@@ -44,10 +51,30 @@
                 output.AddLine(@" <Path to destination> can be formatted like:                      ");
                 output.AddLine(@" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        ");
             }
+            else
+            {
+                IsValid = true;
+            }
+        }
+
+        private bool WeHaveNoSuppliedDestinationButAConfigFileExistsOnDisk(IFileSystem fileSystem)
+        {
+            return string.IsNullOrEmpty(Destination) && fileSystem.File.Exists(ConfigurationFileName);
+        }
+
+        private bool WeAreMovingAReleaseButDontHaveAReleaseOrADestination()
+        {
+            return (!CheckForShowName && (string.IsNullOrEmpty(Release) || string.IsNullOrEmpty(Destination)));
+        }
+
+        private bool WeAreCheckingForShowNameButWeDontHaveARelease()
+        {
+            return (CheckForShowName && string.IsNullOrEmpty(Release));
         }
 
         public string Destination { get; private set; }
         public string Release { get; private set; }
         public bool CheckForShowName { get; private set; }
+        public bool IsValid { get; private set; }
     }
 }

@@ -15,15 +15,18 @@ namespace TvSorter
         {
             var configuration = resolve.For<IConfiguration>();
 
-            if (!configuration.CheckForShowName)
+            if (configuration.IsValid)
             {
-                var moveRelease = resolve.For<MoveRelease>();
-                moveRelease.From(configuration.Release);
-            }
-            else
-            {
-                var showNameFinder = resolve.For<ShowNameFinder>();
-                showNameFinder.Find(configuration.Release);
+                if (!configuration.CheckForShowName)
+                {
+                    var moveRelease = resolve.For<MoveRelease>();
+                    moveRelease.From(configuration.Release);
+                }
+                else
+                {
+                    var showNameFinder = resolve.For<ShowNameFinder>();
+                    showNameFinder.Find(configuration.Release);
+                }
             }
         }
     }

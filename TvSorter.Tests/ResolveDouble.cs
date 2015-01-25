@@ -18,8 +18,8 @@
             builder.RegisterInstance(configurationDouble).As<SuppliedConfiguration>();
             builder.RegisterType<ConfigurationFinal>().As<IConfiguration>().InstancePerLifetimeScope();
             builder.RegisterInstance(new OutputDouble()).As<IOutput>();
-            builder.RegisterType<MoveRelease>();
-            builder.RegisterType<ShowNameFinder>();
+            builder.RegisterType<MoveRelease>().InstancePerLifetimeScope();
+            builder.RegisterType<ShowNameFinder>().InstancePerLifetimeScope();
             builder.RegisterType<MoveReleaseOutput>();
             builder.RegisterType<ReleaseInformationOnFileSystem>();
 
