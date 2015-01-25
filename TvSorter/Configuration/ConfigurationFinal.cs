@@ -29,7 +29,6 @@
             if ((string.IsNullOrEmpty(Destination) || string.IsNullOrEmpty(Release)) &&
                 !fileSystem.File.Exists(ConfigurationFileName))
             {
-                output.AddLine(@" Line                                                              ");
                 output.AddLine(@" Please add a configuration file called <TvSorter.ini> containing: ");
                 output.AddLine(@"                                                                   ");
                 output.AddLine(@" destination=<Path to destination>                                 ");
@@ -40,6 +39,7 @@
                 output.AddLine(@"                                                                   ");
                 output.AddLine(@" -r OR --release <Path to release>                                 ");
                 output.AddLine(@" -d OR --destination <Path to destination>                         ");
+                output.AddLine(@" --showinfo <Path to destination>                                  ");
                 output.AddLine(@"                                                                   ");
                 output.AddLine(@" <Path to destination> can be formatted like:                      ");
                 output.AddLine(@" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        ");

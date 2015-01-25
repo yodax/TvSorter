@@ -54,7 +54,6 @@
 
             var expectedOutput = new List<string>
             {
-                @" Line                                                              ",
                 @" Please add a configuration file called <TvSorter.ini> containing: ",
                 @"                                                                   ",
                 @" destination=<Path to destination>                                 ",
@@ -65,6 +64,7 @@
                 @"                                                                   ",
                 @" -r OR --release <Path to release>                                 ",
                 @" -d OR --destination <Path to destination>                         ",
+                @" --showinfo <Path to destination>                                  ",
                 @"                                                                   ",
                 @" <Path to destination> can be formatted like:                      ",
                 @" c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}        "
