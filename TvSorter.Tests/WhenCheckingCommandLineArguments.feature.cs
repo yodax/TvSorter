@@ -202,35 +202,40 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When release is supplied as an argument but no configuration file is present")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("The weirdest and complex commandline ever...")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
-        public virtual void WhenReleaseIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
+        public virtual void TheWeirdestAndComplexCommandlineEver_()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When release is supplied as an argument but no configuration file is present", ((string[])(null)));
-#line 37
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The weirdest and complex commandline ever...", ((string[])(null)));
+#line 36
 this.ScenarioSetup(scenarioInfo);
+#line 37
+testRunner.Given("the commandline parameters mono TvSorter.exe --showname --release \"/tank/video/TV" +
+                    "/TempTV/How To Get Away With Murder - S01E01 [1080p] WEB-DL [Subtitles Included]" +
+                    "/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
-testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
 testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 39
+testRunner.Then("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 40
-testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.And("the configuration setting to check for a show name is set", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 41
-testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("the configuration setting release is /tank/video/TV/TempTV/How To Get Away With M" +
+                    "urder - S01E01 [1080p] WEB-DL [Subtitles Included]/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When destination is supplied as an argument but no configuration file is present")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When release is supplied as an argument but no configuration file is present")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
-        public virtual void WhenDestinationIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
+        public virtual void WhenReleaseIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When destination is supplied as an argument but no configuration file is present", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When release is supplied as an argument but no configuration file is present", ((string[])(null)));
 #line 43
 this.ScenarioSetup(scenarioInfo);
 #line 44
-testRunner.Given("the commandline parameters --destination c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 45
 testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 46
@@ -242,20 +247,40 @@ testRunner.And("the configuration should be marked as invalid", ((string)(null))
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When no command line arguments are supplied and no configuration file is present")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When destination is supplied as an argument but no configuration file is present")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
-        public virtual void WhenNoCommandLineArgumentsAreSuppliedAndNoConfigurationFileIsPresent()
+        public virtual void WhenDestinationIsSuppliedAsAnArgumentButNoConfigurationFileIsPresent()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no command line arguments are supplied and no configuration file is present", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When destination is supplied as an argument but no configuration file is present", ((string[])(null)));
 #line 49
 this.ScenarioSetup(scenarioInfo);
 #line 50
-testRunner.Given("No command line parameters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("the commandline parameters --destination c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 51
 testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 52
 testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 53
+testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When no command line arguments are supplied and no configuration file is present")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "When checking command line arguments")]
+        public virtual void WhenNoCommandLineArgumentsAreSuppliedAndNoConfigurationFileIsPresent()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no command line arguments are supplied and no configuration file is present", ((string[])(null)));
+#line 55
+this.ScenarioSetup(scenarioInfo);
+#line 56
+testRunner.Given("No command line parameters", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 57
+testRunner.And("no configuration file is present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 58
+testRunner.Then("the output should be a statment defining the usage of the program", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 59
 testRunner.And("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -269,11 +294,11 @@ testRunner.And("the configuration should be marked as invalid", ((string)(null))
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no destination is given and no configuration file is present but we are look" +
                     "ing up a show name", ((string[])(null)));
-#line 55
+#line 61
 this.ScenarioSetup(scenarioInfo);
-#line 56
+#line 62
 testRunner.Given("the commandline parameters --release c:\\release --showname", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 57
+#line 63
 testRunner.Then("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -285,16 +310,16 @@ testRunner.Then("the configuration should be marked as valid", ((string)(null)),
         public virtual void WhenNoDestinationIsGivenButItIsPresentInTheConfigurationFile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When no destination is given but it is present in the configuration file", ((string[])(null)));
-#line 59
+#line 65
 this.ScenarioSetup(scenarioInfo);
-#line 60
+#line 66
 testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 61
+#line 67
 testRunner.And("the configuration file", "destination=c:\\destination", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 65
+#line 71
 testRunner.Then("the configuration setting destination is c:\\destination", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 66
+#line 72
 testRunner.And("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -306,17 +331,17 @@ testRunner.And("the configuration should be marked as valid", ((string)(null)), 
         public virtual void WhenDestinationIsSuppliedFromTheCommandlineAndFromTheConfigfile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When destination is supplied from the commandline and from the configfile", ((string[])(null)));
-#line 68
+#line 74
 this.ScenarioSetup(scenarioInfo);
-#line 69
+#line 75
 testRunner.Given("the commandline parameters --destination c:\\destinationFromCommandLine --release " +
                     "c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 70
+#line 76
 testRunner.And("the configuration file", "destination=c:\\destinationFromConfig", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 74
+#line 80
 testRunner.Then("the configuration setting destination is c:\\destinationFromCommandLine", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 75
+#line 81
 testRunner.And("the configuration should be marked as valid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -328,14 +353,14 @@ testRunner.And("the configuration should be marked as valid", ((string)(null)), 
         public virtual void WhenAnIncorrectConfigIsSupplied()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When an incorrect config is supplied", ((string[])(null)));
-#line 77
+#line 83
 this.ScenarioSetup(scenarioInfo);
-#line 78
+#line 84
 testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 79
+#line 85
 testRunner.And("the configuration file", "notvalid", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 83
+#line 89
 testRunner.Then("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -347,14 +372,14 @@ testRunner.Then("the configuration should be marked as invalid", ((string)(null)
         public virtual void WhenAnIncorrectConfigNameIsSupplied()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When an incorrect config name is supplied", ((string[])(null)));
-#line 85
+#line 91
 this.ScenarioSetup(scenarioInfo);
-#line 86
+#line 92
 testRunner.Given("the commandline parameters --release c:\\release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 87
+#line 93
 testRunner.And("the configuration file", "notvalid=c:\\", ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 91
+#line 97
 testRunner.Then("the configuration should be marked as invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -33,6 +33,12 @@ Examples:
 | --showName --release /tank/video/TV/TempTV/How\ - To\ Get/ |             | /tank/video/TV/TempTV/How\ - To\ Get/ | set                 | valid   |
 | --showName --release "/tank/video/TV/TempTV/How\ To\ Get/" |             | /tank/video/TV/TempTV/How\ To\ Get/   | set                 | valid   |
 
+Scenario: The weirdest and complex commandline ever...
+Given the commandline parameters mono TvSorter.exe --showname --release "/tank/video/TV/TempTV/How To Get Away With Murder - S01E01 [1080p] WEB-DL [Subtitles Included]/"
+And no configuration file is present
+Then the configuration should be marked as valid
+And the configuration setting to check for a show name is set
+And the configuration setting release is /tank/video/TV/TempTV/How To Get Away With Murder - S01E01 [1080p] WEB-DL [Subtitles Included]/
 
 Scenario: When release is supplied as an argument but no configuration file is present
 Given the commandline parameters --release c:\release
