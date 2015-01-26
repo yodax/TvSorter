@@ -16,7 +16,7 @@
         [Given(@"the commandline parameters (.*)")]
         public void GivenTheCommandlineParameters(string commandLineParameters)
         {
-            resolve = new ResolveDouble(new ConfigurationSupplied(commandLineParameters.Split(' ')));
+            resolve = new ResolveDouble(new ConfigurationSupplied("application.exe " + commandLineParameters));
         }
 
         [Then(@"the configuration setting destination is (.*)")]
@@ -42,7 +42,7 @@
         [Given(@"No command line parameters")]
         public void GivenNoCommandLineParameters()
         {
-            resolve = new ResolveDouble(new ConfigurationSupplied(new string[0]));
+            resolve = new ResolveDouble(new ConfigurationSupplied("blaat.exe"));
         }
 
         [Then(@"the configuration should be marked as (.*)")]

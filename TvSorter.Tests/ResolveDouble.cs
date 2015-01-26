@@ -10,12 +10,12 @@
     {
         private readonly ILifetimeScope scope;
 
-        public ResolveDouble(SuppliedConfiguration configurationDouble)
+        public ResolveDouble(AbstractConfigurationSupplied abstractConfigurationSupplied)
         {
             var builder = new ContainerBuilder();
 
             builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
-            builder.RegisterInstance(configurationDouble).As<SuppliedConfiguration>();
+            builder.RegisterInstance(abstractConfigurationSupplied).As<AbstractConfigurationSupplied>();
             builder.RegisterType<ConfigurationFinal>().As<IConfiguration>().InstancePerLifetimeScope();
             builder.RegisterInstance(new OutputDouble()).As<IOutput>();
             builder.RegisterType<MoveRelease>().InstancePerLifetimeScope();

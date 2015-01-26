@@ -3,25 +3,26 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
 
-    public class ConfigurationSupplied : SuppliedConfiguration
+    public class ConfigurationSupplied : AbstractConfigurationSupplied
     {
-        public ConfigurationSupplied(string[] arguments)
+        public ConfigurationSupplied(string arguments)
         {
-            Destination = FindConfigurationInCommandLineArguments(new[] {"-d", "--destination"}, arguments);
-            Release = FindConfigurationInCommandLineArguments(new[] {"-r", "--release"}, arguments);
+            Destination = FindConfigurationInCommandLineArguments(new[] { "-d", "--destination" }, arguments);
+            Release = FindConfigurationInCommandLineArguments(new[] { "-r", "--release" }, arguments);
             CheckForShowName = arguments.Contains("--showName");
         }
 
         private static string FindConfigurationInCommandLineArguments(IEnumerable<string> parameterName,
-            string[] arguments)
+            string arguments)
         {
             foreach (var parameter in parameterName)
             {
-                var check = Array.IndexOf(arguments, parameter);
-                if (check >= 0)
+                var match = Regex.Match(arguments, parameter + " (.*?)(-|$)");
+                if (match.Groups.Count > 1 && match.Groups[1].Captures.Count > 0)
                 {
-                    return arguments[check + 1].Replace("\"", "");
+                    return match.Groups[1].Captures[0].Value.Trim().Replace("\"","");
                 }
             }
             return string.Empty;

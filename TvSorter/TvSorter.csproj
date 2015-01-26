@@ -51,7 +51,7 @@
     <Compile Include="Configuration\ConfigurationFinal.cs" />
     <Compile Include="Configuration\ConfigurationSupplied.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
-    <Compile Include="Configuration\SuppliedConfiguration.cs" />
+    <Compile Include="Configuration\AbstractConfigurationSupplied.cs" />
     <Compile Include="Output\IOutput.cs" />
     <Compile Include="Output\MoveReleaseOutput.cs" />
     <Compile Include="Output\OutputConsolse.cs" />

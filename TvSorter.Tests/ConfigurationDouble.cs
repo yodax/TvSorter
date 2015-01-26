@@ -2,7 +2,7 @@ namespace TvSorter.Tests
 {
     using Configuration;
 
-    public class ConfigurationDouble : SuppliedConfiguration
+    public class ConfigurationDouble : AbstractConfigurationSupplied
     {
         public ConfigurationDouble(string destination, string release, bool checkForShowName = false)
         {

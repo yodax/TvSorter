@@ -9,12 +9,12 @@ namespace TvSorter
     {
         private readonly ILifetimeScope scope;
 
-        public Resolve(SuppliedConfiguration configurationFromCommandLine)
+        public Resolve(AbstractConfigurationSupplied configurationFromCommandLine)
         {
             var builder = new ContainerBuilder();
 
             builder.RegisterType<FileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
-            builder.RegisterInstance(configurationFromCommandLine).As<SuppliedConfiguration>();
+            builder.RegisterInstance(configurationFromCommandLine).As<AbstractConfigurationSupplied>();
             builder.RegisterType<ConfigurationFinal>().As<IConfiguration>().InstancePerLifetimeScope();
             builder.RegisterInstance(new OutputConsolse()).As<IOutput>();
             builder.RegisterType<MoveRelease>();

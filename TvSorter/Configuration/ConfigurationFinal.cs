@@ -8,18 +8,18 @@
     {
         private const string ConfigurationFileName = "tvsorter.ini";
 
-        public ConfigurationFinal(SuppliedConfiguration suppliedConfiguration, IFileSystem fileSystem, IOutput output)
+        public ConfigurationFinal(AbstractConfigurationSupplied abstractConfigurationSupplied, IFileSystem fileSystem, IOutput output)
         {
-            if (!string.IsNullOrEmpty(suppliedConfiguration.Destination))
+            if (!string.IsNullOrEmpty(abstractConfigurationSupplied.Destination))
             {
-                Destination = suppliedConfiguration.Destination;
+                Destination = abstractConfigurationSupplied.Destination;
             }
-            if (!string.IsNullOrEmpty(suppliedConfiguration.Release))
+            if (!string.IsNullOrEmpty(abstractConfigurationSupplied.Release))
             {
-                Release = suppliedConfiguration.Release;
+                Release = abstractConfigurationSupplied.Release;
             }
 
-            CheckForShowName = suppliedConfiguration.CheckForShowName;
+            CheckForShowName = abstractConfigurationSupplied.CheckForShowName;
 
             if (WeHaveNoSuppliedDestinationButAConfigFileExistsOnDisk(fileSystem))
             {
