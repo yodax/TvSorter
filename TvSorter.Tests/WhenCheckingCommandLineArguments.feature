@@ -24,14 +24,14 @@ Scenario Template: Destination and source ar both provided
 	And the configuration setting to check for a show name is <Check for show name>
 	And the configuration should be marked as <Valid>
 Examples:
-| Arguments                                                  | Destination | Release                             | Check for show name | Valid   |
-| -d "destination" -r "release"                              | destination | release                             | not set             | valid   |
-| -r "release" -d "destination"                              | destination | release                             | not set             | valid   |
-| --release "release" --destination "destination"            | destination | release                             | not set             | valid   |
-| --showName --release "release"                             |             | release                             | set                 | valid   |
-| --showName                                                 |             |                                     | set                 | invalid |
-| --showName --release /tank/video/TV/TempTV/How\ To\ Get/   |             | /tank/video/TV/TempTV/How\ To\ Get/ | set                 | valid   |
-| --showName --release "/tank/video/TV/TempTV/How\ To\ Get/" |             | /tank/video/TV/TempTV/How\ To\ Get/ | set                 | valid   |
+| Arguments                                                  | Destination | Release                               | Check for show name | Valid   |
+| -d "destination" -r "release"                              | destination | release                               | not set             | valid   |
+| -r "release" -d "destination"                              | destination | release                               | not set             | valid   |
+| --release "release" --destination "destination"            | destination | release                               | not set             | valid   |
+| --showName --Release "release"                             |             | release                               | set                 | valid   |
+| --showName                                                 |             |                                       | set                 | invalid |
+| --showName --release /tank/video/TV/TempTV/How\ - To\ Get/ |             | /tank/video/TV/TempTV/How\ - To\ Get/ | set                 | valid   |
+| --showName --release "/tank/video/TV/TempTV/How\ To\ Get/" |             | /tank/video/TV/TempTV/How\ To\ Get/   | set                 | valid   |
 
 
 Scenario: When release is supplied as an argument but no configuration file is present
@@ -51,6 +51,10 @@ Given No command line parameters
 And no configuration file is present
 Then the output should be a statment defining the usage of the program
 And the configuration should be marked as invalid
+
+Scenario: When no destination is given and no configuration file is present but we are looking up a show name
+Given the commandline parameters --release c:\release --showname
+Then the configuration should be marked as valid
 
 Scenario: When no destination is given but it is present in the configuration file
 Given the commandline parameters --release c:\release
