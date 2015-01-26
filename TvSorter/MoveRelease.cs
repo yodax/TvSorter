@@ -44,7 +44,7 @@ namespace TvSorter
 
             if (!showInfo.Parseable)
             {
-                moveReleaseOutput.NotParseable();
+                moveReleaseOutput.NotParseable(showInfo);
                 return;
             }
 

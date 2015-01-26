@@ -109,6 +109,10 @@
                     {
                         releaseName = ConvertXSeasonToSeasonEpidose(releaseName);
                     }
+                    if (ContainsThreeDecimalEpisodeString(releaseName))
+                    {
+                        releaseName = ConvertThreeDecimalEpisodeString(releaseName);
+                    }
                 }
 
                 if (!ContainsReleasGroup(releaseName))
@@ -133,6 +137,19 @@
                     Parseable = false
                 };
             }
+        }
+
+        private static string ConvertThreeDecimalEpisodeString(string releaseName)
+        {
+            var match = Regex.Match(releaseName, @"\.(\d{1})(\d{2})\.");
+            var season = match.Groups[1].Captures[0];
+            var episode = match.Groups[2].Captures[0];
+            return Regex.Replace(releaseName, @"\.\d{3}\.", ".s" + season + "e" + episode + ".");
+        }
+
+        private static bool ContainsThreeDecimalEpisodeString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"\.\d{3}\.");
         }
 
         private static string RemoveEverythingBetweenBracketsExceptQuality(string releaseName)

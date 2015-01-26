@@ -25,5 +25,6 @@ namespace TvSorter.ReleaseInformation
         }
 
         public bool Parseable { get; set; }
+        public string ParsingAttempt { get; set; }
     }
 }

@@ -50,9 +50,15 @@
         {
             var videoFile = GetMediaFile(releaseDirectory);
 
-            var showInfoFromFile =  CleanReleaseName.For(Path.GetFileNameWithoutExtension(videoFile));
+            var videoFileName = Path.GetFileNameWithoutExtension(videoFile);
+            var showInfoFromFile =  CleanReleaseName.For(videoFileName);
 
-            return !showInfoFromFile.Parseable ? CleanReleaseName.For(Path.GetFileName(releaseDirectory)) : showInfoFromFile;
+            var releaseDirectoryName = Path.GetFileName(releaseDirectory);
+
+            var showInfoFromReleaseDirectory = CleanReleaseName.For(releaseDirectoryName);
+            showInfoFromReleaseDirectory.ParsingAttempt = "Tried: " + videoFileName + " + " + releaseDirectoryName;
+
+            return !showInfoFromFile.Parseable ? showInfoFromReleaseDirectory : showInfoFromFile;
         }
 
         private bool OnlyOneMediaFilePresentIn(string releaseDirectory)

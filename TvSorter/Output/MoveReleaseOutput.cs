@@ -20,9 +20,9 @@ namespace TvSorter.Output
             filesThatWhereMoved = new List<FileMovePair>();
         }
 
-        public void NotParseable()
+        public void NotParseable(ShowInfo showInfo)
         {
-            output.AddLine("Can't parse release name!");
+            output.AddLine("Can't parse release name! " + showInfo.ParsingAttempt);
         }
 
 

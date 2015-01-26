@@ -27,7 +27,7 @@
             }
             else
             {
-                output.AddLine("Can't parse release name!");
+                output.AddLine("Can't parse release name! " + showInfo.ParsingAttempt);
             }
         }
     }
