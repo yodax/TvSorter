@@ -61,7 +61,7 @@ namespace TvSorter
                             IsOfAllowedExtension))
             {
                 var extension = ExtensionOfFileName(file);
-                var finalDestination = destination.Replace("{Extension}", extension);
+                var finalDestination = destination.Replace("{Extension}", extension).Trim();
 
                 if (IsCurrentFileAnInfoFile(extension))
                 {
