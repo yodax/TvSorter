@@ -53,7 +53,7 @@
             var videoFileName = Path.GetFileNameWithoutExtension(videoFile);
             var showInfoFromFile =  CleanReleaseName.For(videoFileName);
 
-            var releaseDirectoryName = Path.GetFileName(releaseDirectory);
+            var releaseDirectoryName = fileSystem.DirectoryInfo.FromDirectoryName(releaseDirectory).Name;
 
             var showInfoFromReleaseDirectory = CleanReleaseName.For(releaseDirectoryName);
             showInfoFromReleaseDirectory.ParsingAttempt = "Tried: " + videoFileName + " + " + releaseDirectoryName;
