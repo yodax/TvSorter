@@ -1,4 +1,6 @@
-﻿Feature: When checking command line arguments
+﻿Feature: Configure the program
+
+	Supplying configuration to the program via command line arguments or a configuration file
 
    If the arguments supplied are in correct a message should be show:
 
@@ -24,14 +26,15 @@ Scenario Template: Destination and source ar both provided
 	And the configuration setting to check for a show name is <Check for show name>
 	And the configuration should be marked as <Valid>
 Examples:
-| Arguments                                                  | Destination | Release                               | Check for show name | Valid   |
-| -d "destination" -r "release"                              | destination | release                               | not set             | valid   |
-| -r "release" -d "destination"                              | destination | release                               | not set             | valid   |
-| --release "release" --destination "destination"            | destination | release                               | not set             | valid   |
-| --showName --Release "release"                             |             | release                               | set                 | valid   |
-| --showName                                                 |             |                                       | set                 | invalid |
-| --showName --release /tank/video/TV/TempTV/How\ - To\ Get/ |             | /tank/video/TV/TempTV/How\ - To\ Get/ | set                 | valid   |
-| --showName --release "/tank/video/TV/TempTV/How\ To\ Get/" |             | /tank/video/TV/TempTV/How\ To\ Get/   | set                 | valid   |
+| Arguments                                                      | Destination | Release                                   | Check for show name | Valid   |
+| -d "destination" -r "release"                                  | destination | release                                   | not set             | valid   |
+| -r "release" -d "destination"                                  | destination | release                                   | not set             | valid   |
+| --release "release" --destination "destination"                | destination | release                                   | not set             | valid   |
+| --showName --Release "release"                                 |             | release                                   | set                 | valid   |
+| --showName                                                     |             |                                           | set                 | invalid |
+| --showName --release /tank/video/TV/TempTV/How\ - To\ Get/     |             | /tank/video/TV/TempTV/How\ - To\ Get/     | set                 | valid   |
+| --showName --release "/tank/video/TV/TempTV/How\ To\ Get/"     |             | /tank/video/TV/TempTV/How\ To\ Get/       | set                 | valid   |
+| --showName --release c:\incoming\show.s01e01.720p-releasegroup |             | c:\incoming\show.s01e01.720p-releasegroup | set                 | valid   |
 
 Scenario: The weirdest and complex commandline ever...
 Given the commandline parameters mono TvSorter.exe --showname --release "/tank/video/TV/TempTV/How To Get Away With Murder - S01E01 [1080p] WEB-DL [Subtitles Included]/"

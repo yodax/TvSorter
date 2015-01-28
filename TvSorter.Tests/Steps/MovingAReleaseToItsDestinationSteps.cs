@@ -1,9 +1,10 @@
-﻿namespace TvSorter.Tests
+﻿namespace TvSorter.Tests.Steps
 {
     using System;
     using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
+    using Double;
     using FluentAssertions;
     using Output;
     using TechTalk.SpecFlow;

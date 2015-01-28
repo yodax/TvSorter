@@ -2,6 +2,7 @@
 {
     using System.IO.Abstractions;
     using Configuration;
+    using Double;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Output;

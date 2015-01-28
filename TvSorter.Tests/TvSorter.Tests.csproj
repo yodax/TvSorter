@@ -76,34 +76,34 @@
       <DependentUpon>CleanUpReleaseName.feature</DependentUpon>
     </Compile>
     <Compile Include="CleanUpReleaseNameSteps.cs" />
-    <Compile Include="ConfigurationDouble.cs" />
+    <Compile Include="Double\ConfigurationDouble.cs" />
+    <Compile Include="Double\OutputDouble.cs" />
+    <Compile Include="Double\ResolveDouble.cs" />
     <Compile Include="MovingAReleaseToItsDestination.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MovingAReleaseToItsDestination.feature</DependentUpon>
     </Compile>
-    <Compile Include="MovingAReleaseToItsDestinationSteps.cs" />
     <Compile Include="NonParseableMediaFiles.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NonParseableMediaFiles.feature</DependentUpon>
     </Compile>
-    <Compile Include="OutputDouble.cs" />
-    <Compile Include="ResolveDouble.cs" />
-    <Compile Include="WhenCheckingCommandLineArguments.feature.cs">
+    <Compile Include="Steps\MovingAReleaseToItsDestinationSteps.cs" />
+    <Compile Include="Steps\ConfigureTheProgramSteps.cs" />
+    <Compile Include="Steps\RequestingAShowNameSteps.cs" />
+    <Compile Include="ConfigureTheProgram.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WhenCheckingCommandLineArguments.feature</DependentUpon>
+      <DependentUpon>ConfigureTheProgram.feature</DependentUpon>
     </Compile>
-    <Compile Include="WhenCheckingCommandLineArgumentsSteps.cs" />
     <Compile Include="WhenExecutingTheProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhenRequestingAShowName.feature.cs">
+    <Compile Include="RequestingAShowName.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WhenRequestingAShowName.feature</DependentUpon>
+      <DependentUpon>RequestingAShowName.feature</DependentUpon>
     </Compile>
-    <Compile Include="WhenRequestingAShowNameSteps.cs" />
     <Compile Include="WhenResolvingAType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,13 +121,13 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MovingAReleaseToItsDestination.feature.cs</LastGenOutput>
     </None>
-    <None Include="WhenCheckingCommandLineArguments.feature">
+    <None Include="ConfigureTheProgram.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WhenCheckingCommandLineArguments.feature.cs</LastGenOutput>
+      <LastGenOutput>ConfigureTheProgram.feature.cs</LastGenOutput>
     </None>
-    <None Include="WhenRequestingAShowName.feature">
+    <None Include="RequestingAShowName.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WhenRequestingAShowName.feature.cs</LastGenOutput>
+      <LastGenOutput>RequestingAShowName.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

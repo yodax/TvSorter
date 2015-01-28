@@ -1,4 +1,4 @@
-﻿namespace TvSorter.Tests
+﻿namespace TvSorter.Tests.Double
 {
     using System;
     using Output;

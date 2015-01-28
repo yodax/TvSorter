@@ -1,4 +1,4 @@
-﻿namespace TvSorter.Tests
+﻿namespace TvSorter.Tests.Double
 {
     using System.IO.Abstractions;
     using System.IO.Abstractions.TestingHelpers;

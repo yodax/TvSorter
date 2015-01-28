@@ -1,11 +1,11 @@
-﻿namespace TvSorter.Tests
+﻿namespace TvSorter.Tests.Steps
 {
     using FluentAssertions;
     using Output;
     using TechTalk.SpecFlow;
 
     [Binding]
-    public class WhenRequestingAShowNameSteps
+    public class RequestingAShowNameSteps
     {
         private IResolve resolve;
 

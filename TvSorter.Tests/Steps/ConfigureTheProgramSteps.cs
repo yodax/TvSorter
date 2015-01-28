@@ -1,15 +1,16 @@
-﻿namespace TvSorter.Tests
+﻿namespace TvSorter.Tests.Steps
 {
     using System;
     using System.Collections.Generic;
     using System.IO.Abstractions;
     using Configuration;
+    using Double;
     using FluentAssertions;
     using Output;
     using TechTalk.SpecFlow;
 
     [Binding]
-    public class WhenCheckingCommandLineArgumentsSteps
+    public class ConfigureTheProgramSteps
     {
         private IResolve resolve;
 

@@ -17,7 +17,7 @@
         {
             foreach (var parameter in parameterName)
             {
-                var match = Regex.Match(arguments, parameter + " (.*?)(-[drs-][^l]|$)", RegexOptions.IgnoreCase);
+                var match = Regex.Match(arguments, parameter + " (.*?)( -[drs-][^l]|$)", RegexOptions.IgnoreCase);
                 if (match.Groups.Count > 1 && match.Groups[1].Captures.Count > 0)
                 {
                     return match.Groups[1].Captures[0].Value.Trim().Replace("\"", "");

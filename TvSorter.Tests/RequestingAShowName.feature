@@ -1,4 +1,4 @@
-﻿Feature: When requesting a show name
+﻿Feature: Requesting a show name
 
 Background: 
 	Given a release in c:\incoming\ReleaseDir

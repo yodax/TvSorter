@@ -1,6 +1,7 @@
 ﻿namespace TvSorter.Tests
 {
     using System;
+    using Double;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Output;
