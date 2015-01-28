@@ -281,9 +281,18 @@
                 if (WordsToKeepInLowerCase.Contains(word))
                     eachUpperCaseWord.Add(word);
                 else
-                    eachUpperCaseWord.Add(word[0].ToString().ToUpper() + word.Substring(1));
+                    eachUpperCaseWord.Add(UpperCaseWord(word));
             });
+
+            var firstWord = eachUpperCaseWord[0];
+            eachUpperCaseWord[0] = UpperCaseWord(firstWord);
+
             return string.Join(".", eachUpperCaseWord);
+        }
+
+        private static string UpperCaseWord(string word)
+        {
+            return word[0].ToString().ToUpper() + word.Substring(1);
         }
     }
 }

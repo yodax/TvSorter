@@ -210,38 +210,6 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show With Multiple Names")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.HDTV.x264")]
-        public virtual void SetOfExampleCleanups_Show_With_Multiple_Names_S01E11_720P_HDTV_X264_GROUP()
-        {
-            this.SetOfExampleCleanups("Show.with.multiple.names.S01E11.720p.HDTV.x264-GROUP", "Show.With.Multiple.Names.S01E11.720p.HDTV.x264-GROUP", "Show With Multiple Names", "1", "11", "GROUP", "720p.HDTV.x264", ((string[])(null)));
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.&.The.Showing.S01E11.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Show.&.The.Showing.S01E11.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Show.and.the.Showing.S01E11.HDTV.x264-GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Show and the Showing")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "1")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "11")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "GROUP")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "HDTV.x264")]
-        public virtual void SetOfExampleCleanups_Show__The_Showing_S01E11_HDTV_X264_GROUP()
-        {
-            this.SetOfExampleCleanups("Show.&.The.Showing.S01E11.HDTV.x264-GROUP", "Show.and.the.Showing.S01E11.HDTV.x264-GROUP", "Show and the Showing", "1", "11", "GROUP", "HDTV.x264", ((string[])(null)));
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI")]
@@ -322,19 +290,67 @@ this.ScenarioSetup(scenarioInfo);
             this.SetOfExampleCleanups("moordvrouw.404.720p-DHn", "Moordvrouw.S04E04.720p-DHN", "Moordvrouw", "4", "4", "DHN", "720p", ((string[])(null)));
         }
         
+        public virtual void SetOfShowNamesToBeFormatted(string inputReleaseName, string expectedShowName, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set of show names to be formatted", exampleTags);
+#line 31
+this.ScenarioSetup(scenarioInfo);
+#line 32
+ testRunner.Given(string.Format("an input of {0}.S01E01.720p.HDTV-GROUP", inputReleaseName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 33
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+ testRunner.Then(string.Format("the show name should be {0}", expectedShowName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of show names to be formatted")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "The.Bad.Show")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:inputReleaseName", "The.Bad.Show")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expectedShowName", "The Bad Show")]
+        public virtual void SetOfShowNamesToBeFormatted_The_Bad_Show()
+        {
+            this.SetOfShowNamesToBeFormatted("The.Bad.Show", "The Bad Show", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of show names to be formatted")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.with.multiple.names")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:inputReleaseName", "Show.with.multiple.names")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expectedShowName", "Show With Multiple Names")]
+        public virtual void SetOfShowNamesToBeFormatted_Show_With_Multiple_Names()
+        {
+            this.SetOfShowNamesToBeFormatted("Show.with.multiple.names", "Show With Multiple Names", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of show names to be formatted")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Show.&.The.Showing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:inputReleaseName", "Show.&.The.Showing")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expectedShowName", "Show and the Showing")]
+        public virtual void SetOfShowNamesToBeFormatted_Show__The_Showing()
+        {
+            this.SetOfShowNamesToBeFormatted("Show.&.The.Showing", "Show and the Showing", ((string[])(null)));
+        }
+        
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Empty show name")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
         public virtual void EmptyShowName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty show name", ((string[])(null)));
-#line 32
+#line 42
 this.ScenarioSetup(scenarioInfo);
-#line 33
+#line 43
  testRunner.Given("an input of UNPARSEABLESHOW", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 34
+#line 44
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 35
+#line 45
  testRunner.Then("the release should be non parseable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -343,13 +359,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void QualityStringsShouldBeCleanedUp(string inputSceneName, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should be cleaned up", exampleTags);
-#line 37
+#line 47
 this.ScenarioSetup(scenarioInfo);
-#line 38
+#line 48
  testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
+#line 49
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
+#line 50
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -402,13 +418,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void QualityStringsShouldOnlyStartWithAllowedWords(string inputQuality, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should only start with allowed words", exampleTags);
-#line 49
+#line 59
 this.ScenarioSetup(scenarioInfo);
-#line 50
+#line 60
  testRunner.Given(string.Format("an input of Show.S01E01.{0}-GROUP", inputQuality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 51
+#line 61
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 52
+#line 62
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -691,15 +707,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
-#line 82
+#line 92
 this.ScenarioSetup(scenarioInfo);
-#line 83
+#line 93
  testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 84
+#line 94
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 85
+#line 95
  testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 86
+#line 96
  testRunner.And(string.Format("the episode should be {0}", episode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
