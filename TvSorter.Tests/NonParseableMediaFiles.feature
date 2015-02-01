@@ -33,6 +33,22 @@ Scenario: Move media for bad media good directory extra example
 	| c:\tv\How To Get Away With Murder\S01E01\How.To.Get.Away.With.Murder.S01E01.1080p.WEB-DL-NOGROUP.mkv |
 	And the directory c:\incoming should be empty
 
+Scenario: Another move media for bad media good directory extra example
+	Given a release in c:\incoming\Glee - S06E05 [1080p] WEB-DL [Subtitles Included]
+	And a tv destination of c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}
+	And a directory structure
+	| Item        | Type      |
+	| c:\tv       | Directory |
+	| c:\incoming | Directory |
+	And the files in the release directory
+	| Item                                               |
+	| Season 6 - Episode 5 - The Hurt Locker, Part 2.mkv |
+	| 05 The Hurt Locker, Part 2 (1080p HD_1.srt         |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                                   |
+	| c:\tv\Glee\S06E05\Glee.S06E05.1080p.WEB-DL-NOGROUP.mkv |
+
 Scenario: Move media for bad media bad directory
 	Given a release in c:\incoming\Release
 	And a tv destination of c:\tv\{ShowName}\{SeasonEpisode}\{ReleaseName}.{Extension}

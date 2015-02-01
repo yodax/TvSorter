@@ -165,15 +165,15 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Move media for bad media bad directory")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Another move media for bad media good directory extra example")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release with no parseable media files")]
-        public virtual void MoveMediaForBadMediaBadDirectory()
+        public virtual void AnotherMoveMediaForBadMediaGoodDirectoryExtraExample()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Move media for bad media bad directory", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Another move media for bad media good directory extra example", ((string[])(null)));
 #line 36
 this.ScenarioSetup(scenarioInfo);
 #line 37
- testRunner.Given("a release in c:\\incoming\\Release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("a release in c:\\incoming\\Glee - S06E05 [1080p] WEB-DL [Subtitles Included]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 38
  testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -192,36 +192,35 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
             table8.AddRow(new string[] {
-                        "Blaat.mkv"});
+                        "Season 6 - Episode 5 - The Hurt Locker, Part 2.mkv"});
+            table8.AddRow(new string[] {
+                        "05 The Hurt Locker, Part 2 (1080p HD_1.srt"});
 #line 43
  testRunner.And("the files in the release directory", ((string)(null)), table8, "And ");
-#line 46
+#line 47
  testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
             table9.AddRow(new string[] {
-                        "c:\\incoming\\Release\\Blaat.mkv"});
-#line 47
+                        "c:\\tv\\Glee\\S06E05\\Glee.S06E05.1080p.WEB-DL-NOGROUP.mkv"});
+#line 48
  testRunner.Then("the directory structure should contain", ((string)(null)), table9, "Then ");
-#line hidden
-#line 50
- testRunner.And("the output should be", "Can\'t parse release name! Tried: Blaat + Release", ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Show info for bad media good directory")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Move media for bad media bad directory")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release with no parseable media files")]
-        public virtual void ShowInfoForBadMediaGoodDirectory()
+        public virtual void MoveMediaForBadMediaBadDirectory()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show info for bad media good directory", ((string[])(null)));
-#line 55
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Move media for bad media bad directory", ((string[])(null)));
+#line 52
 this.ScenarioSetup(scenarioInfo);
-#line 56
- testRunner.Given("a release in c:\\incoming\\Show.S01E01.HDTV-NOGROUP", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 57
+#line 53
+ testRunner.Given("a release in c:\\incoming\\Release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
  testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -233,18 +232,65 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "c:\\incoming",
                         "Directory"});
-#line 58
+#line 55
  testRunner.And("a directory structure", ((string)(null)), table10, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
             table11.AddRow(new string[] {
                         "Blaat.mkv"});
-#line 62
+#line 59
  testRunner.And("the files in the release directory", ((string)(null)), table11, "And ");
-#line 65
- testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 62
+ testRunner.When("we request a move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table12.AddRow(new string[] {
+                        "c:\\incoming\\Release\\Blaat.mkv"});
+#line 63
+ testRunner.Then("the directory structure should contain", ((string)(null)), table12, "Then ");
+#line hidden
 #line 66
+ testRunner.And("the output should be", "Can\'t parse release name! Tried: Blaat + Release", ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Show info for bad media good directory")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Moving a release with no parseable media files")]
+        public virtual void ShowInfoForBadMediaGoodDirectory()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show info for bad media good directory", ((string[])(null)));
+#line 71
+this.ScenarioSetup(scenarioInfo);
+#line 72
+ testRunner.Given("a release in c:\\incoming\\Show.S01E01.HDTV-NOGROUP", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 73
+ testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item",
+                        "Type"});
+            table13.AddRow(new string[] {
+                        "c:\\tv",
+                        "Directory"});
+            table13.AddRow(new string[] {
+                        "c:\\incoming",
+                        "Directory"});
+#line 74
+ testRunner.And("a directory structure", ((string)(null)), table13, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Item"});
+            table14.AddRow(new string[] {
+                        "Blaat.mkv"});
+#line 78
+ testRunner.And("the files in the release directory", ((string)(null)), table14, "And ");
+#line 81
+ testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
  testRunner.Then("the requested show name should be Show S01E01 HDTV", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -256,35 +302,35 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ShowInfoForBadMediaBadDirectory()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show info for bad media bad directory", ((string[])(null)));
-#line 68
+#line 84
 this.ScenarioSetup(scenarioInfo);
-#line 69
+#line 85
  testRunner.Given("a release in c:\\incoming\\Release", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 70
+#line 86
  testRunner.And("a tv destination of c:\\tv\\{ShowName}\\{SeasonEpisode}\\{ReleaseName}.{Extension}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item",
                         "Type"});
-            table12.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "c:\\tv",
                         "Directory"});
-            table12.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         "c:\\incoming",
                         "Directory"});
-#line 71
- testRunner.And("a directory structure", ((string)(null)), table12, "And ");
+#line 87
+ testRunner.And("a directory structure", ((string)(null)), table15, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "Item"});
-            table13.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         "Blaat.mkv"});
-#line 75
- testRunner.And("the files in the release directory", ((string)(null)), table13, "And ");
-#line 78
+#line 91
+ testRunner.And("the files in the release directory", ((string)(null)), table16, "And ");
+#line 94
  testRunner.When("we request a show name from the release directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 79
+#line 95
  testRunner.Then("the output should be", "Can\'t parse release name! Tried: Blaat + Release", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

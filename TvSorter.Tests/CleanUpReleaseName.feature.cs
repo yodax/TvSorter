@@ -338,16 +338,13 @@ this.ScenarioSetup(scenarioInfo);
             this.SetOfShowNamesToBeFormatted("Show.&.The.Showing", "Show and the Showing", ((string[])(null)));
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Empty show name")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
-        public virtual void EmptyShowName()
+        public virtual void EmptyShowName(string showName, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty show name", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty show name", exampleTags);
 #line 42
 this.ScenarioSetup(scenarioInfo);
 #line 43
- testRunner.Given("an input of UNPARSEABLESHOW", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given(string.Format("an input of {0}", showName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 44
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 45
@@ -356,16 +353,36 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Empty show name")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "UNPARSEABLE")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ShowName", "UNPARSEABLE")]
+        public virtual void EmptyShowName_UNPARSEABLE()
+        {
+            this.EmptyShowName("UNPARSEABLE", ((string[])(null)));
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Empty show name")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Season 6 - Episode 5 - The Hurt Locker, Part 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:ShowName", "Season 6 - Episode 5 - The Hurt Locker, Part 2")]
+        public virtual void EmptyShowName_Season6_Episode5_TheHurtLockerPart2()
+        {
+            this.EmptyShowName("Season 6 - Episode 5 - The Hurt Locker, Part 2", ((string[])(null)));
+        }
+        
         public virtual void QualityStringsShouldBeCleanedUp(string inputSceneName, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should be cleaned up", exampleTags);
-#line 47
+#line 52
 this.ScenarioSetup(scenarioInfo);
-#line 48
+#line 53
  testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 49
+#line 54
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 50
+#line 55
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -418,13 +435,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void QualityStringsShouldOnlyStartWithAllowedWords(string inputQuality, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should only start with allowed words", exampleTags);
-#line 59
+#line 64
 this.ScenarioSetup(scenarioInfo);
-#line 60
+#line 65
  testRunner.Given(string.Format("an input of Show.S01E01.{0}-GROUP", inputQuality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 61
+#line 66
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 62
+#line 67
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -707,15 +724,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
-#line 92
+#line 97
 this.ScenarioSetup(scenarioInfo);
-#line 93
+#line 98
  testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 94
+#line 99
  testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 95
+#line 100
  testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 96
+#line 101
  testRunner.And(string.Format("the episode should be {0}", episode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

@@ -39,10 +39,15 @@ Scenario Template: Set of show names to be formatted
 	| Show.with.multiple.names | Show With Multiple Names |
 	| Show.&.The.Showing       | Show and the Showing     |
 
-Scenario: Empty show name
-	Given an input of UNPARSEABLESHOW
+Scenario Template: Empty show name
+	Given an input of <ShowName>
 	When clean up the release name
 	Then the release should be non parseable
+
+	Examples:
+	| ShowName                                       |
+	| UNPARSEABLE                                    |
+	| Season 6 - Episode 5 - The Hurt Locker, Part 2 |
 
 Scenario Template: Quality strings should be cleaned up
 	Given an input of <Input scene name>

@@ -97,7 +97,11 @@
 
                 if (!ContainsSeasonEpisodeString(releaseName))
                 {
-                    if (ContainsDecimalPartString(releaseName))
+                    if (ContainsFullSeasonAndEpisodeString(releaseName))
+                    {
+                        releaseName = ConvertFullSeasonAndEpisodeString(releaseName);
+                    }
+                    if (ContainsDecimalPartString(releaseName) && !ContainsSeasonEpisodeString(releaseName))
                     {
                         releaseName = ConvertDecimalPartStringToSeasonEpisode(releaseName);
                     }
@@ -137,6 +141,20 @@
                     Parseable = false
                 };
             }
+        }
+
+        private static bool ContainsFullSeasonAndEpisodeString(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"season\.\d{1,2}\.episode\.\d{1,2}\.");
+
+        }
+
+        private static string ConvertFullSeasonAndEpisodeString(string releaseName)
+        {
+            var match = Regex.Match(releaseName, @"season\.(\d{1,2})\.episode\.(\d{1,2})\.");
+            var season = match.Groups[1].Captures[0];
+            var episode = match.Groups[2].Captures[0];
+            return Regex.Replace(releaseName, @"season\.\d{1,2}\.episode\.\d{1,2}\.", "s" + season + "e" + episode + ".");
         }
 
         private static string ConvertThreeDecimalEpisodeString(string releaseName)
@@ -210,7 +228,7 @@
 
         private static bool ContainsSeasonEpisodeString(string releaseName)
         {
-            return Regex.IsMatch(releaseName, @"\.s\d{1,3}e\d{1,3}\.");
+            return Regex.IsMatch(releaseName, @"s\d{1,3}e\d{1,3}\.");
         }
 
         private static string ExtractQuality(string releaseName)
