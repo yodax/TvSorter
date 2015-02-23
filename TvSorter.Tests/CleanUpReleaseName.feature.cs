@@ -290,6 +290,25 @@ this.ScenarioSetup(scenarioInfo);
             this.SetOfExampleCleanups("moordvrouw.404.720p-DHn", "Moordvrouw.S04E04.720p-DHN", "Moordvrouw", "4", "4", "DHN", "720p", ((string[])(null)));
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-E" +
+            "CI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-E" +
+            "CI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "The Mentalist")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "7")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "12")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "ECI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "720p.WEB-DL.DD5.1.H.264")]
+        public virtual void SetOfExampleCleanups_The_Mentalist_S07E12X13_Brown_Shag_Carpet_White_Orchids_720P_WEB_DL_DD5_1_H_264_ECI()
+        {
+            this.SetOfExampleCleanups("The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-E" +
+                    "CI", "The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI", "The Mentalist", "7", "12", "ECI", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
+        
         public virtual void SetOfShowNamesToBeFormatted(string inputReleaseName, string expectedShowName, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set of show names to be formatted", exampleTags);

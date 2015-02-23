@@ -97,6 +97,10 @@
 
                 if (!ContainsSeasonEpisodeString(releaseName))
                 {
+                    if (ContainsTwoEpisodes(releaseName))
+                    {
+                        releaseName = ConvertTwoEpisodeStringToOne(releaseName);
+                    }
                     if (ContainsFullSeasonAndEpisodeString(releaseName))
                     {
                         releaseName = ConvertFullSeasonAndEpisodeString(releaseName);
@@ -143,10 +147,22 @@
             }
         }
 
+        private static bool ContainsTwoEpisodes(string releaseName)
+        {
+            return Regex.IsMatch(releaseName, @"s\d{1,2}[ex]\d{1,2}[ex]\d{1,2}\.");
+        }
+
+        private static string ConvertTwoEpisodeStringToOne(string releaseName)
+        {
+            var match = Regex.Match(releaseName, @"s(\d{1,2})[ex](\d{1,2})[ex]\d{1,2}\.");
+            var season = match.Groups[1].Captures[0];
+            var episode = match.Groups[2].Captures[0];
+            return Regex.Replace(releaseName, @"s\d{1,2}[ex]\d{1,2}[ex]\d{1,2}\.", "s" + season + "e" + episode + ".");
+        }
+
         private static bool ContainsFullSeasonAndEpisodeString(string releaseName)
         {
             return Regex.IsMatch(releaseName, @"season\.\d{1,2}\.episode\.\d{1,2}\.");
-
         }
 
         private static string ConvertFullSeasonAndEpisodeString(string releaseName)
@@ -254,7 +270,8 @@
 
         private static string ExtractReleaseGroup(string releaseName)
         {
-            var releaseGroup = ExtractStringFrom(releaseName, @"[^b]-(.*)").ToUpper();
+            var lastIndexOf = releaseName.LastIndexOf("-", StringComparison.InvariantCultureIgnoreCase);
+            var releaseGroup = ExtractStringFrom(releaseName.Substring(lastIndexOf-1), @"-(.*?$)").ToUpper();
 
             return string.IsNullOrEmpty(releaseGroup) ? "NOGROUP" : releaseGroup;
         }

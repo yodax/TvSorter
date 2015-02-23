@@ -27,7 +27,7 @@ Examples:
 | Dokter Tinus (2014) S03E12 720p HDTV NL Audio SAM TBS                               | Dokter.Tinus.2014.S03E12.720p.HDTV.NL.AUDIO.SAM.TBS-NOGROUP | Dokter Tinus 2014           | 3      | 12      | NOGROUP | 720p.HDTV.NL.AUDIO.SAM.TBS |
 | How To Get Away With Murder - S01E01 [BullCrap] [1080p] WEB-DL [Subtitles Included] | How.To.Get.Away.With.Murder.S01E01.1080p.WEB-DL-NOGROUP     | How To Get Away With Murder | 1      | 1       | NOGROUP | 1080p.WEB-DL               |
 | moordvrouw.404.720p-DHn                                                             | Moordvrouw.S04E04.720p-DHN                                  | Moordvrouw                  | 4      | 4       | DHN     | 720p                       |
-
+| The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-ECI | The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI            | The Mentalist               | 7      | 12      | ECI     | 720p.WEB-DL.DD5.1.H.264    |
 Scenario Template: Set of show names to be formatted
 	Given an input of <inputReleaseName>.S01E01.720p.HDTV-GROUP
 	When clean up the release name
