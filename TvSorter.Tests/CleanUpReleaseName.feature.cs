@@ -309,16 +309,35 @@ this.ScenarioSetup(scenarioInfo);
                     "CI", "The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI", "The Mentalist", "7", "12", "ECI", "720p.WEB-DL.DD5.1.H.264", ((string[])(null)));
         }
         
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Set of example cleanups")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Cleanup release name to match scene rules")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Marvels.Agents.of.S.H.I.E.L.D.S02E12.Who.You.Really.Are.1080p.WEB-DL.DD5.1.H.264-" +
+            "BS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Input scene name", "Marvels.Agents.of.S.H.I.E.L.D.S02E12.Who.You.Really.Are.1080p.WEB-DL.DD5.1.H.264-" +
+            "BS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Clean scene name", "Marvels.Agents.Of.S.H.I.E.L.D.S02E12.1080p.WEB-DL.DD5.1.H.264-BS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Show name", "Marvels Agents Of S H I E L D")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Season", "2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Episode", "12")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Group", "BS")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Quality", "1080p.WEB-DL.DD5.1.H.264")]
+        public virtual void SetOfExampleCleanups_Marvels_Agents_Of_S_H_I_E_L_D_S02E12_Who_You_Really_Are_1080P_WEB_DL_DD5_1_H_264_BS()
+        {
+            this.SetOfExampleCleanups("Marvels.Agents.of.S.H.I.E.L.D.S02E12.Who.You.Really.Are.1080p.WEB-DL.DD5.1.H.264-" +
+                    "BS", "Marvels.Agents.Of.S.H.I.E.L.D.S02E12.1080p.WEB-DL.DD5.1.H.264-BS", "Marvels Agents Of S H I E L D", "2", "12", "BS", "1080p.WEB-DL.DD5.1.H.264", ((string[])(null)));
+        }
+        
         public virtual void SetOfShowNamesToBeFormatted(string inputReleaseName, string expectedShowName, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set of show names to be formatted", exampleTags);
-#line 31
-this.ScenarioSetup(scenarioInfo);
-#line 32
- testRunner.Given(string.Format("an input of {0}.S01E01.720p.HDTV-GROUP", inputReleaseName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 33
- testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 34
+ testRunner.Given(string.Format("an input of {0}.S01E01.720p.HDTV-GROUP", inputReleaseName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 35
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
  testRunner.Then(string.Format("the show name should be {0}", expectedShowName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -360,13 +379,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void EmptyShowName(string showName, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty show name", exampleTags);
-#line 42
-this.ScenarioSetup(scenarioInfo);
-#line 43
- testRunner.Given(string.Format("an input of {0}", showName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 44
- testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 45
+ testRunner.Given(string.Format("an input of {0}", showName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 46
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 47
  testRunner.Then("the release should be non parseable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -395,13 +414,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void QualityStringsShouldBeCleanedUp(string inputSceneName, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should be cleaned up", exampleTags);
-#line 52
-this.ScenarioSetup(scenarioInfo);
-#line 53
- testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 54
- testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 55
+ testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 56
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 57
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -454,13 +473,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void QualityStringsShouldOnlyStartWithAllowedWords(string inputQuality, string quality, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Quality strings should only start with allowed words", exampleTags);
-#line 64
-this.ScenarioSetup(scenarioInfo);
-#line 65
- testRunner.Given(string.Format("an input of Show.S01E01.{0}-GROUP", inputQuality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 66
- testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 67
+ testRunner.Given(string.Format("an input of Show.S01E01.{0}-GROUP", inputQuality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 68
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 69
  testRunner.Then(string.Format("the quality should be {0}", quality), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -743,15 +762,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void RomanNumeralsShouldBeConvertedToDecimal(string inputSceneName, string season, string episode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Roman numerals should be converted to decimal", exampleTags);
-#line 97
-this.ScenarioSetup(scenarioInfo);
-#line 98
- testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 99
- testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+this.ScenarioSetup(scenarioInfo);
 #line 100
- testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given(string.Format("an input of {0}", inputSceneName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 101
+ testRunner.When("clean up the release name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 102
+ testRunner.Then(string.Format("the season should be {0}", season), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 103
  testRunner.And(string.Format("the episode should be {0}", episode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

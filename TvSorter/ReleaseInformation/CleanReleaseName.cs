@@ -251,7 +251,8 @@
         {
             var quality = ExtractStringFrom(releaseName, @"e\d{1,3}.(.*)-").ToUpper();
 
-            var matchedQualities = StartingQualityIndicators.Select(qualityIndicator => quality.IndexOf(qualityIndicator, StringComparison.InvariantCultureIgnoreCase))
+            var startingQualityIndicators = StartingQualityIndicators.Select(i => i +".");
+            var matchedQualities = startingQualityIndicators.Select(qualityIndicator => quality.IndexOf(qualityIndicator, StringComparison.InvariantCultureIgnoreCase))
                 .Where(index => index >= 0)
                 .ToList();
 

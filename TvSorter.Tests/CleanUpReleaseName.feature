@@ -14,20 +14,22 @@ Scenario Template: Set of example cleanups
 	And the release should be parseable
 
 Examples:
-| Input scene name                                                                    | Clean scene name                                            | Show name                   | Season | Episode | Group   | Quality                    |
-| Show.S01E11.720p.HDTV.x264-GROUP                                                    | Show.S01E11.720p.HDTV.x264-GROUP                            | Show                        | 1      | 11      | GROUP   | 720p.HDTV.x264             |
-| Show.1x11.HDTV.x264-GROUP                                                           | Show.S01E11.HDTV.x264-GROUP                                 | Show                        | 1      | 11      | GROUP   | HDTV.x264                  |
-| Show.S01E11.HDTV.x264-GROUP                                                         | Show.S01E11.HDTV.x264-GROUP                                 | Show                        | 1      | 11      | GROUP   | HDTV.x264                  |
-| Show.S01E11.HDTV.XVID-GROUP                                                         | Show.S01E11.HDTV.XviD-GROUP                                 | Show                        | 1      | 11      | GROUP   | HDTV.XviD                  |
-| Show.Part.2.720p.HDTV.x264-GROUP                                                    | Show.S01E02.720p.HDTV.x264-GROUP                            | Show                        | 1      | 2       | GROUP   | 720p.HDTV.x264             |
-| Show S06E01 720p WEB-DL DD5.1 H.264                                                 | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP                 | Show                        | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264    |
-| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP                                           | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP                   | Show                        | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264    |
-| Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI     | Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI             | Constantine                 | 1      | 9       | ECI     | 1080p.WEB-DL.DD5.1.H.264   |
-| Melissa.&.Joey.S04E04.The.Day.After.1080p.WEB-DL.DD5.1.H.264-SA89                   | Melissa.and.Joey.S04E04.1080p.WEB-DL.DD5.1.H.264-SA89       | Melissa and Joey            | 4      | 4       | SA89    | 1080p.WEB-DL.DD5.1.H.264   |
-| Dokter Tinus (2014) S03E12 720p HDTV NL Audio SAM TBS                               | Dokter.Tinus.2014.S03E12.720p.HDTV.NL.AUDIO.SAM.TBS-NOGROUP | Dokter Tinus 2014           | 3      | 12      | NOGROUP | 720p.HDTV.NL.AUDIO.SAM.TBS |
-| How To Get Away With Murder - S01E01 [BullCrap] [1080p] WEB-DL [Subtitles Included] | How.To.Get.Away.With.Murder.S01E01.1080p.WEB-DL-NOGROUP     | How To Get Away With Murder | 1      | 1       | NOGROUP | 1080p.WEB-DL               |
-| moordvrouw.404.720p-DHn                                                             | Moordvrouw.S04E04.720p-DHN                                  | Moordvrouw                  | 4      | 4       | DHN     | 720p                       |
-| The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-ECI | The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI            | The Mentalist               | 7      | 12      | ECI     | 720p.WEB-DL.DD5.1.H.264    |
+| Input scene name                                                                    | Clean scene name                                                 | Show name                     | Season | Episode | Group   | Quality                    |
+| Show.S01E11.720p.HDTV.x264-GROUP                                                    | Show.S01E11.720p.HDTV.x264-GROUP                                 | Show                          | 1      | 11      | GROUP   | 720p.HDTV.x264             |
+| Show.1x11.HDTV.x264-GROUP                                                           | Show.S01E11.HDTV.x264-GROUP                                      | Show                          | 1      | 11      | GROUP   | HDTV.x264                  |
+| Show.S01E11.HDTV.x264-GROUP                                                         | Show.S01E11.HDTV.x264-GROUP                                      | Show                          | 1      | 11      | GROUP   | HDTV.x264                  |
+| Show.S01E11.HDTV.XVID-GROUP                                                         | Show.S01E11.HDTV.XviD-GROUP                                      | Show                          | 1      | 11      | GROUP   | HDTV.XviD                  |
+| Show.Part.2.720p.HDTV.x264-GROUP                                                    | Show.S01E02.720p.HDTV.x264-GROUP                                 | Show                          | 1      | 2       | GROUP   | 720p.HDTV.x264             |
+| Show S06E01 720p WEB-DL DD5.1 H.264                                                 | Show.S06E01.720p.WEB-DL.DD5.1.H.264-NOGROUP                      | Show                          | 6      | 1       | NOGROUP | 720p.WEB-DL.DD5.1.H.264    |
+| Show S06E01 720p WEB-DL DD5.1 H.264-GROUP                                           | Show.S06E01.720p.WEB-DL.DD5.1.H.264-GROUP                        | Show                          | 6      | 1       | GROUP   | 720p.WEB-DL.DD5.1.H.264    |
+| Constantine.S01E09.The.Saint.Of.Last.Resort.Part.2.1080p.WEB-DL.DD5.1.H.264-ECI     | Constantine.S01E09.1080p.WEB-DL.DD5.1.H.264-ECI                  | Constantine                   | 1      | 9       | ECI     | 1080p.WEB-DL.DD5.1.H.264   |
+| Melissa.&.Joey.S04E04.The.Day.After.1080p.WEB-DL.DD5.1.H.264-SA89                   | Melissa.and.Joey.S04E04.1080p.WEB-DL.DD5.1.H.264-SA89            | Melissa and Joey              | 4      | 4       | SA89    | 1080p.WEB-DL.DD5.1.H.264   |
+| Dokter Tinus (2014) S03E12 720p HDTV NL Audio SAM TBS                               | Dokter.Tinus.2014.S03E12.720p.HDTV.NL.AUDIO.SAM.TBS-NOGROUP      | Dokter Tinus 2014             | 3      | 12      | NOGROUP | 720p.HDTV.NL.AUDIO.SAM.TBS |
+| How To Get Away With Murder - S01E01 [BullCrap] [1080p] WEB-DL [Subtitles Included] | How.To.Get.Away.With.Murder.S01E01.1080p.WEB-DL-NOGROUP          | How To Get Away With Murder   | 1      | 1       | NOGROUP | 1080p.WEB-DL               |
+| moordvrouw.404.720p-DHn                                                             | Moordvrouw.S04E04.720p-DHN                                       | Moordvrouw                    | 4      | 4       | DHN     | 720p                       |
+| The.Mentalist.S07E12x13.Brown.Shag.Carpet-White.Orchids.720p.WEB-DL.DD5.1.H.264-ECI | The.Mentalist.S07E12.720p.WEB-DL.DD5.1.H.264-ECI                 | The Mentalist                 | 7      | 12      | ECI     | 720p.WEB-DL.DD5.1.H.264    |
+| Marvels.Agents.of.S.H.I.E.L.D.S02E12.Who.You.Really.Are.1080p.WEB-DL.DD5.1.H.264-BS | Marvels.Agents.Of.S.H.I.E.L.D.S02E12.1080p.WEB-DL.DD5.1.H.264-BS | Marvels Agents Of S H I E L D | 2      | 12      | BS      | 1080p.WEB-DL.DD5.1.H.264   | 
+
 Scenario Template: Set of show names to be formatted
 	Given an input of <inputReleaseName>.S01E01.720p.HDTV-GROUP
 	When clean up the release name
