@@ -19,7 +19,8 @@ namespace TvSorter
             "nfo",
             "srt",
             "sub",
-            "idx"
+            "idx",
+            "m4v"
         };
 
         private readonly IConfiguration configuration;

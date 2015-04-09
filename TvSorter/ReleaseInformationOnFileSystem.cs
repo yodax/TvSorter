@@ -12,7 +12,7 @@
     {
         private readonly IFileSystem fileSystem;
         private readonly IOutput output;
-        private readonly IEnumerable<string> mediaTypes = new List<string> { "mkv", "avi", "mp4" };
+        private readonly IEnumerable<string> mediaTypes = new List<string> { "mkv", "avi", "mp4", "m4v" };
 
 
         public ReleaseInformationOnFileSystem(IFileSystem fileSystem, IOutput output)

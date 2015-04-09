@@ -93,6 +93,16 @@ Scenario: A avi file should be moved
 	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.avi |
 	And the directory c:\incoming should be empty
 
+Scenario: A m4v file should be moved
+	Given the files in the release directory
+	| Item                         |
+	| Show.S01E01.HDTV-NOGROUP.m4v |
+	When we request a move
+	Then the directory structure should contain
+	| Item                                           |
+	| c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP.m4v |
+	And the directory c:\incoming should be empty
+
 Scenario: More than one media file detected
 	Given the files in the release directory
 	| Item                         |
