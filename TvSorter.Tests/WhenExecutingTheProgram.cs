@@ -1,15 +1,17 @@
-﻿namespace TvSorter.Tests
+﻿
+
+namespace TvSorter.Tests
 {
     using System;
     using Double;
     using FluentAssertions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Output;
 
-    [TestClass]
+    [TestFixture]
     public class WhenExecutingTheProgram
     {
-        [TestMethod]
+        [Test]
         public void GivenAMoveRequestNoFilesOnTheFileSystemAMessageShouldBePrinted()
         {
             var resolve = new ResolveDouble(new ConfigurationDouble(@"c:\destination", @"c:\release"));
@@ -22,7 +24,7 @@
             output.Lines.Should().Be(@"Release directory doesn't exist c:\release");
         }
 
-        [TestMethod]
+        [Test]
         public void GivenAShowInfoRequestNoFilesOnTheFileSystemAMessageShouldBePrinted()
         {
             var resolve = new ResolveDouble(new ConfigurationDouble(@"c:\destination", @"c:\release", true));
@@ -35,7 +37,7 @@
             output.Lines.Should().Be(@"Release directory doesn't exist c:\release");
         }
 
-        [TestMethod]
+        [Test]
         public void GivenAnInvalidConfigurationTheExecutionShouldBeHaltedWhenMovingARelease()
         {
             var resolve = new ResolveDouble(new ConfigurationDouble(@"", @""));
@@ -48,7 +50,7 @@
             output.Lines.Trim().Should().EndWithEquivalent("{Extension}");
         }
 
-        [TestMethod]
+        [Test]
         public void GivenAnInvalidConfigurationTheExecutionShouldBeHaltedWhenCheckingForShowInfo()
         {
             var resolve = new ResolveDouble(new ConfigurationDouble(@"", @"", true));

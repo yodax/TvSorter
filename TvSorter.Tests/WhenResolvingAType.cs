@@ -4,23 +4,23 @@
     using Configuration;
     using Double;
     using FluentAssertions;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using Output;
 
-    [TestClass]
+    [TestFixture]
     public class WhenResolvingAType
     {
         private IResolve resolveDouble;
         private IResolve actualResolve;
 
-        [TestInitialize]
+        [SetUp]
         public void Setup()
         {
             resolveDouble = new ResolveDouble(new ConfigurationDouble("", ""));
             actualResolve = new Resolve(new ConfigurationDouble("", ""));
         }
 
-        [TestMethod]
+        [Test]
         public void AllTypesShouldBeAssignable()
         {
             CheckForResolve<IFileSystem>();
