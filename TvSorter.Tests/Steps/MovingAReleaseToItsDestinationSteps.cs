@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.IO.Abstractions;
+using System.IO.Abstractions.TestingHelpers;
 using System.Linq;
 using System.Text.RegularExpressions;
 using FluentAssertions;
@@ -62,6 +63,12 @@ namespace TvSorter.Tests.Steps
         public void ThenTheDirectoryStructureShouldContain(Table table)
         {
             var fileSystem = resolve.For<IFileSystem>();
+
+            var mockFileSystem = fileSystem as MockFileSystem;
+            foreach (var file in mockFileSystem.AllFiles)
+            {
+                Console.Error.WriteLine(file);
+            }
 
             foreach (var tableRow in table.Rows)
             {
