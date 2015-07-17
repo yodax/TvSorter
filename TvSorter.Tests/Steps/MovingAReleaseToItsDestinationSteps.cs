@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using System.Text.RegularExpressions;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 using TvSorter.Output;
@@ -85,10 +86,24 @@ namespace TvSorter.Tests.Steps
         {
             var output = resolve.For<IOutput>();
 
-            output.Lines.Replace(Environment.NewLine, "")
-                .Replace("\n", "")
+            var expected = multiLineText.Replace(Environment.NewLine, "").Replace("\n", "");
+
+            const string replacePaths = @"c\:\\[\w\\]*";
+
+            expected = Regex.Replace(expected, replacePaths, ConvertPath);
+            var result = output.Lines.Replace(Environment.NewLine, "")
+                .Replace("\n", "");
+
+            result = Regex.Replace(result, replacePaths, ConvertPath);
+
+            result
                 .Should()
-                .BeEquivalentTo(multiLineText.Replace(Environment.NewLine, "").Replace("\n", ""));
+                .BeEquivalentTo(expected);
+        }
+
+        private static string ConvertPath(Match match)
+        {
+            return MockUnixSupport.Path(match.Value);
         }
 
         [Given(@"a file with extenstion (.*)")]
