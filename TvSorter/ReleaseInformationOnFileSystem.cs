@@ -53,12 +53,18 @@
             var videoFileName = Path.GetFileNameWithoutExtension(videoFile);
             var showInfoFromFile =  CleanReleaseName.For(videoFileName);
 
-            var releaseDirectoryName = fileSystem.DirectoryInfo.FromDirectoryName(releaseDirectory).Name;
+            var releaseDirectoryName = ReleaseDirectoryName(releaseDirectory);
 
             var showInfoFromReleaseDirectory = CleanReleaseName.For(releaseDirectoryName);
             showInfoFromReleaseDirectory.ParsingAttempt = "Tried: " + videoFileName + " + " + releaseDirectoryName;
 
             return !showInfoFromFile.Parseable ? showInfoFromReleaseDirectory : showInfoFromFile;
+        }
+
+        private string ReleaseDirectoryName(string releaseDirectory)
+        {
+            var pathWithoutFinalSlash = releaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+            return pathWithoutFinalSlash.Substring(pathWithoutFinalSlash.LastIndexOf(Path.DirectorySeparatorChar) + 1);
         }
 
         private bool OnlyOneMediaFilePresentIn(string releaseDirectory)
