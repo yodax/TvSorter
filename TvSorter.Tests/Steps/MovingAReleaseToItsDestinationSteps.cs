@@ -24,7 +24,12 @@ namespace TvSorter.Tests.Steps
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
-            resolve = new ResolveDouble(new ConfigurationDouble(MockUnixSupport.Path(destination), MockUnixSupport.Path(ReleaseDirectory)));
+            var destPath = MockUnixSupport.Path(destination);
+            var releasePath = MockUnixSupport.Path(ReleaseDirectory);
+            Console.Error.WriteLine("Destpath: " + destPath);
+            Console.Error.WriteLine("Releasepath: " + releasePath);
+
+            resolve = new ResolveDouble(new ConfigurationDouble(destPath, releasePath));
             ScenarioContext.Current.Add("resolve", resolve);
         }
 
