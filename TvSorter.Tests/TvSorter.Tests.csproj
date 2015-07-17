@@ -99,6 +99,7 @@
     <Compile Include="Double\ConfigurationDouble.cs" />
     <Compile Include="Double\OutputDouble.cs" />
     <Compile Include="Double\ResolveDouble.cs" />
+    <Compile Include="MockUnixSupport.cs" />
     <Compile Include="MovingAReleaseToItsDestination.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

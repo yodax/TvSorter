@@ -1,14 +1,14 @@
-﻿namespace TvSorter.Tests.Steps
-{
-    using System;
-    using System.IO;
-    using System.IO.Abstractions;
-    using System.Linq;
-    using Double;
-    using FluentAssertions;
-    using Output;
-    using TechTalk.SpecFlow;
+﻿using System;
+using System.IO;
+using System.IO.Abstractions;
+using System.Linq;
+using FluentAssertions;
+using TechTalk.SpecFlow;
+using TvSorter.Output;
+using TvSorter.Tests.Double;
 
+namespace TvSorter.Tests.Steps
+{
     [Binding]
     public class MovingAReleaseToItsDestinationSteps
     {
@@ -22,16 +22,14 @@
         [Given(@"a tv destination of (.*)")]
         public void GivenATvDestinationOf(string destination)
         {
-            resolve =
-                new ResolveDouble(new ConfigurationDouble(destination,
-                    ReleaseDirectory));
+            resolve = new ResolveDouble(new ConfigurationDouble(MockUnixSupport.Path(destination), MockUnixSupport.Path(ReleaseDirectory)));
             ScenarioContext.Current.Add("resolve", resolve);
         }
 
         [Given(@"a release in (.*)")]
         public void GivenAReleaseInIn(string releaseDirectoryFromSpecFlow)
         {
-            ScenarioContext.Current.Add("releaseDirectory", releaseDirectoryFromSpecFlow);
+            ScenarioContext.Current.Add("releaseDirectory", MockUnixSupport.Path(releaseDirectoryFromSpecFlow));
         }
 
         [Given(@"a directory structure")]
@@ -42,11 +40,11 @@
             {
                 if (tableRow["Type"].Equals("Directory"))
                 {
-                    fileSystem.Directory.CreateDirectory(tableRow["Item"]);
+                    fileSystem.Directory.CreateDirectory(MockUnixSupport.Path(tableRow["Item"]));
                 }
                 if (tableRow["Type"].Equals("File"))
                 {
-                    fileSystem.File.CreateText(tableRow["Item"]).Close();
+                    fileSystem.File.CreateText(MockUnixSupport.Path(tableRow["Item"])).Close();
                 }
             }
         }
@@ -56,7 +54,7 @@
         {
             var moveRelease = resolve.For<MoveRelease>();
 
-            moveRelease.From(ReleaseDirectory);
+            moveRelease.From(MockUnixSupport.Path(ReleaseDirectory));
         }
 
         [Then(@"the directory structure should contain")]
@@ -67,9 +65,9 @@
             foreach (var tableRow in table.Rows)
             {
                 if ((tableRow.ContainsKey("Type") && tableRow["Type"].Equals("File")) || (!tableRow.ContainsKey("Type")))
-                    fileSystem.File.Exists(tableRow["Item"]).Should().BeTrue();
+                    fileSystem.File.Exists(MockUnixSupport.Path(tableRow["Item"])).Should().BeTrue();
                 if (tableRow.ContainsKey("Type") && tableRow["Type"].Equals("Directory"))
-                    fileSystem.Directory.Exists(tableRow["Item"]).Should().BeTrue();
+                    fileSystem.Directory.Exists(MockUnixSupport.Path(tableRow["Item"])).Should().BeTrue();
             }
         }
 
@@ -78,8 +76,8 @@
         {
             var fileSystem = resolve.For<IFileSystem>();
 
-            fileSystem.Directory.GetFiles(directory).Should().BeEmpty();
-            fileSystem.Directory.GetDirectories(directory).Should().BeEmpty();
+            fileSystem.Directory.GetFiles(MockUnixSupport.Path(directory)).Should().BeEmpty();
+            fileSystem.Directory.GetDirectories(MockUnixSupport.Path(directory)).Should().BeEmpty();
         }
 
         [Then(@"the output should be")]
@@ -87,7 +85,10 @@
         {
             var output = resolve.For<IOutput>();
 
-            output.Lines.Replace(Environment.NewLine, "").Replace("\n", "").Should().BeEquivalentTo(multiLineText.Replace(Environment.NewLine, "").Replace("\n", ""));
+            output.Lines.Replace(Environment.NewLine, "")
+                .Replace("\n", "")
+                .Should()
+                .BeEquivalentTo(multiLineText.Replace(Environment.NewLine, "").Replace("\n", ""));
         }
 
         [Given(@"a file with extenstion (.*)")]
@@ -105,7 +106,7 @@
         {
             var fileSystem = resolve.For<IFileSystem>();
 
-            fileSystem.File.Create(CombineFileNameWithReleaseDirectory(fileName))
+            fileSystem.File.Create(MockUnixSupport.Path(CombineFileNameWithReleaseDirectory(fileName)))
                 .Close();
         }
 
@@ -124,7 +125,7 @@
         public void ThenTheDirectoryStructureShouldNotContainAFileWithRar(string extension)
         {
             resolve.For<IFileSystem>()
-                .File.Exists(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension)
+                .File.Exists(MockUnixSupport.Path(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension))
                 .Should()
                 .BeFalse();
         }
@@ -133,7 +134,7 @@
         public void ThenTheDirectoryStructureShouldContainAFileMkv(string extension)
         {
             resolve.For<IFileSystem>()
-                .File.Exists(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension)
+                .File.Exists(MockUnixSupport.Path(@"c:\tv\Show\S01E01\Show.S01E01.HDTV-NOGROUP." + extension))
                 .Should()
                 .BeTrue();
         }
@@ -142,7 +143,7 @@
         public void ThenTheReleaseShouldNotHaveBeenRemoved()
         {
             resolve.For<IFileSystem>()
-                .Directory.Exists(ReleaseDirectory)
+                .Directory.Exists(MockUnixSupport.Path(ReleaseDirectory))
                 .Should()
                 .BeTrue();
         }
@@ -155,13 +156,13 @@
             {
                 if (tableRow.ContainsKey("Type") && tableRow["Type"].Equals("Directory"))
                 {
-                    fileSystem.Directory.CreateDirectory(
-                        Path.Combine(ReleaseDirectory, tableRow["Item"]));
+                    fileSystem.Directory.CreateDirectory(MockUnixSupport.Path(
+                        Path.Combine(ReleaseDirectory, tableRow["Item"])));
                 }
                 else
                 {
-                    fileSystem.File.CreateText(
-                        Path.Combine(ReleaseDirectory, tableRow["Item"]))
+                    fileSystem.File.CreateText(MockUnixSupport.Path(
+                        Path.Combine(ReleaseDirectory, tableRow["Item"])))
                         .Close();
                 }
             }
@@ -172,7 +173,7 @@
         {
             var textWriter =
                 resolve.For<IFileSystem>()
-                    .File.CreateText(Path.Combine(ReleaseDirectory, fileName));
+                    .File.CreateText(MockUnixSupport.Path(Path.Combine(ReleaseDirectory, fileName)));
 
             textWriter.Write(multilineText);
             textWriter.Close();
@@ -185,6 +186,5 @@
 
             output.Lines.Should().NotContainEquivalentOf(stringToSearchFor);
         }
-
     }
 }
