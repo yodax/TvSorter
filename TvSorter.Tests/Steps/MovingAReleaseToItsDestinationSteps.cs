@@ -86,13 +86,13 @@ namespace TvSorter.Tests.Steps
         {
             var output = resolve.For<IOutput>();
 
-            var expected = multiLineText.Replace(Environment.NewLine, "").Replace("\n", "");
+            var expected = multiLineText.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
 
             const string replacePaths = @"c\:\\[\w\\]*";
 
             expected = Regex.Replace(expected, replacePaths, ConvertPath);
             var result = output.Lines.Replace(Environment.NewLine, "")
-                .Replace("\n", "");
+                .Replace("\n", "").Replace("\r", "");
 
             result = Regex.Replace(result, replacePaths, ConvertPath);
 
