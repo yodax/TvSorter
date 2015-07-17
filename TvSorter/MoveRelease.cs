@@ -87,7 +87,13 @@ namespace TvSorter
 
         private void CreateDestinationDirectory(string finalDestination)
         {
-            fileSystem.Directory.CreateDirectory(Path.GetDirectoryName(finalDestination));
+            fileSystem.Directory.CreateDirectory(GetDirectoryName(finalDestination));
+        }
+
+        private string GetDirectoryName(string fullPath)
+        {
+            var pathWithoutFinalSlash = fullPath.TrimEnd(Path.DirectorySeparatorChar);
+            return pathWithoutFinalSlash.Replace(Path.GetFileName(pathWithoutFinalSlash), "").TrimEnd(Path.DirectorySeparatorChar);
         }
 
         private string ReadInfoFileContents(string file)
@@ -117,7 +123,7 @@ namespace TvSorter
             var finalDestination = destination;
             while (fileSystem.File.Exists(finalDestination))
             {
-                var destinationDirectory = Path.GetDirectoryName(destination) ?? "";
+                var destinationDirectory = GetDirectoryName(destination) ?? "";
 
                 finalDestination = Path.Combine(destinationDirectory,
                     Path.GetFileNameWithoutExtension(destination) + "." + incrementForFileIdentifier +
