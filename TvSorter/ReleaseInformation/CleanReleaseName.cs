@@ -95,6 +95,8 @@
 
                 releaseName = RemoveEverythingBetweenBracketsExceptQuality(releaseName);
 
+                releaseName = RemoveDoubleGroupKeepFirstOne(releaseName);
+
                 if (!ContainsSeasonEpisodeString(releaseName))
                 {
                     if (ContainsTwoEpisodes(releaseName))
@@ -145,6 +147,11 @@
                     Parseable = false
                 };
             }
+        }
+
+        private static string RemoveDoubleGroupKeepFirstOne(string releaseName)
+        {
+            return Regex.Match(releaseName, @"-\w+-\w+$").Success ? Regex.Replace(releaseName, @"-\w+$", "") : releaseName;
         }
 
         private static bool ContainsTwoEpisodes(string releaseName)
